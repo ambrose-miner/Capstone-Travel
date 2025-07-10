@@ -1,18 +1,15 @@
 package com.controller;
 import com.service.RideService;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bean.Ride;
+@CrossOrigin
 @RestController
 public class RideController {
-	
-
-
-	 //view must be in this micro service project with controller as opposed to rest controller
 	
 		@Autowired
 		RideService rideService;
@@ -22,7 +19,7 @@ public class RideController {
 		
 		
 		@PostMapping(value = "/bookRide")
-		public String bookRide(Model mm, Ride r) {
+		public String bookRide(Model mm, Ride r) {//all of this needs to be reworked for Angular rather than Thymeleaf.
 			
 			 System.out.println("Ride booked");
 			 rideService.bookRide(r);

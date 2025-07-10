@@ -1,0 +1,14 @@
+<p>loginpage works!</p>
+<div>
+    <form [formGroup]="loginForm"(ngSubmit)="signIn()">
+        <label>Email Id</label><br>
+        <input type="emailid"/><br>
+        <label>Password</label><br>
+        <input type="password"/><br>
+        <label>Select User Type</label><br>
+        Client<input type="radio" name="usertype" value="client"/><br>
+        Admin<input type="radio" name="usertype" value="admin"/><br>
+        <input type="submit" value="signIn"/><br>
+        <input type="reset" value="Reset"/><br>
+    </form>
+</div>
