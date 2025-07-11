@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bean.Ride;
@@ -19,12 +20,12 @@ public class RideController {
 		
 		
 		@PostMapping(value = "/bookRide")
-		public String bookRide(Model mm, Ride r) {//all of this needs to be reworked for Angular rather than Thymeleaf.
+		public String bookRide(@RequestBody Ride r) {//all of this needs to be reworked for Angular rather than Thymeleaf.
 			
 			 System.out.println("Ride booked");
 			 rideService.bookRide(r);
-			 mm.addAttribute("msg1", "Thank you " );
-			 mm.addAttribute("msg2", "Your ride has been booked and the Fare will be ");
+		//	 mm.addAttribute("msg1", "Thank you " );
+		//	 mm.addAttribute("msg2", "Your ride has been booked and the Fare will be ");
 			return "ride-booking";
 		}
 		
