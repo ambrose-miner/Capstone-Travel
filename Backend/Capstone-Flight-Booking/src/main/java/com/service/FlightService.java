@@ -7,9 +7,9 @@ import com.bean.FlightBooking;
 import com.repository.FlightRepository;
 
 @Service
-public class FlightService {
+public class FlightService { //should now be flightBookingService...?
 	@Autowired
-	FlightRepository flightRepository;
+	FlightRepository flightRepository; //would change to flightBookingRepository...?
 	@Autowired
 	RestTemplate restTemplate;
 	
