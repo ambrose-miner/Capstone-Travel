@@ -15,7 +15,9 @@ public class FlightService {
 	
 	public String bookFlight(FlightBooking rI) {
 		float amount = restTemplate.getForObject("http://localhost:8282/fare/findFare/"+rI.getOrigin()+"/"+rI.getDestination(), Float.class);
-		if(amount==-1) {
+		if(amount==-1) {// should be price not fare if price is user specific this would have to look at the user object
+			//that doesn't seem right... maybe I shouldn't make the price user specific. can always call it a base price
+			//and have modifiers for users.
 			return "No Flights are avaiable with origin location as "+rI.getOrigin()+" and destination as "+rI.getDestination();
 		}else {
 			rI.setPrice(amount); 

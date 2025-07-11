@@ -15,7 +15,7 @@ public class RideService {
 	RestTemplate restTemplate;
 
 	public String bookRide(Ride rI) {
-		float amount = restTemplate.getForObject("http://localhost:8282/fare/findFare/"+rI.getPickup()+"/"+rI.getDropoff(), Float.class);
+		float amount = restTemplate.getForObject("http://localhost:8383/fare/findFare/"+rI.getPickup()+"/"+rI.getDropoff(), Float.class);
 		if(amount==-1) {
 			return "No Cab are avaiable with pickup location as "+rI.getPickup()+" and dropoff destination as "+rI.getDropoff();
 		}else {

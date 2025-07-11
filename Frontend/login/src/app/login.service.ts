@@ -5,10 +5,15 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class LoginService {
-baseURL:string="http://localhost:9090/login";//double check port number
+baseURL:string="http://localhost:8181/Capstone-login";
+//this should be the correct path and port
   constructor(public httpClient:HttpClient) { }
 
   signIn(login:any):Observable<string> {
     return this.httpClient.post(this.baseURL+ "/signIn",login,{responseType:'text'});
+  }
+  signUp(login:any):Observable<string> {
+    return this.httpClient.post(this.baseURL+ "/signUp",login, {responseType: 'text'});
+    //is this trying to pass the login object? So it should actually be a signUp object? 
   }
 }
