@@ -29,7 +29,7 @@ public class Login {
 		this.typeofuser = typeofuser;
 	}
 	@Override
-	public String toString() {  //What function does this serve?
+	public String toString() {
 		return "Login [emailid=" + emailid + ", password=" + password + ", typeofuser=" + typeofuser + "]";
 
 	}

@@ -13,7 +13,7 @@ public class RideService {
 	RideRepository rideRepository;
 	@Autowired
 	RestTemplate restTemplate;
-
+	
 	public String bookRide(Ride rI) {
 		float amount = restTemplate.getForObject("http://localhost:8383/fare/findFare/"+rI.getPickup()+"/"+rI.getDropoff(), Float.class);
 		if(amount==-1) {

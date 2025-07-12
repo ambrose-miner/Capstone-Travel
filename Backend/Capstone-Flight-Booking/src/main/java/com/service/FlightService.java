@@ -13,15 +13,16 @@ public class FlightService { //should now be flightBookingService...?
 	@Autowired
 	RestTemplate restTemplate;
 	
-	public String bookFlight(FlightBooking rI) {
-		float amount = restTemplate.getForObject("http://localhost:8282/fare/findFare/"+rI.getOrigin()+"/"+rI.getDestination(), Float.class);
+	public String bookFlight(FlightBooking fB) {
+		float amount = restTemplate.getForObject("http://localhost:8282/fare/findFare/"+fB.getOrigin()+"/"+fB.getDestination(), Float.class);
 		if(amount==-1) {// should be price not fare if price is user specific this would have to look at the user object
 			//that doesn't seem right... maybe I shouldn't make the price user specific. can always call it a base price
 			//and have modifiers for users.
-			return "No Flights are avaiable with origin location as "+rI.getOrigin()+" and destination as "+rI.getDestination();
+			return "No Flights are avaiable with origin location as "+fB.getOrigin()+" and destination as "+fB.getDestination();
 		}else {
-			rI.setPrice(amount); 
-			flightRepository.save(rI);
+			fB.setPrice(amount); 
+			flightRepository.save(fB);
+			System.out.println("book flight calling repository");
 			return "Your flight has been booked successfully";
 		}
 	}

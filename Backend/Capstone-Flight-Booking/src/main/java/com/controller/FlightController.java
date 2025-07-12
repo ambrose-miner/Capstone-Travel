@@ -2,6 +2,7 @@ package com.controller;
 import com.service.FlightService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,14 +23,12 @@ public class FlightController {
 	//	return productService.storeProduct(product);
 	//}
 	
-	@PostMapping(value = "/bookFlight")
-	public String bookFlight(@RequestBody FlightBooking f) {//all of this needs to be reworked for Angular rather than Thymeleaf.
+	@PostMapping(value = "bookFlight",consumes = MediaType.APPLICATION_JSON_VALUE)
+	public String bookFlight(@RequestBody FlightBooking fB) {
 		
-		 System.out.println("Flight booked");
-		 flightService.bookFlight(f);
-		// mm.addAttribute("msg1", "Thank you " );
-		// mm.addAttribute("msg2", "Your flight has been booked and the Price is");
-		return "flight-booking";
+		 System.out.println("Call book flight method");
+		String Message = flightService.bookFlight(fB);
+		 return Message;
 	}
 
 

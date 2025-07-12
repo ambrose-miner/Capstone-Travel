@@ -1,6 +1,7 @@
 package com.controller;
 import com.service.RideService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,18 +16,14 @@ public class RideController {
 		@Autowired
 		RideService rideService;
 		
-		@GetMapping(value = "/")
+		@GetMapping(value = "/")// needs to be more specific...?
 		
 		
-		
-		@PostMapping(value = "/bookRide")
-		public String bookRide(@RequestBody Ride r) {//all of this needs to be reworked for Angular rather than Thymeleaf.
-			
-			 System.out.println("Ride booked");
-			 rideService.bookRide(r);
-		//	 mm.addAttribute("msg1", "Thank you " );
-		//	 mm.addAttribute("msg2", "Your ride has been booked and the Fare will be ");
-			return "ride-booking";
+		@PostMapping(value = "bookRide", consumes = MediaType.APPLICATION_JSON_VALUE)
+		public String bookRide(@RequestBody Ride r) { //ridebooking?
+			 System.out.println("called booking ride method");
+			 String Message = rideService.bookRide(r);
+			return Message;
 		}
 		
 

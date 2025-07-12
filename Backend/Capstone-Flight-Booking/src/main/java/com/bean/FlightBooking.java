@@ -26,10 +26,10 @@ public class FlightBooking {
 		private String userlname; //user specific
 		private String origin; //part of flight object
 		private String destination; //part of flight object
-		private Date Arrival; //part of flight object
-		private Date Departure; //part of flight object
+		private Date arrival; //part of flight object
+		private Date departure; //part of flight object
 		private String airline; //part of flight object
-		private float price; //user specific
+		private float price; //booking specific
 		//move flight object stuff in to flight object and user specific items stay in flight booking
 		//making two tables in mysql flights and bookings flight list can be viewed without pulling all the booking information
 		public int getFlightid() {
