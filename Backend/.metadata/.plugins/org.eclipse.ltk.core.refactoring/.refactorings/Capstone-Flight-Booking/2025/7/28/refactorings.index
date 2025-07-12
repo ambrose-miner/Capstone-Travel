@@ -4,3 +4,6 @@
 1752343369621	Rename type 'FlightController'
 1752343402962	Rename type 'FlightRepository'
 1752343434104	Rename type 'FlightService'
+1752346075658	Extract superclass 'Flight'
+1752346938916	Extract superclass 'User'
+1752352004563	Rename local variable 'fB'
