@@ -1,3 +1,6 @@
 1752193580162	Rename type 'Flight'
 1752195910543	Rename field 'flightid'
 1752274347528	Rename local variable 'rI'
+1752343369621	Rename type 'FlightController'
+1752343402962	Rename type 'FlightRepository'
+1752343434104	Rename type 'FlightService'
