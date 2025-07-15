@@ -30,17 +30,12 @@ public class FlightBookingController {
 	public List<FlightBooking> findUserFlightBooking(@RequestParam User user) { //passing user object to find user's flightBookings.
 		return flightBookingService.findUserFlightBooking(user);
 	}
-	//@GetMapping(value = "find",produces = MediaType.APPLICATION_JSON_VALUE)
-	//public List<Product> findAllProducts() {
-	//	return productService.findAllProducts();
-	//}
-	//@PostMapping(value = "store",consumes = MediaType.APPLICATION_JSON_VALUE) //example of post method not for Thymeleaf 
-	//public String storeProduct(@RequestBody Product product) {
-	//	return productService.storeProduct(product);
-	//}
-	@GetMapping (value = "findFlightBookings",produces = MediaType.APPLICATION_JSON_VALUE)//Should this be in booking service or flight service
-																					//I think it should stay here but something to think about.
-	public List<FlightBooking> findFlightBookings(@RequestParam Flight flight) {
+	@GetMapping (value = "findUserFlightBookingByTravalDate",produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<FlightBooking> findUserFlightBookingByTravalDate(@RequestParam User user, Flight departure, Flight arrival){
+		return flightBookingService.findUserFlightBookingByTravalDate(user, departure, arrival);
+	}
+	@GetMapping (value = "findFlightBookings",produces = MediaType.APPLICATION_JSON_VALUE)//Should this be in booking service or flight service																			
+	public List<FlightBooking> findFlightBookings(@RequestParam Flight flight) {//I think it should stay here but something to think about.	
 		return flightBookingService.findFlightBookings(flight);
 	}
 	@DeleteMapping(value = "deleteFlightBooking",consumes = MediaType.APPLICATION_JSON_VALUE)

@@ -29,7 +29,10 @@ public class FlightBookingService {
 //			flightBookingRepository.save(fB);
 //			System.out.println("book flight calling repository");
 //			return "Your flight has been booked successfully"; Old method... do not need price return based on destination.
-	
+	public List<FlightBooking> findUserFlightBookingByTravalDate(User user, Flight departure, Flight arrival){
+		List<FlightBooking> userBookedTravalDate = flightBookingRepository.findUserFlightBookingByTravalDate(user, departure, arrival);
+		return userBookedTravalDate;
+	}
 	
 	public List<FlightBooking> findAllFlightBooking() {
 		List<FlightBooking> bookedFlights = flightBookingRepository.findAll();

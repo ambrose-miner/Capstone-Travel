@@ -34,5 +34,16 @@ public class FlightController {
 	public List<Flight> findFlight(@RequestParam FlightBooking flightBooking) { 
 		return flightService.findFlight(flightBooking);
 	}
-	
+	@GetMapping (value = "searchFlightsByPlan",produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<Flight> searchFlightsByOriginAndDestination(@RequestParam Flight origin, Flight destination) {
+		return flightService.searchFlightsByOriginAndDestination(origin, destination);
+	}
+	@GetMapping (value = "searchFlightsByPlanAndDepartureDate",produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<Flight> searchFlightsByDateAndOriginAndDestination(@RequestParam Flight origin, Flight destination, Flight departure) {
+		return flightService.searchFlightsByDepartureDateAndOriginAndDestination(origin, destination, departure);
+	}
+	@GetMapping (value = "searchFlightsByPlanAndArrivalDate",produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<Flight> searchFlightsByDateAndOriginAndArrival(@RequestParam Flight origin, Flight destination, Flight arrival) {
+		return flightService.searchFlightsByDepartureDateAndOriginAndArrival(origin, destination, arrival);
+	}
 }

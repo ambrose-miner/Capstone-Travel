@@ -30,4 +30,16 @@ public class FlightService {
 		List<Flight> flightBooked = flightRepository.findByFlightBooking(flightBooking);
 		return flightBooked;
 	}
+	public List<Flight> searchFlightsByOriginAndDestination(Flight origin, Flight destination) {
+		List<Flight> flightPlan = flightRepository.searchFlightsByOriginAndDestination(origin, destination);
+		return flightPlan;
+	}
+	public List<Flight> searchFlightsByDepartureDateAndOriginAndDestination(Flight origin, Flight destination, Flight departure){
+		List<Flight> flightDeparturePlan = flightRepository.searchFlightsByDepartureDateAndOriginAndDestination(origin, destination, departure);
+		return flightDeparturePlan;
+	}
+	public List<Flight> searchFlightsByDepartureDateAndOriginAndArrival(Flight origin, Flight destination, Flight arrival){
+		List<Flight> flightArrivalPlan = flightRepository.searchFlightsByDepartureDateAndOriginAndArrival(origin, destination, arrival);
+		return flightArrivalPlan;
+	}
 }
