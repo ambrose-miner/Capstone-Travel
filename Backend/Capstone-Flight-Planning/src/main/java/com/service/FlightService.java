@@ -8,6 +8,7 @@ import org.springframework.web.client.RestTemplate;
 import com.repository.FlightRepository;
 import com.bean.Flight;
 import com.bean.FlightBooking;
+import com.bean.User;
 
 public class FlightService {
 	@Autowired
@@ -24,5 +25,9 @@ public class FlightService {
 	public List<Flight> findAllFlights() {
 		List<Flight> Flights = flightRepository.findAll();
 		return Flights;
+	}
+	public List<Flight> findFlight(FlightBooking flightBooking) { 
+		List<Flight> flightBooked = flightRepository.findByFlightBooking(flightBooking);
+		return flightBooked;
 	}
 }

@@ -16,10 +16,11 @@ public class FlightBookingService {
 	@Autowired
 	RestTemplate restTemplate;
 	
-	public String bookFlight(FlightBooking fB) {
-		flightBookingRepository.save(fB);
+	public String bookFlight(FlightBooking flightBooking) {
+		flightBookingRepository.save(flightBooking);
 		System.out.println("book flight calling repository");
 		return "Your flight has been booked successfully";
+	}
 //		float amount = restTemplate.getForObject("http://localhost:8282/price/findPrice/"+fB.getOrigin()+"/"+fB.getDestination(), Float.class);
 //		if(amount==-1) {
 //			return "No Flights are avaiable with origin location as "+fB.getOrigin()+" and destination as "+fB.getDestination();
@@ -29,18 +30,23 @@ public class FlightBookingService {
 //			System.out.println("book flight calling repository");
 //			return "Your flight has been booked successfully"; Old method... do not need price return based on destination.
 	
-	}
+	
 	public List<FlightBooking> findAllFlightBooking() {
 		List<FlightBooking> bookedFlights = flightBookingRepository.findAll();
 		return bookedFlights;
 	}
 
-	public List<FlightBooking> findUserFlightBooking(User user) { // passing user object to flightBookingRepository.
-		List<FlightBooking> userBookings = flightBookingRepository.findById(user); //does not like this. I need a "for each" in here...??
+	public List<FlightBooking> findUserFlightBooking(User user) { 
+		List<FlightBooking> userBookings = flightBookingRepository.findByUser(user);
 		return userBookings;
 	}
-	public void deleteFlightBooking(FlightBooking flightBooking) {
+	public List<FlightBooking> findFlightBookings(Flight flight) {
+		List<FlightBooking> flightBookings = flightBookingRepository.findByFlight(flight);
+		return flightBookings;
+	}
+	public String deleteFlightBooking(FlightBooking flightBooking) {
 		flightBookingRepository.deleteFlightBooking(flightBooking);
+		return "Flight booking has been deleted";
 	}
 }
 	

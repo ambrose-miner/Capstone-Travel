@@ -1,5 +1,6 @@
 package com.controller;
 import com.service.FlightBookingService;
+import com.service.FlightService;
 
 import java.util.List;
 
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.bean.User;
 import com.bean.Flight;
@@ -25,7 +27,7 @@ public class FlightBookingController {
 		return flightBookingService.findAllFlightBooking();
 	}
 	@GetMapping (value = "findUserFlightBooking",produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<FlightBooking> findUserFlightBooking(User user) { //passing user object to find user's flightBookings.
+	public List<FlightBooking> findUserFlightBooking(@RequestParam User user) { //passing user object to find user's flightBookings.
 		return flightBookingService.findUserFlightBooking(user);
 	}
 	//@GetMapping(value = "find",produces = MediaType.APPLICATION_JSON_VALUE)
@@ -36,16 +38,21 @@ public class FlightBookingController {
 	//public String storeProduct(@RequestBody Product product) {
 	//	return productService.storeProduct(product);
 	//}
+	@GetMapping (value = "findFlightBookings",produces = MediaType.APPLICATION_JSON_VALUE)//Should this be in booking service or flight service
+																					//I think it should stay here but something to think about.
+	public List<FlightBooking> findFlightBookings(@RequestParam Flight flight) {
+		return flightBookingService.findFlightBookings(flight);
+	}
 	@DeleteMapping(value = "deleteFlightBooking",consumes = MediaType.APPLICATION_JSON_VALUE)
-	public void deleteFlightBooking(FlightBooking flightBooking) { 
-		flightBookingService.deleteFlightBooking(flightBooking);
+	public String deleteFlightBooking(FlightBooking flightBooking) { 
+		String deleteMessage = flightBookingService.deleteFlightBooking(flightBooking);
+		return deleteMessage;
 	}
 	
 	@PostMapping(value = "bookFlight",consumes = MediaType.APPLICATION_JSON_VALUE)
-	public String bookFlight(@RequestBody FlightBooking fB) {
-		
-		 System.out.println("Call book flight method");
-		String Message = flightBookingService.bookFlight(fB);
+	public String bookFlight(@RequestBody FlightBooking flightBooking) {	
+		System.out.println("Call book flight method");
+		String Message = flightBookingService.bookFlight(flightBooking);
 		 return Message;
 	}
 
