@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -35,6 +36,10 @@ public class FlightBookingController {
 	//public String storeProduct(@RequestBody Product product) {
 	//	return productService.storeProduct(product);
 	//}
+	@DeleteMapping(value = "deleteFlightBooking",consumes = MediaType.APPLICATION_JSON_VALUE)
+	public void deleteFlightBooking(Object FlightBooking) { 
+		flightBookingService.deleteFlightBooking(FlightBooking);
+	}
 	
 	@PostMapping(value = "bookFlight",consumes = MediaType.APPLICATION_JSON_VALUE)
 	public String bookFlight(@RequestBody FlightBooking fB) {

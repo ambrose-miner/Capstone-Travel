@@ -37,5 +37,8 @@ public class FlightBookingService {
 		List<FlightBooking> userFlights = flightBookingRepository.findByUser(User); //does not like this. I need a "for each" in here...??
 		return userFlights;
 	}
+	public void deleteFlightBooking(Object FlightBooking) {
+		flightBookingRepository.deleteFlightBooking(FlightBooking);
+	}
 }
 	

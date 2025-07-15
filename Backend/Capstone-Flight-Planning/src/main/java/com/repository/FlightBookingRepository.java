@@ -9,4 +9,7 @@ import com.bean.User;
 public interface FlightBookingRepository extends JpaRepository<FlightBooking, Integer>{
 
 	FlightBooking findByUser(Object User); //will this work? Seems way to simple... mirroring an online example.
+
+	void deleteFlightBooking(Object flightBooking);
+	
 }
