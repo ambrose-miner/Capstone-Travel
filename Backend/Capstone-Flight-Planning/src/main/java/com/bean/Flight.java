@@ -14,7 +14,7 @@ import jakarta.persistence.GenerationType;
 @Scope("prototype")
 public class Flight {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY);
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int flightid;
 	private String origin;
 	private String destination;
@@ -23,23 +23,19 @@ public class Flight {
 	private String airline;
 	private float price;
 
-	public Flight() {
-		super();
-	}
 
 	public int getFlightid() {
 		return flightid;
 	}
-
-	public void setFlightid(int flightid, FlightBooking flightBooking) {
-		flightBooking.bookingid = flightid; //this was auto generated when I pulled the super class...??
+	public void setFlightid(int flightid) {
+		this.flightid = flightid;
 	}
 
 	public String getOrigin() {
 		return origin;
 	}
 
-	public void setOrigin(String origin, FlightBooking flightBooking) {
+	public void setOrigin(String origin) {
 		this.origin = origin;
 	}
 
@@ -47,23 +43,32 @@ public class Flight {
 		return destination;
 	}
 
-	public void setDestination(String destination, FlightBooking flightBooking) {
+	public void setDestination(String destination) {
 		this.destination = destination;
 	}
 
 	public String getAirline() {
 		return airline;
 	}
-
-	public void setAirline(String airline, FlightBooking flightBooking) {
+	public Date getArrival() {
+		return arrival;
+	}
+	public void setArrival(Date arrival) {
+		this.arrival = arrival;
+	}
+	public Date getDeparture() {
+		return departure;
+	}
+	public void setDeparture(Date departure) {
+		this.departure = departure;
+	}
+	public void setAirline(String airline) {
 		this.airline = airline;
 	}
-
 	public float getPrice() {
 		return price;
 	}
-
-	public void setPrice(float price, FlightBooking flightBooking) {
+	public void setPrice(float price) {
 		this.price = price;
 	}
 

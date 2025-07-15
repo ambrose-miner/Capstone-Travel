@@ -12,11 +12,29 @@ import jakarta.persistence.GenerationType;
 @Entity
 @Component
 @Scope("prototype")
-public class FlightBooking extends User {
+public class FlightBooking {
 	
 		@Id
 		@GeneratedValue(strategy = GenerationType.IDENTITY)
 		private int bookingid;
+		private User user;
+		private Flight flight;
+		
+		public User getUser() {
+			return user;
+		}
+
+		public void setUser(User user) {
+			this.user = user;
+		}
+
+		public Flight getFlight() {
+			return flight;
+		}
+
+		public void setFlight(Flight flight) {
+			this.flight = flight;
+		}
 
 		public int getBookingid() {
 			return bookingid;

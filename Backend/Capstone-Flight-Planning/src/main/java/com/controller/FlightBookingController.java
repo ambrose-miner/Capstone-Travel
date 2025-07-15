@@ -25,8 +25,8 @@ public class FlightBookingController {
 		return flightBookingService.findAllFlightBooking();
 	}
 	@GetMapping (value = "findUserFlightBooking",produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<FlightBooking> findUserFlightBooking(Object User) { //passing user object to find user's flightBookings.
-		return flightBookingService.findUserFlightBooking(User);
+	public List<FlightBooking> findUserFlightBooking(User user) { //passing user object to find user's flightBookings.
+		return flightBookingService.findUserFlightBooking(user);
 	}
 	//@GetMapping(value = "find",produces = MediaType.APPLICATION_JSON_VALUE)
 	//public List<Product> findAllProducts() {
@@ -37,8 +37,8 @@ public class FlightBookingController {
 	//	return productService.storeProduct(product);
 	//}
 	@DeleteMapping(value = "deleteFlightBooking",consumes = MediaType.APPLICATION_JSON_VALUE)
-	public void deleteFlightBooking(Object FlightBooking) { 
-		flightBookingService.deleteFlightBooking(FlightBooking);
+	public void deleteFlightBooking(FlightBooking flightBooking) { 
+		flightBookingService.deleteFlightBooking(flightBooking);
 	}
 	
 	@PostMapping(value = "bookFlight",consumes = MediaType.APPLICATION_JSON_VALUE)

@@ -7,5 +7,4 @@ import com.bean.Flight;
 
 @Repository
 public interface FlightRepository extends JpaRepository<Flight, Integer>{
-
 }

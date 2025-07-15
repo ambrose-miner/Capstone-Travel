@@ -1,7 +1,14 @@
 package com.bean;
 
-public class User extends Flight {
+import org.springframework.data.annotation.Id;
+import org.springframework.stereotype.Component;
 
+import jakarta.persistence.Entity;
+
+@Entity
+@Component
+public class User {
+	@Id
 	private String emailid;
 	private String userfname;
 	private String userlname;
@@ -14,7 +21,7 @@ public class User extends Flight {
 		return emailid;
 	}
 
-	public void setEmailid(String emailid, FlightBooking flightBooking) {
+	public void setEmailid(String emailid) {
 		this.emailid = emailid;
 	}
 
@@ -22,7 +29,7 @@ public class User extends Flight {
 		return userfname;
 	}
 
-	public void setUserfname(String userfname, FlightBooking flightBooking) {
+	public void setUserfname(String userfname) {
 		this.userfname = userfname;
 	}
 
@@ -30,7 +37,7 @@ public class User extends Flight {
 		return userlname;
 	}
 
-	public void setUserlname(String userlname, FlightBooking flightBooking) {
+	public void setUserlname(String userlname) {
 		this.userlname = userlname;
 	}
 
