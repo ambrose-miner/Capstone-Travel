@@ -9,6 +9,8 @@ import org.springframework.stereotype.Component;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+//Caused by: org.hibernate.AnnotationException: Entity 'com.bean.Flight' has no identifier 
+	//(every '@Entity' class must declare or inherit at least one '@Id' or '@EmbeddedId' property) Error returned when trying run?
 @Entity
 @Component
 @Scope("prototype")
@@ -71,5 +73,5 @@ public class Flight {
 	public void setPrice(float price) {
 		this.price = price;
 	}
-
+	
 }
