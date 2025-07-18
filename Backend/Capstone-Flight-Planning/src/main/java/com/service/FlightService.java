@@ -17,8 +17,8 @@ public class FlightService {
 	RestTemplate restTemplate;
 	
 
-	public String createFlight(Flight cF) {
-			flightRepository.save(cF);
+	public String createFlight(Flight newFlight) {
+			flightRepository.save(newFlight);
 			System.out.println("Create flight calling repository");
 			return "Your flight has been created successfully";
 		}
@@ -34,12 +34,12 @@ public class FlightService {
 		List<Flight> flightPlan = flightRepository.searchFlightsByOriginAndDestination(origin, destination);
 		return flightPlan;
 	}
-	public List<Flight> searchFlightsByDepartureDateAndOriginAndDestination(Flight origin, Flight destination, Flight departure){
-		List<Flight> flightDeparturePlan = flightRepository.searchFlightsByDepartureDateAndOriginAndDestination(origin, destination, departure);
+	public List<Flight> searchFlightsByOriginAndDestinationAndDepartureDate(Flight origin, Flight destination, Flight departure){
+		List<Flight> flightDeparturePlan = flightRepository.searchFlightsByOriginAndDestinationAndByDepartureDate(origin, destination, departure);
 		return flightDeparturePlan;
 	}
-	public List<Flight> searchFlightsByDepartureDateAndOriginAndArrival(Flight origin, Flight destination, Flight arrival){
-		List<Flight> flightArrivalPlan = flightRepository.searchFlightsByDepartureDateAndOriginAndArrival(origin, destination, arrival);
+	public List<Flight> searchFlightsByOriginAndDestinationAndArrivalDate(Flight origin, Flight destination, Flight arrival){
+		List<Flight> flightArrivalPlan = flightRepository.searchFlightsByOriginAndDestinationAndArrivalDate(origin, destination, arrival);
 		return flightArrivalPlan;
 	}
 }

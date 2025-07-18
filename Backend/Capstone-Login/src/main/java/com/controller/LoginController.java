@@ -12,7 +12,7 @@ import com.bean.Login;
 import com.service.LoginService;
 
 @RestController
-@RequestMapping("login")	// http://localhost:9090/login/* //wrong path and port
+@RequestMapping("login")
 @CrossOrigin			// allowing front end technologies to access that data.
 public class LoginController {
 	
@@ -25,7 +25,7 @@ public class LoginController {
 	public String signIn(@RequestBody Login login) {
 		return loginService.signIn(login);
 	}
-	// http://localhost:9090/login/signUp //wrong path and port
+	// http://localhost:8181/Capstone-login/signUp //This should be the correct path and port number.
 	@PostMapping(value = "signUp",consumes = MediaType.APPLICATION_JSON_VALUE)
 	public String signUp(@RequestBody Login login) {
 		return loginService.signUp(login);

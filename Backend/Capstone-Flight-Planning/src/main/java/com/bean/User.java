@@ -1,5 +1,6 @@
 package com.bean;
 
+import org.springframework.context.annotation.Scope;
 import org.springframework.data.annotation.Id;
 import org.springframework.stereotype.Component;
 
@@ -7,6 +8,7 @@ import jakarta.persistence.Entity;
 
 @Entity
 @Component
+@Scope("prototype")
 public class User {
 	@Id
 	private String emailid;

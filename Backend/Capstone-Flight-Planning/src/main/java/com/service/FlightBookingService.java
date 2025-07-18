@@ -1,4 +1,5 @@
 package com.service;
+import java.sql.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,20 +30,40 @@ public class FlightBookingService {
 //			flightBookingRepository.save(fB);
 //			System.out.println("book flight calling repository");
 //			return "Your flight has been booked successfully"; Old method... do not need price return based on destination.
-	public List<FlightBooking> findUserFlightBookingByTravalDate(User user, Flight departure, Flight arrival){
-		List<FlightBooking> userBookedTravalDate = flightBookingRepository.findUserFlightBookingByTravalDate(user, departure, arrival);
-		return userBookedTravalDate;
-	}
 	
 	public List<FlightBooking> findAllFlightBooking() {
 		List<FlightBooking> bookedFlights = flightBookingRepository.findAll();
 		return bookedFlights;
 	}
-
-	public List<FlightBooking> findUserFlightBooking(User user) { 
+	
+	public List<FlightBooking> findUserFlightBooking(User user) { 					
 		List<FlightBooking> userBookings = flightBookingRepository.findByUser(user);
-		return userBookings;
+		//Passing User Object and instance of that object.
+		//Generating a list of Object FlightBooking called local variable "userBookings
+		//Calling the repository .findByUser because that method is a member of flightBookingRepository
+		//passing an the instance of user to the repository
+		return userBookings;												
 	}
+	//New Attempt at Method
+	public List<FlightBooking> findUserFlightBookingByTravalDate(User user, Date departure, Date arrival){
+		List<FlightBooking> userBookedTravalDate = flightBookingRepository.findUserFlightBookingByTravalDate(User user, flight.getDeparture(), flight.getArrival);
+		return userBookedTravalDate;
+	}
+//Original Method	
+//	public List<FlightBooking> findUserFlightBookingByTravalDate(User user, Flight departure, Flight arrival){
+//		List<FlightBooking> userBookedTravalDate = flightBookingRepository.findUserFlightBookingByTravalDate(user, departure, arrival);
+//		return userBookedTravalDate;
+	
+		//Notes on Original Method
+		//Like this?
+		// public List<FlightBooking> findUserFlightBookingByTravalDate(User user, Date departure, Date arrival){
+		//List<FlightBooking> userBookedTravalDate = 
+		//flightBookingRepository.findUserFlightBookingByTravalDate(flightBooking.getUser(), flight.getDeparture(), flight.getArrival)
+		//Should this "flightBooking.getUser()" be "user.getFlightBooking" we have the user and are searching the for the flightBooking
+		//do I need to change the user bean class so it has a flightBooking? It seems like flightBooking has user as it stands now.
+	
+//	}
+	
 	public List<FlightBooking> findFlightBookings(Flight flight) {
 		List<FlightBooking> flightBookings = flightBookingRepository.findByFlight(flight);
 		return flightBookings;

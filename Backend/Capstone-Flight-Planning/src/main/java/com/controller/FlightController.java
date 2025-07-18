@@ -17,13 +17,15 @@ import com.bean.User;
 import com.service.FlightService;
 @CrossOrigin
 @RestController
+
 public class FlightController {
+	
 	@Autowired FlightService flightService;
+	
 	@PostMapping(value = "createFlight",consumes = MediaType.APPLICATION_JSON_VALUE)
-	public String createFlight(@RequestBody Flight cF) {
-		
+	public String createFlight(@RequestBody Flight newFlight) {
 		 System.out.println("Call book flight method");
-		String Message = flightService.createFlight(cF);
+		String Message = flightService.createFlight(newFlight);
 		 return Message;
 	}
 	@GetMapping(value = "findAllFlights",produces = MediaType.APPLICATION_JSON_VALUE)
@@ -39,11 +41,11 @@ public class FlightController {
 		return flightService.searchFlightsByOriginAndDestination(origin, destination);
 	}
 	@GetMapping (value = "searchFlightsByPlanAndDepartureDate",produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<Flight> searchFlightsByDateAndOriginAndDestination(@RequestParam Flight origin, Flight destination, Flight departure) {
-		return flightService.searchFlightsByDepartureDateAndOriginAndDestination(origin, destination, departure);
+	public List<Flight> searchFlightsByOriginAndDestinationAndDepartureDate(@RequestParam Flight origin, Flight destination, Flight departure) {
+		return flightService.searchFlightsByOriginAndDestinationAndDepartureDate(origin, destination, departure);
 	}
 	@GetMapping (value = "searchFlightsByPlanAndArrivalDate",produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<Flight> searchFlightsByDateAndOriginAndArrival(@RequestParam Flight origin, Flight destination, Flight arrival) {
-		return flightService.searchFlightsByDepartureDateAndOriginAndArrival(origin, destination, arrival);
+	public List<Flight> searchFlightsByOriginAndDestinationAndArrivalDate(@RequestParam Flight origin, Flight destination, Flight arrival) {
+		return flightService.searchFlightsByOriginAndDestinationAndArrivalDate(origin, destination, arrival);
 	}
 }
