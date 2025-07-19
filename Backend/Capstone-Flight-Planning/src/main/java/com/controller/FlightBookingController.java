@@ -44,8 +44,8 @@ public class FlightBookingController {
 	}
 	//New Attempt at Method
 	@GetMapping (value = "findUserFlightBookingByTravalDate",produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<FlightBooking> findUserFlightBookingByTravalDate(@RequestParam User user, Date departure, Date arrival){
-		return flightBookingService.findUserFlightBookingByTravalDate(User user, flight.getDeparture(), flight.getArrival());
+	public List<FlightBooking> findUserFlightBookingByTravalDate(@RequestParam User user, Flight flight){ //Will the front end need to pass ALL of the flight object?
+		return flightBookingService.findUserFlightBookingByTravalDate(user, flight);
 //Original Method	
 //	@GetMapping (value = "findUserFlightBookingByTravalDate",produces = MediaType.APPLICATION_JSON_VALUE)
 //	public List<FlightBooking> findUserFlightBookingByTravalDate(@RequestParam User user, Flight departure, Flight arrival){

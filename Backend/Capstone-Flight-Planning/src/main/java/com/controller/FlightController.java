@@ -37,15 +37,15 @@ public class FlightController {
 		return flightService.findFlight(flightBooking);
 	}
 	@GetMapping (value = "searchFlightsByPlan",produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<Flight> searchFlightsByOriginAndDestination(@RequestParam Flight origin, Flight destination) {
-		return flightService.searchFlightsByOriginAndDestination(origin, destination);
+	public List<Flight> searchFlightsByOriginAndDestination(@RequestParam Flight flight) {
+		return flightService.searchFlightsByOriginAndDestination(flight);
 	}
 	@GetMapping (value = "searchFlightsByPlanAndDepartureDate",produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<Flight> searchFlightsByOriginAndDestinationAndDepartureDate(@RequestParam Flight origin, Flight destination, Flight departure) {
-		return flightService.searchFlightsByOriginAndDestinationAndDepartureDate(origin, destination, departure);
+	public List<Flight> searchFlightsByOriginAndDestinationAndDepartureDate(@RequestParam Flight flight) {
+		return flightService.searchFlightsByOriginAndDestinationAndDepartureDate(flight);
 	}
 	@GetMapping (value = "searchFlightsByPlanAndArrivalDate",produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<Flight> searchFlightsByOriginAndDestinationAndArrivalDate(@RequestParam Flight origin, Flight destination, Flight arrival) {
-		return flightService.searchFlightsByOriginAndDestinationAndArrivalDate(origin, destination, arrival);
+	public List<Flight> searchFlightsByOriginAndDestinationAndArrivalDate(@RequestParam Flight flight) {
+		return flightService.searchFlightsByOriginAndDestinationAndArrivalDate(flight);
 	}
 }

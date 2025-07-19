@@ -17,8 +17,8 @@ public class FlightBooking {
 		@Id
 		@GeneratedValue(strategy = GenerationType.IDENTITY)
 		private int bookingid;
-		private User user;
-		private Flight flight;
+		private User user; //  Find spring annotations for FK and database relationship
+		private Flight flight;// Find spring annotations for FK and database relationship
 		
 		public User getUser() {
 			return user;

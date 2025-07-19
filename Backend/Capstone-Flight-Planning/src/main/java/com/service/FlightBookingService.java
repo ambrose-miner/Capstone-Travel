@@ -45,8 +45,8 @@ public class FlightBookingService {
 		return userBookings;												
 	}
 	//New Attempt at Method
-	public List<FlightBooking> findUserFlightBookingByTravalDate(User user, Date departure, Date arrival){
-		List<FlightBooking> userBookedTravalDate = flightBookingRepository.findUserFlightBookingByTravalDate(User user, flight.getDeparture(), flight.getArrival);
+	public List<FlightBooking> findUserFlightBookingByTravalDate(User user, Flight flight){
+		List<FlightBooking> userBookedTravalDate = flightBookingRepository.findUserFlightBookingByTravalDate( user, flight.getDeparture(), flight.getArrival());
 		return userBookedTravalDate;
 	}
 //Original Method	
@@ -59,8 +59,6 @@ public class FlightBookingService {
 		// public List<FlightBooking> findUserFlightBookingByTravalDate(User user, Date departure, Date arrival){
 		//List<FlightBooking> userBookedTravalDate = 
 		//flightBookingRepository.findUserFlightBookingByTravalDate(flightBooking.getUser(), flight.getDeparture(), flight.getArrival)
-		//Should this "flightBooking.getUser()" be "user.getFlightBooking" we have the user and are searching the for the flightBooking
-		//do I need to change the user bean class so it has a flightBooking? It seems like flightBooking has user as it stands now.
 	
 //	}
 	

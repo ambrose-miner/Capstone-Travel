@@ -30,16 +30,16 @@ public class FlightService {
 		List<Flight> flightBooked = flightRepository.findByFlightBooking(flightBooking);
 		return flightBooked;
 	}
-	public List<Flight> searchFlightsByOriginAndDestination(Flight origin, Flight destination) {
-		List<Flight> flightPlan = flightRepository.searchFlightsByOriginAndDestination(origin, destination);
+	public List<Flight> searchFlightsByOriginAndDestination(Flight flight) {
+		List<Flight> flightPlan = flightRepository.searchFlightsByOriginAndDestination(flight.getOrigin(), flight.getDestination());
 		return flightPlan;
 	}
-	public List<Flight> searchFlightsByOriginAndDestinationAndDepartureDate(Flight origin, Flight destination, Flight departure){
-		List<Flight> flightDeparturePlan = flightRepository.searchFlightsByOriginAndDestinationAndByDepartureDate(origin, destination, departure);
+	public List<Flight> searchFlightsByOriginAndDestinationAndDepartureDate(Flight flight){
+		List<Flight> flightDeparturePlan = flightRepository.searchFlightsByOriginAndDestinationAndByDepartureDate(flight.getOrigin(), flight.getDestination(), flight.getDeparture());
 		return flightDeparturePlan;
 	}
-	public List<Flight> searchFlightsByOriginAndDestinationAndArrivalDate(Flight origin, Flight destination, Flight arrival){
-		List<Flight> flightArrivalPlan = flightRepository.searchFlightsByOriginAndDestinationAndArrivalDate(origin, destination, arrival);
+	public List<Flight> searchFlightsByOriginAndDestinationAndArrivalDate(Flight flight){
+		List<Flight> flightArrivalPlan = flightRepository.searchFlightsByOriginAndDestinationAndArrivalDate(flight.getOrigin(), flight.getDestination(), flight.getArrival());
 		return flightArrivalPlan;
 	}
 }
