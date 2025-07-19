@@ -31,15 +31,26 @@ public class FlightService {
 		return flightBooked;
 	}
 	public List<Flight> searchFlightsByOriginAndDestination(Flight flight) {
-		List<Flight> flightPlan = flightRepository.findByFlightsByOriginAndDestination(flight.getOrigin(), flight.getDestination());
+		List<Flight> flightPlan = flightRepository.findByFlightsByOriginAndDestination(
+				flight.getOrigin(),
+				flight.getDestination()
+				);
 		return flightPlan;
 	}
 	public List<Flight> searchFlightsByOriginAndDestinationAndDepartureDate(Flight flight){
-		List<Flight> flightDeparturePlan = flightRepository.findByFlightsByOriginAndDestinationAndByDepartureDate(flight.getOrigin(), flight.getDestination(), flight.getDeparture());
+		List<Flight> flightDeparturePlan = flightRepository.findByFlightsByOriginAndDestinationAndByDepartureDate(
+				flight.getOrigin(),
+				flight.getDestination(),
+				flight.getDeparture()
+				);
 		return flightDeparturePlan;
 	}
 	public List<Flight> searchFlightsByOriginAndDestinationAndArrivalDate(Flight flight){
-		List<Flight> flightArrivalPlan = flightRepository.findByFlightsByOriginAndDestinationAndArrivalDate(flight.getOrigin(), flight.getDestination(), flight.getArrival());
+		List<Flight> flightArrivalPlan = flightRepository.findByFlightsByOriginAndDestinationAndArrivalDate(
+				flight.getOrigin(),
+				flight.getDestination(),
+				flight.getArrival()
+				);
 		return flightArrivalPlan;
 	}
 }

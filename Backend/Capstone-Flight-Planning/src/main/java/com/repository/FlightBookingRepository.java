@@ -19,14 +19,19 @@ public interface FlightBookingRepository extends JpaRepository<FlightBooking, In
 	
 	@Query(value = "SELECT * FROM FlightBooking",
 			nativeQuery = true)
-	List<FlightBooking> findByUser(@Param("user") User user);
+	List<FlightBooking> findByUser(
+			@Param("user") User user);
 	
 	@Query(value = "SELECT * FROM FlightBooking WHERE User = :user AND Flight.departure LIKE %:departure% AND Flight.arrival LIKE %:arrival%",
 			nativeQuery= true)																		
-	List<FlightBooking> findUserFlightBookingByTravalDate(@Param("user")User user, @Param("departure") Date departure, @Param("arrival") Date arrival);
+	List<FlightBooking> findUserFlightBookingByTravalDate(
+			@Param("user")User user, 
+			@Param("departure") Date departure, 
+			@Param("arrival") Date arrival);
 	
 	@Query(value = "SELECT * FROM FlightBooking",
 			nativeQuery = true)
-	List<FlightBooking> findByFlight(@Param("flight") Flight flight);
+	List<FlightBooking> findByFlight(
+			@Param("flight") Flight flight);
 	
 }
