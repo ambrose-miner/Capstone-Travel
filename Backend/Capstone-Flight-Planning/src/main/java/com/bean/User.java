@@ -5,13 +5,17 @@ import org.springframework.data.annotation.Id;
 import org.springframework.stereotype.Component;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 
 @Entity
 @Component
 @Scope("prototype")
 public class User {
 	@Id
-	private String emailid;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long userid;
+	private String email;
 	private String userfname;
 	private String userlname;
 
@@ -19,13 +23,26 @@ public class User {
 		super();
 	}
 
-	public String getEmailid() {
-		return emailid;
+	
+	public Long getUserid() {
+		return userid;
 	}
 
-	public void setEmailid(String emailid) {
-		this.emailid = emailid;
+
+	public void setUserid(Long userid) {
+		this.userid = userid;
 	}
+
+
+	public String getEmail() {
+		return email;
+	}
+
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 
 	public String getUserfname() {
 		return userfname;

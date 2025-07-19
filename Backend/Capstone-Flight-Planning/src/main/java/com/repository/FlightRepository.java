@@ -18,23 +18,23 @@ public interface FlightRepository extends JpaRepository<Flight, Integer>{
 	@Query(value = "SELECT * FROM Flight", nativeQuery = true)
 	List<Flight> findByFlightBooking(@Param("flightBooking") FlightBooking flightBooking);
 	
-	@Query(value = "SELECT * FROM Flight WHERE flight.origin = origin && Flight.destination = destination", nativeQuery = true)
-	List<Flight> searchFlightsByOriginAndDestination(
-			@Param("origin") Flight origin, 
-			@Param("destination") Flight destination);
+	@Query(value = "SELECT * FROM Flight WHERE flight.origin = :origin AND Flight.destination = :destination", nativeQuery = true)
+	List<Flight> findByFlightsByOriginAndDestination(
+			@Param("origin") String origin, 
+			@Param("destination") String destination);
 	
-	@Query(value = "SELECT * FROM Flight WHERE flight.origin = origin && Flight.destination = destination && Flight.departure = departure",
+	@Query(value = "SELECT * FROM Flight WHERE flight.origin = :origin AND Flight.destination = :destination AND Flight.departure = :departure",
 			nativeQuery = true)
-	List<Flight> searchFlightsByOriginAndDestinationAndByDepartureDate(
-			@Param("origin") Flight origin,
-			@Param("destination") Flight destination,
-			@Param("departure") Flight departure);
+	List<Flight> findByFlightsByOriginAndDestinationAndByDepartureDate(
+			@Param("origin") String origin,
+			@Param("destination") String destination,
+			@Param("departure") Date departure);
 	
-	@Query(value = "SELECT * FROM Flight WHERE flight.origin = origin && Flight.destination = destination && Flight.arrival = arrival",
+	@Query(value = "SELECT * FROM Flight WHERE flight.origin = :origin AND Flight.destination = :destination AND Flight.arrival = :arrival",
 			nativeQuery = true)
-	List<Flight> searchFlightsByOriginAndDestinationAndArrivalDate(
-			@Param("origin") Flight origin, 
-			@Param("destination") Flight destination,
-			@Param("arrival") Flight arrival);
+	List<Flight> findByFlightsByOriginAndDestinationAndArrivalDate(
+			@Param("origin") String origin, 
+			@Param("destination") String destination,
+			@Param("arrival") Date arrival);
 }
 

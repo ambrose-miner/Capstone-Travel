@@ -7,6 +7,8 @@ import org.springframework.stereotype.Component;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 
 @Entity
@@ -17,9 +19,13 @@ public class FlightBooking {
 		@Id
 		@GeneratedValue(strategy = GenerationType.IDENTITY)
 		private int bookingid;
-		private User user; //  Find spring annotations for FK and database relationship
-		private Flight flight;// Find spring annotations for FK and database relationship
+		@ManyToOne
+		@JoinColumn(name = "userid")
+		private User user;
 		
+		private Flight flight;
+		
+
 		public User getUser() {
 			return user;
 		}
