@@ -1,20 +1,28 @@
 package com.bean;
 
 import java.sql.Date;
-import org.springframework.context.annotation.Scope;
-import org.springframework.data.annotation.Id;
-import org.springframework.stereotype.Component;
+import java.util.List;
 
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
-
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+//Error 1
 //org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]:
 //Entity 'com.bean.Flight' has no identifier (every '@Entity' class must declare or inherit at least one '@Id' or '@EmbeddedId' property)
 
-
+//Error 2
 //Caused by: org.hibernate.AnnotationException: Entity 'com.bean.Flight' has no identifier 
 	//(every '@Entity' class must declare or inherit at least one '@Id' or '@EmbeddedId' property)
+//Error 3
+//Caused by: org.hibernate.AnnotationException: Property 'com.bean.Flight.flightid'
+//is not a collection and may not be a '@OneToMany', '@ManyToMany', or '@ElementCollection'
+//Error 4
+//Caused by: java.lang.NullPointerException: Cannot invoke "org.hibernate.mapping.KeyValue.getSelectables()"
+//because the return value of "org.hibernate.mapping.PersistentClass.getKey()" is null
 @Entity
 @Component
 @Scope("prototype")
@@ -22,6 +30,8 @@ public class Flight {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@OneToMany(mappedBy = "bookingid")// These lines seemed to have fixed Errors 1 and 2
+	private List<FlightBooking> FlightBooking; //After this line was added went from error 3 to error 4.
 	private int flightid;
 	private String origin;
 	private String destination;

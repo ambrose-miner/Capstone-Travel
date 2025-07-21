@@ -2,11 +2,11 @@
 <section name="Workbench">
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
+			<item value="C:\Projects\Capstone Project\Backend\Capstone-Server"/>
 			<item value="C:\Projects\Capstone Project\Backend\Flight-Planner"/>
 			<item value="C:\Projects\Capstone Project\Backend\Capstone-Cab-Booking"/>
 			<item value="C:\Projects\Capstone Project\Backend\Capstone-Flight-Booking"/>
 			<item value="C:\Projects\Capstone Project\Backend\Capstone-Login"/>
-			<item value="C:\Projects\Capstone Project\Backend\Capstone-Server"/>
 		</list>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>
