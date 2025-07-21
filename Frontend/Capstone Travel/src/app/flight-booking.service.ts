@@ -6,16 +6,16 @@ import { Observable } from 'rxjs';
 })
 export class FlightBookingService {
 
-  baseURL:string="http://localhost:8282/Capstone-login";
-  //this should be the correct path and port
+  baseURL:string="http://localhost:8282/Capstone-Flight-Booking";
+  
     constructor(public httpClient:HttpClient) { }
   
-    findAllFlightBooking(flightBooking:any):Observable<string> {//this does not need a login object.
+    findAllFlightBooking(flightBooking:any):Observable<string> {
       return this.httpClient.post(this.baseURL+ "/findAllFlightBooking",flightBooking,{responseType:'text'});
     }
     findUserFlightBooking(flightBooking:any):Observable<string> {
       return this.httpClient.post(this.baseURL+ "/findUserFlightBooking",flightBooking, {responseType: 'text'});
-      //is this trying to pass the login object? So it should actually be a signUp object? 
+       
     }
     findUserFlightBookingByTravalDate(flightBooking:any):Observable<string> {
       return this.httpClient.post(this.baseURL+ "/findUserFlightBookingByTravalDate",flightBooking, {responseType: 'text'});

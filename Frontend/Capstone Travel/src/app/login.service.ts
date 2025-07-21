@@ -14,6 +14,6 @@ baseURL:string="http://localhost:8181/Capstone-login";
   }
   signUp(login:any):Observable<string> {
     return this.httpClient.post(this.baseURL+ "/signUp",login, {responseType: 'text'});
-    //is this trying to pass the login object? So it should actually be a signUp object? 
+    
   }
 }
