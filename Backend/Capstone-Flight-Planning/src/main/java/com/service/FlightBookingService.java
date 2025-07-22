@@ -55,7 +55,7 @@ public class FlightBookingService {
 		return flightBookings;
 	}
 	public String deleteFlightBooking(FlightBooking flightBooking) {
-		flightBookingRepository.deleteFlightBooking(flightBooking);
+		flightBookingRepository.delete(flightBooking);
 		return "Flight booking has been deleted";
 	}
 }

@@ -4,12 +4,13 @@ import java.sql.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import com.repository.FlightRepository;
 import com.bean.Flight;
 import com.bean.FlightBooking;
 import com.bean.User;
-
+@Service
 public class FlightService {
 	@Autowired
 	FlightRepository flightRepository;

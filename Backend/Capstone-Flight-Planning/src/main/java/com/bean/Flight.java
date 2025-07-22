@@ -30,9 +30,10 @@ public class Flight {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@OneToMany(mappedBy = "bookingid")// These lines seemed to have fixed Errors 1 and 2
-	private List<FlightBooking> FlightBooking; //After this line was added went from error 3 to error 4.
 	private int flightid;
+	@OneToMany(mappedBy = "bookingid")// These lines seemed to have fixed Errors 1 and 2
+	// Moving this line here from its previous position bellow List<FlightBooking> caused it to go back to error 3
+	private List<FlightBooking> FlightBooking; //After this line was added went from error 3 to error 4.
 	private String origin;
 	private String destination;
 	private Date arrival;

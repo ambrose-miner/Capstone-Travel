@@ -14,7 +14,7 @@ import com.bean.User;
 @Repository
 public interface FlightBookingRepository extends JpaRepository<FlightBooking, Integer>{
 
-	void deleteFlightBooking(FlightBooking flightBooking);//do I need this method? Do I need one comparable for create? 
+	//void deleteFlightBooking(FlightBooking flightBooking);//do I need this method? Do I need one comparable for create? 
 														//Arn't they both handled by Springboot?
 	
 	@Query(value = "SELECT * FROM FlightBooking",

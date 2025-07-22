@@ -13,7 +13,7 @@ import com.bean.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer>{
 
-	void deleteUser(User user);
+	//void deleteUser(User user); //Not Needed throws error.
 	
 	
 	@Query(value = "SELECT * FROM user", nativeQuery = true)

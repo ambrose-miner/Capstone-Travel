@@ -17,9 +17,9 @@ import jakarta.persistence.OneToMany;
 public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long userid;
 	@OneToMany(mappedBy = "bookingid")
 	private List<FlightBooking>FlightBooking;
-	private Long userid;
 	private String email;
 	private String userfname;
 	private String userlname;

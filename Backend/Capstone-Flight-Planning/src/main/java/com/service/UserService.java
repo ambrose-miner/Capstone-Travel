@@ -3,12 +3,13 @@ package com.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import com.bean.Flight;
 import com.bean.FlightBooking;
 import com.bean.User;
 import com.repository.UserRepository;
-
+@Service
 public class UserService {
 @Autowired
 UserRepository userRepository;
@@ -29,7 +30,7 @@ RestTemplate restTemplate;
 		return "You successfully created a new user";
 	}
 	public String deleteUser(User user) {
-		userRepository.deleteUser(user);
+		userRepository.delete(user);
 		return "User deleted";
 	}
 }
