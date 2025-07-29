@@ -44,23 +44,25 @@ public class FlightBookingController {
 	//New Attempt at Method
 	//Passing whole object down to service level for more options for functionality later.
 	@GetMapping (value = "findUserFlightBookingByTravalDate",produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<FlightBooking> findUserFlightBookingByTravalDate(@RequestParam User user, Flight flight){ //Will the front end need to pass ALL of the flight object?
-		return flightBookingService.findUserFlightBookingByTravalDate(user, flight);						//Or get flight object by bookingid?
-//Original Method	
-//	@GetMapping (value = "findUserFlightBookingByTravalDate",produces = MediaType.APPLICATION_JSON_VALUE)
-//	public List<FlightBooking> findUserFlightBookingByTravalDate(@RequestParam User user, Flight departure, Flight arrival){
-//		return flightBookingService.findUserFlightBookingByTravalDate(user, departure, arrival);
+	public List<FlightBooking> findUserFlightBookingByTravalDate(@RequestParam User user, Date departure, Date arrival){ 
+		return flightBookingService.findUserFlightBookingByTravalDate(user, departure, arrival);						//Or get flight object by bookingid?
+//@RequestParam doesnt match the msql Query. So this needs two objects in the Request.
 		
-		//Notes on Original Method
-		//public List<FlightBooking> findUserFlightBookingByTravalDate(@RequestParam User user, Date departure, Date arrival)
-		// While declaring we are just telling it what data types and name not where its coming from. 1 Object=User called user,
-		// 1 date called departure, 1 date called arrival.
-		
+		//Annotation which indicates that a method parameter should be bound to a webrequest parameter. 
+
+//Supported for annotated handler methods in Spring MVC and Spring WebFluxas follows: 
+//•In Spring MVC, "request parameters" map to query parameters, form data,and parts in multipart requests. This is because the Servlet API combinesquery parameters and form data into a single map called "parameters", andthat includes automatic parsing of the request body. 
+//•In Spring WebFlux, "request parameters" map to query parameters only.To work with all 3, query, form data, and multipart data, you can use databinding to a command object annotated with ModelAttribute. 
+//
+//If the method parameter type is Map and a request parameter nameis specified, then the request parameter value is converted to a Mapassuming an appropriate conversion strategy is available. 
+//
+//If the method parameter is Map<String, String> or MultiValueMap<String, String>and a parameter name is not specified, then the map parameter is populatedwith all request parameter names and values.
+
 	}
 	
-	@GetMapping (value = "findFlightBookings",produces = MediaType.APPLICATION_JSON_VALUE)					
-	public List<FlightBooking> findFlightBookings(@RequestParam Flight flight) {	
-		return flightBookingService.findFlightBookings(flight);
+	@GetMapping (value = "findBookingsOnFlight",produces = MediaType.APPLICATION_JSON_VALUE)					
+	public List<FlightBooking> findBookingsOnFlight(@RequestParam Flight flight) {	
+		return flightBookingService.findBookingsOnFlight(flight);
 		//Should this be in booking service or flight service
 		//I think it should stay here but something to think about.
 	}

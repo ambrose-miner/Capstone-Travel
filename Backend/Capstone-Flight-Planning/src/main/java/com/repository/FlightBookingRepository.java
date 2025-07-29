@@ -13,25 +13,23 @@ import com.bean.User;
 
 @Repository
 public interface FlightBookingRepository extends JpaRepository<FlightBooking, Integer>{
-
-	//void deleteFlightBooking(FlightBooking flightBooking);//do I need this method? Do I need one comparable for create? 
-														//Arn't they both handled by Springboot?
 	
-	@Query(value = "SELECT * FROM FlightBooking",
+	@Query(value = "SELECT * FROM Flight_Booking WHERE User = :user",
 			nativeQuery = true)
 	List<FlightBooking> findByUser(
 			@Param("user") User user);
 	
-	@Query(value = "SELECT * FROM FlightBooking WHERE User = :user AND Flight.departure LIKE %:departure% AND Flight.arrival LIKE %:arrival%",
-			nativeQuery= true)																		
+	//@Query(value = "SELECT * FROM Flight_Booking WHERE User = :user AND Flight.departure LIKE %:departure% AND Flight.arrival LIKE %:arrival%")
+	@Query(value = "SELECT * FROM Flight_Booking WHERE User = :user AND (Flight.departure) = :departure AND (Flight.arrival) = :arrival")
 	List<FlightBooking> findUserFlightBookingByTravalDate(
 			@Param("user")User user, 
+			//@Param("flight")Flight flight);
 			@Param("departure") Date departure, 
 			@Param("arrival") Date arrival);
 	
-	@Query(value = "SELECT * FROM FlightBooking",
+	@Query(value = "SELECT * FROM Flight_Booking WHERE Flight = :flight",
 			nativeQuery = true)
-	List<FlightBooking> findByFlight(
+	List<FlightBooking> findBookingsOnFlight(
 			@Param("flight") Flight flight);
 	
 }

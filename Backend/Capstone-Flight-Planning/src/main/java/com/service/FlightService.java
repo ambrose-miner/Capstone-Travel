@@ -32,14 +32,14 @@ public class FlightService {
 		return flightBooked;
 	}
 	public List<Flight> searchFlightsByOriginAndDestination(Flight flight) {
-		List<Flight> flightPlan = flightRepository.findByFlightsByOriginAndDestination(
+		List<Flight> flightPlan = flightRepository.findFlightsByOriginAndDestination(
 				flight.getOrigin(),
 				flight.getDestination()
 				);
 		return flightPlan;
 	}
 	public List<Flight> searchFlightsByOriginAndDestinationAndDepartureDate(Flight flight){
-		List<Flight> flightDeparturePlan = flightRepository.findByFlightsByOriginAndDestinationAndByDepartureDate(
+		List<Flight> flightDeparturePlan = flightRepository.findFlightsByOriginAndDestinationAndDepartureDate(
 				flight.getOrigin(),
 				flight.getDestination(),
 				flight.getDeparture()
@@ -47,11 +47,15 @@ public class FlightService {
 		return flightDeparturePlan;
 	}
 	public List<Flight> searchFlightsByOriginAndDestinationAndArrivalDate(Flight flight){
-		List<Flight> flightArrivalPlan = flightRepository.findByFlightsByOriginAndDestinationAndArrivalDate(
+		List<Flight> flightArrivalPlan = flightRepository.findFlightsByOriginAndDestinationAndArrivalDate(
 				flight.getOrigin(),
 				flight.getDestination(),
 				flight.getArrival()
 				);
 		return flightArrivalPlan;
+	}
+	public String deleteFlight(Flight flight) {
+		flightRepository.delete(flight);
+		return "flight deleted";
 	}
 }

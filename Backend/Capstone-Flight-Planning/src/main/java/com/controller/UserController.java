@@ -20,7 +20,12 @@ import com.service.UserService;
 public class UserController {
 @Autowired
 UserService userService;
-
+	@PostMapping(value = "createNewUser",consumes = MediaType.APPLICATION_JSON_VALUE)
+	public String createNewUser(@RequestBody User user) {	
+		System.out.println("Call create user method");
+		String Message = userService.createNewUser(user);
+		return Message;
+	}
 	@GetMapping(value = "findAllUsers",produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<User> findAllUsers() {
 			return userService.findAllUsers();	
@@ -29,12 +34,7 @@ UserService userService;
 	public List<User> findUsersOnFlight(Flight flight){
 	return userService.findUsersOnFlight(flight);
 	}
-	@PostMapping(value = "createNewUser",consumes = MediaType.APPLICATION_JSON_VALUE)
-	public String createNewUser(@RequestBody User user) {	
-		System.out.println("Call create user method");
-		String Message = userService.createNewUser(user);
-		 return Message;
-	}
+	
 	@DeleteMapping(value = "deleteUser",consumes = MediaType.APPLICATION_JSON_VALUE)
 	public String deleteUser(User user) {
 	String deleteMessage = userService.deleteUser(user);

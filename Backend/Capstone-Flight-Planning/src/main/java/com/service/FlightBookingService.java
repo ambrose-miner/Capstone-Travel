@@ -45,13 +45,17 @@ public class FlightBookingService {
 		return userBookings;												
 	}
 	//New Attempt at Method
-	public List<FlightBooking> findUserFlightBookingByTravalDate(User user, Flight flight){
-		List<FlightBooking> userBookedTravalDate = flightBookingRepository.findUserFlightBookingByTravalDate( user, flight.getDeparture(), flight.getArrival());
+//	public List<FlightBooking> findUserFlightBookingByTravalDate(User user, Flight flight){
+//		List<FlightBooking> userBookedTravalDate = flightBookingRepository.findUserFlightBookingByTravalDate( user, flight.getDeparture(), flight.getArrival());
+//		return userBookedTravalDate;
+//	}
+	public List<FlightBooking> findUserFlightBookingByTravalDate(User user, Date departure, Date arrival){
+		List<FlightBooking> userBookedTravalDate = flightBookingRepository.findUserFlightBookingByTravalDate( user, departure, arrival);
 		return userBookedTravalDate;
 	}
 	
-	public List<FlightBooking> findFlightBookings(Flight flight) {
-		List<FlightBooking> flightBookings = flightBookingRepository.findByFlight(flight);
+	public List<FlightBooking> findBookingsOnFlight(Flight flight) {
+		List<FlightBooking> flightBookings = flightBookingRepository.findBookingsOnFlight(flight);
 		return flightBookings;
 	}
 	public String deleteFlightBooking(FlightBooking flightBooking) {

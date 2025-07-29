@@ -19,20 +19,20 @@ public interface FlightRepository extends JpaRepository<Flight, Integer>{
 	List<Flight> findByFlightBooking(@Param("flightBooking") FlightBooking flightBooking);
 	
 	@Query(value = "SELECT * FROM Flight WHERE flight.origin = :origin AND Flight.destination = :destination", nativeQuery = true)
-	List<Flight> findByFlightsByOriginAndDestination(
+	List<Flight> findFlightsByOriginAndDestination(
 			@Param("origin") String origin, 
 			@Param("destination") String destination);
 	
 	@Query(value = "SELECT * FROM Flight WHERE flight.origin = :origin AND Flight.destination = :destination AND Flight.departure = :departure",
 			nativeQuery = true)
-	List<Flight> findByFlightsByOriginAndDestinationAndByDepartureDate(
+	List<Flight> findFlightsByOriginAndDestinationAndDepartureDate(
 			@Param("origin") String origin,
 			@Param("destination") String destination,
 			@Param("departure") Date departure);
 	
 	@Query(value = "SELECT * FROM Flight WHERE flight.origin = :origin AND Flight.destination = :destination AND Flight.arrival = :arrival",
 			nativeQuery = true)
-	List<Flight> findByFlightsByOriginAndDestinationAndArrivalDate(
+	List<Flight> findFlightsByOriginAndDestinationAndArrivalDate(
 			@Param("origin") String origin, 
 			@Param("destination") String destination,
 			@Param("arrival") Date arrival);
