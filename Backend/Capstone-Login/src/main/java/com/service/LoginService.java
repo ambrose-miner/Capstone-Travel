@@ -14,10 +14,12 @@ public class LoginService {
 	@Autowired
 	LoginRepository loginRepository;
 	
-	public String signIn(Login login) {		// emailid, password and type of user retrieve from angular 
-		Optional<Login> result = loginRepository.findById(login.getEmailid());
+	public String signIn(Login login) {		// email, password and type of user retrieve from angular 
+											//will no longer need type of user from angular.
+		Optional<Login> result = loginRepository.findById(login.getUserid());
 		if(result.isPresent()) {
-			Login ll = result.get();			// ll hold emailid, password and typeofuser from db.
+			Login ll = result.get();			// ll hold email, password and typeofuser from db.
+												// will be taking email and password and getting userid and typeofuser from db.
 					if(ll.getPassword().equals(login.getPassword())) {
 						
 							if(ll.getTypeofuser().equals(login.getTypeofuser()) && login.getTypeofuser().equals("admin")) {
@@ -38,7 +40,7 @@ public class LoginService {
 	}
 	
 	public String signUp(Login login) {		// emailid, password and typeof user if type of user is admin can't create account. 
-		Optional<Login> result = loginRepository.findById(login.getEmailid());
+		Optional<Login> result = loginRepository.findById(login.getUserid());
 		if(result.isPresent()) {
 				return "That account already exists";
 		}else {

@@ -1,5 +1,6 @@
 package com.controller;
 
+import java.sql.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +35,16 @@ UserService userService;
 	public List<User> findUsersOnFlight(Flight flight){
 	return userService.findUsersOnFlight(flight);
 	}
-	
+	//New method
+	@GetMapping(value = "findUserDepartureDates", produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<Date> findUserDepartureDates(User user){
+		return userService.findUserDepartureDates(user);
+	}
+	//New Method
+	@GetMapping(value = "findUserArrivalDates", produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<Date> findUserArrivalDates(User user){
+		return userService.findUserArrivalDates(user);
+	}
 	@DeleteMapping(value = "deleteUser",consumes = MediaType.APPLICATION_JSON_VALUE)
 	public String deleteUser(User user) {
 	String deleteMessage = userService.deleteUser(user);

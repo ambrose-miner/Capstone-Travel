@@ -15,7 +15,7 @@ public class FlightBookingService {
 	@Autowired
 	FlightBookingRepository flightBookingRepository;
 	@Autowired
-	RestTemplate restTemplate;
+	RestTemplate flightBookingRestTemplate;
 	
 	public String bookFlight(FlightBooking flightBooking) {
 		flightBookingRepository.save(flightBooking);
@@ -36,23 +36,19 @@ public class FlightBookingService {
 		return bookedFlights;
 	}
 	
-	public List<FlightBooking> findUserFlightBooking(User user) { 					
-		List<FlightBooking> userBookings = flightBookingRepository.findByUser(user);
-		//Passing User Object and instance of that object.
-		//Generating a list of Object FlightBooking called local variable "userBookings
-		//Calling the repository .findByUser because that method is a member of flightBookingRepository
-		//passing an the instance of user to the repository
+	public List<FlightBooking> findUserFlightBooking(Long userid) { 					
+		List<FlightBooking> userBookings = flightBookingRepository.findAllById(userid);
 		return userBookings;												
 	}
-	//New Attempt at Method
+	//2 attempts at same method commented out because it breaks the build.
 //	public List<FlightBooking> findUserFlightBookingByTravalDate(User user, Flight flight){
 //		List<FlightBooking> userBookedTravalDate = flightBookingRepository.findUserFlightBookingByTravalDate( user, flight.getDeparture(), flight.getArrival());
 //		return userBookedTravalDate;
 //	}
-	public List<FlightBooking> findUserFlightBookingByTravalDate(User user, Date departure, Date arrival){
-		List<FlightBooking> userBookedTravalDate = flightBookingRepository.findUserFlightBookingByTravalDate( user, departure, arrival);
-		return userBookedTravalDate;
-	}
+//	public List<FlightBooking> findUserFlightBookingByTravalDate(User user, Date departure, Date arrival){
+//		List<FlightBooking> userBookedTravalDates = flightBookingRepository.findUserFlightBookingByTravalDate( user, departure, arrival);
+//		return userBookedTravalDates;
+//	}
 	
 	public List<FlightBooking> findBookingsOnFlight(Flight flight) {
 		List<FlightBooking> flightBookings = flightBookingRepository.findBookingsOnFlight(flight);

@@ -6,16 +6,26 @@ import jakarta.persistence.Id;
 public class Login {
 	
 	@Id
-	private String emailid;
+	private Long userid;
+	private String email;
 	private String password;
 	private String typeofuser;
 	
-	public String getEmailid() {
-		return emailid;
+	
+	
+	public Long getUserid() {
+		return userid;
 	}
-	public void setEmailid(String emailid) {
-		this.emailid = emailid;
+	public void setUserid(Long userid) {
+		this.userid = userid;
 	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
 	public String getPassword() {
 		return password;
 	}
@@ -30,7 +40,7 @@ public class Login {
 	}
 	@Override
 	public String toString() {
-		return "Login [emailid=" + emailid + ", password=" + password + ", typeofuser=" + typeofuser + "]";
+		return "Login [emailid=" + email + ", password=" + password + ", typeofuser=" + typeofuser + "]";
 
 	}
 }

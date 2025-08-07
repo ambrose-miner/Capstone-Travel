@@ -1,0 +1,53 @@
+package com.service;
+
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.bean.Login;
+import com.repository.LoginRepository;
+
+@Service
+public class LoginService {
+
+	@Autowired
+	LoginRepository loginRepository;
+	
+	public String signIn(Login login) {		// emailid, password and type of user retrieve from angular 
+		Optional<Login> result = loginRepository.findById(login.getEmailid());
+		if(result.isPresent()) {
+			Login ll = result.get();			// ll hold emailid, password and typeofuser from db.
+					if(ll.getPassword().equals(login.getPassword())) {
+						
+							if(ll.getTypeofuser().equals(login.getTypeofuser()) && login.getTypeofuser().equals("admin")) {
+								return "Admin login";
+							}else if(ll.getTypeofuser().equals(login.getTypeofuser()) && login.getTypeofuser().equals("customer")) {
+								return "You have loged in successfully";
+							}else {
+								return "You can not log in as Admin";
+							}
+						
+					}else {
+						return "Wrong email or password P";
+					}
+		}else {
+			
+			return "Wrong email or password E";
+		}
+	}
+	
+	public String signUp(Login login) {		// emailid, password and typeof user if type of user is admin can't create account. 
+		Optional<Login> result = loginRepository.findById(login.getEmailid());
+		if(result.isPresent()) {
+				return "That account already exists";
+		}else {
+			if(login.getTypeofuser().equals("admin")) {
+				return "You can't create admin account";
+			}else {
+			loginRepository.save(login);
+			return "Account created successfully";
+			}
+		}
+	}
+}

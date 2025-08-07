@@ -14,18 +14,17 @@ import com.bean.User;
 @Repository
 public interface FlightBookingRepository extends JpaRepository<FlightBooking, Integer>{
 	
-	@Query(value = "SELECT * FROM Flight_Booking WHERE User = :user",
+	@Query(value = "SELECT * FROM Flight_Booking WHERE userid = :userid",
 			nativeQuery = true)
-	List<FlightBooking> findByUser(
-			@Param("user") User user);
-	
-	//@Query(value = "SELECT * FROM Flight_Booking WHERE User = :user AND Flight.departure LIKE %:departure% AND Flight.arrival LIKE %:arrival%")
-	@Query(value = "SELECT * FROM Flight_Booking WHERE User = :user AND (Flight.departure) = :departure AND (Flight.arrival) = :arrival")
-	List<FlightBooking> findUserFlightBookingByTravalDate(
-			@Param("user")User user, 
-			//@Param("flight")Flight flight);
-			@Param("departure") Date departure, 
-			@Param("arrival") Date arrival);
+	List<FlightBooking> findAllById(
+			@Param("userid") Long userid);
+	// Commented out method that uses these queries is broken and prevents the build.
+//	@Query(value = "SELECT * FROM Flight_Booking WHERE User = :user AND Flight.departure LIKE %:departure% AND Flight.arrival LIKE %:arrival%")
+//	@Query(value = "SELECT * FROM Flight_Booking WHERE User = :user AND (Flight.departure) = :departure AND (Flight.arrival) = :arrival")
+//	List<FlightBooking> findUserFlightBookingByTravalDate(
+//			@Param("user")User user, 
+//			@Param("departure") Date departure, 
+//			@Param("arrival") Date arrival);
 	
 	@Query(value = "SELECT * FROM Flight_Booking WHERE Flight = :flight",
 			nativeQuery = true)

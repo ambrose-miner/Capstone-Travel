@@ -1,5 +1,6 @@
 package com.service;
 
+import java.sql.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,14 @@ RestTemplate restTemplate;
 		userRepository.save(user);
 		System.out.println("Create New User calling repository");
 		return "You successfully created a new user";
+	}
+	public List<Date> findUserDepartureDates(User user){
+		List<Date> departures = userRepository.findUserDepartureDates(user);
+		return departures;
+	}
+	public List<Date> findUserArrivalDates(User user){
+		List<Date> arrivals = userRepository.findUserArrivalDates(user);
+		return arrivals;
 	}
 	public String deleteUser(User user) {
 		userRepository.delete(user);

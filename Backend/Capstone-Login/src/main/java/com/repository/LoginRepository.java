@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.bean.Login;
 
 @Repository
-public interface LoginRepository extends JpaRepository<Login, String>{
+public interface LoginRepository extends JpaRepository<Login, Long>{
 
 }
