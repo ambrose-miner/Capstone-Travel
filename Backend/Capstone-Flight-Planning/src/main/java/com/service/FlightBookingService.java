@@ -40,15 +40,11 @@ public class FlightBookingService {
 		List<FlightBooking> userBookings = flightBookingRepository.findAllById(userid);
 		return userBookings;												
 	}
-	//2 attempts at same method commented out because it breaks the build.
-//	public List<FlightBooking> findUserFlightBookingByTravalDate(User user, Flight flight){
-//		List<FlightBooking> userBookedTravalDate = flightBookingRepository.findUserFlightBookingByTravalDate( user, flight.getDeparture(), flight.getArrival());
-//		return userBookedTravalDate;
-//	}
-//	public List<FlightBooking> findUserFlightBookingByTravalDate(User user, Date departure, Date arrival){
-//		List<FlightBooking> userBookedTravalDates = flightBookingRepository.findUserFlightBookingByTravalDate( user, departure, arrival);
-//		return userBookedTravalDates;
-//	}
+	
+	public List<FlightBooking> findUserFlightBookingByTravalDate(Long userid, Date departure, Date arrival){
+		List<FlightBooking> userBookedTravalDates = flightBookingRepository.findUserFlightBookingByTravalDate( userid, departure, arrival);
+		return userBookedTravalDates;
+	}
 	
 	public List<FlightBooking> findBookingsOnFlight(Flight flight) {
 		List<FlightBooking> flightBookings = flightBookingRepository.findBookingsOnFlight(flight);

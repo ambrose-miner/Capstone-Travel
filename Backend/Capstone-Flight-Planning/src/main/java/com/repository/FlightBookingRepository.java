@@ -18,13 +18,13 @@ public interface FlightBookingRepository extends JpaRepository<FlightBooking, In
 			nativeQuery = true)
 	List<FlightBooking> findAllById(
 			@Param("userid") Long userid);
-	// Commented out method that uses these queries is broken and prevents the build.
-//	@Query(value = "SELECT * FROM Flight_Booking WHERE User = :user AND Flight.departure LIKE %:departure% AND Flight.arrival LIKE %:arrival%")
-//	@Query(value = "SELECT * FROM Flight_Booking WHERE User = :user AND (Flight.departure) = :departure AND (Flight.arrival) = :arrival")
-//	List<FlightBooking> findUserFlightBookingByTravalDate(
-//			@Param("user")User user, 
-//			@Param("departure") Date departure, 
-//			@Param("arrival") Date arrival);
+	 //Still untested this query and the bellow query broke the build previously.
+	//@Query(value = "SELECT * FROM Flight_Booking WHERE User = :user AND (Flight.departure) = :departure AND (Flight.arrival) = :arrival")
+	@Query(value = "SELECT * FROM Flight_Booking WHERE User = :user AND Flight.departure LIKE %:departure% AND Flight.arrival LIKE %:arrival%")
+	List<FlightBooking> findUserFlightBookingByTravalDate(
+			@Param("userid")Long userid, 
+			@Param("departure") Date departure, 
+			@Param("arrival") Date arrival);
 	
 	@Query(value = "SELECT * FROM Flight_Booking WHERE Flight = :flight",
 			nativeQuery = true)

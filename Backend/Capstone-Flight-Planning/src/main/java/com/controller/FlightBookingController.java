@@ -48,20 +48,31 @@ public class FlightBookingController {
 	
 	@GetMapping (value = "findUserFlightBooking",produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<FlightBooking> findUserFlightBooking(@RequestParam Long userid) {
-		String url = "http://localhost:8181/Capstone-Login/signIn/" + userid;		
-		restTemplate.getForObject(url, Login.class);	//I still cant get this part to work. 
-														//Do I need a copy of class Login in flight booking or use User class
-														//and have a copy of User class in login.
+		String url = "http://localhost:8181/Capstone-Login/signIn/" + userid;	//This is needed to for the rest template to call the endpoint.	
+		restTemplate.getForObject(url, Login.class);	//This should be able to take that info from the rest template addressing
+														//the class Login that has a userid and pass that info.
+		
+		//I still cant get this part to work. It wants there to be a login class here in this microservice or to make the other
+		//microservice a dependency which defeats the whole point of it being a microservice.
+		//Do I need a copy of class Login in flight booking or use User class and have a copy of User class in login. The Classes in the Login
+		//and those in User are different but shouldn't need to be the same.
+		//
 		return flightBookingService.findUserFlightBooking(userid);
 	}
 	
-
+	
 	//The intent of this method is to find flightbooking by travel dates but maybe this is not needed just find user flights.
 	//This method has been commented out through out. It breaks the build.
-//	@GetMapping (value = "findUserFlightBookingByTravalDate",produces = MediaType.APPLICATION_JSON_VALUE)
-//	public List<FlightBooking> findUserFlightBookingByTravalDate(@RequestParam User user, Date departure, Date arrival){ 
-//		return flightBookingService.findUserFlightBookingByTravalDate(user, departure, arrival);
-//	}
+	
+	@GetMapping (value = "findUserFlightBookingByTravalDate",produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<FlightBooking> findUserFlightBookingByTravalDate(
+			@RequestParam (value = "userid", required = true) Long userid,
+			@RequestParam (value = "departure", required = false) Date departure, 
+			@RequestParam (value = "arrival", required = false) Date arrival){ 
+				String url = "http://localhost:8181/Capstone-Login/signIn/" + userid;
+				restTemplate.getForObject(url, Login.class);
+		return flightBookingService.findUserFlightBookingByTravalDate(userid, departure, arrival);//still same problem as above....
+	}
 
 	
 	
