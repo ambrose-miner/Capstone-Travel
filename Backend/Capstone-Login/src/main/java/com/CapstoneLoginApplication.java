@@ -14,12 +14,11 @@ import org.springframework.web.client.RestTemplate;
 @EnableDiscoveryClient
 
 public class CapstoneLoginApplication {
-	@Configuration
-	public class RestTemplateConfig {
+	
 	@Bean
 	public RestTemplate restTemplate() {
 		return new RestTemplate();
-		}
+		
 	}
 	public static void main(String[] args) {
 		SpringApplication.run(CapstoneLoginApplication.class, args);

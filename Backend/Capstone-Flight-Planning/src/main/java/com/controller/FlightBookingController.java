@@ -48,21 +48,16 @@ public class FlightBookingController {
 	
 	@GetMapping (value = "findUserFlightBooking",produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<FlightBooking> findUserFlightBooking(@RequestParam Long userid) {
-		String url = "http://localhost:8181/Capstone-Login/signIn/" + userid;	//This is needed to for the rest template to call the endpoint.	
-		restTemplate.getForObject(url, Login.class);	//This should be able to take that info from the rest template addressing
-														//the class Login that has a userid and pass that info.
-		
-		//I still cant get this part to work. It wants there to be a login class here in this microservice or to make the other
-		//microservice a dependency which defeats the whole point of it being a microservice.
-		//Do I need a copy of class Login in flight booking or use User class and have a copy of User class in login. The Classes in the Login
-		//and those in User are different but shouldn't need to be the same.
-		//
+		String url = "http://localhost:8181/Capstone-Login/signIn/"+ userid;//Maybe this is the wrong url...?
+		//String url = "http://localhost:8181/Capstone-Login/"+ userid; 	//I don't want to call the sighnIn method
+		//String url = "http://localhost:8181/Capstone-Login/?/?"+userid;	//I want to get the information in the Login object that is
+		restTemplate.getForObject(url, Login.class);						//put in to the restTemplate there.
+		//This right here ^ and this 	^ still doesnt like these. I dont understand how this is going to recognize a class from another microservice
+		//I saw a thing on line where the guy said you do just have another copy of that Class in the other micro service.
+		//If that is the case than I will just make a copy of login in flight booking...
+		//With the future idea of moving some of user in to login and doing a one to one inheritance a user has a login.
 		return flightBookingService.findUserFlightBooking(userid);
 	}
-	
-	
-	//The intent of this method is to find flightbooking by travel dates but maybe this is not needed just find user flights.
-	//This method has been commented out through out. It breaks the build.
 	
 	@GetMapping (value = "findUserFlightBookingByTravalDate",produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<FlightBooking> findUserFlightBookingByTravalDate(
@@ -70,8 +65,9 @@ public class FlightBookingController {
 			@RequestParam (value = "departure", required = false) Date departure, 
 			@RequestParam (value = "arrival", required = false) Date arrival){ 
 				String url = "http://localhost:8181/Capstone-Login/signIn/" + userid;
-				restTemplate.getForObject(url, Login.class);
-		return flightBookingService.findUserFlightBookingByTravalDate(userid, departure, arrival);//still same problem as above....
+				restTemplate.getForObject(url, Login.class);// same issues as above on this line and now stops the build again...
+															//but the above part seems to work 
+		return flightBookingService.findUserFlightBookingByTravalDate(userid, departure, arrival);
 	}
 
 	
