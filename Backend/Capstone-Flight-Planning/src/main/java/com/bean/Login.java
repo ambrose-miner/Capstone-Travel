@@ -37,11 +37,4 @@ public class Login {
 		this.password = password;
 	}
 	private String password;
-
-
-	@Override
-	public String toString() {
-		return "Login [emailid=" + email + ", password=" + password + "]";
-
-	}
 }

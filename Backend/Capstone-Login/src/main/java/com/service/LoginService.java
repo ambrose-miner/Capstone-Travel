@@ -14,16 +14,19 @@ public class LoginService {
 	@Autowired
 	LoginRepository loginRepository;
 	
-	public String signIn(Login login) {		// email, password and type of user retrieve from angular 
-											//will no longer need type of user from angular.
-		Optional<Login> result = loginRepository.findById(login.getUserid());
-		if(result.isPresent()) {
+	public String signIn(Login login) {		//Login should just be email and password. User has login one to one relationship
+											//Type of user and userid should be user characteristics.
+		//Here we should get in email and password and return a user object 
+		//stored in the rest template/session to be accessed by any other elements or micro services that need it specifically userid and usertype 
+		Optional<Login> result = loginRepository.findById(login.getUserid());// This is finding user by Id right?
+		if(result.isPresent()) {											// Will I need a copy of User bean here as well?
+							//I would think yes so it can query the data base and fill out that object?
 			Login ll = result.get();			// ll hold email, password and typeofuser from db.
 												// will be taking email and password and getting userid and typeofuser from db.
 					if(ll.getPassword().equals(login.getPassword())) {
 						
 							if(ll.getTypeofuser().equals(login.getTypeofuser()) && login.getTypeofuser().equals("admin")) {
-								return "Admin login";
+								return "Admin login";//must get type of user from User not login.
 							}else if(ll.getTypeofuser().equals(login.getTypeofuser()) && login.getTypeofuser().equals("customer")) {
 								return "You have loged in successfully";
 							}else {
