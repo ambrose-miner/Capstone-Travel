@@ -23,7 +23,6 @@ import org.springframework.web.client.RestTemplate;
 import com.bean.User;
 import com.bean.Flight;
 import com.bean.FlightBooking;
-import com.bean.Login;
 @CrossOrigin
 @RestController
 
@@ -48,14 +47,8 @@ public class FlightBookingController {
 	
 	@GetMapping (value = "findUserFlightBooking",produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<FlightBooking> findUserFlightBooking(@RequestParam Long userid) {
-		String url = "http://localhost:8181/Capstone-Login/signIn/"+ userid;//Maybe this is the wrong url...?
-		//String url = "http://localhost:8181/Capstone-Login/"+ userid; 	//I don't want to call the sighnIn method
-		//String url = "http://localhost:8181/Capstone-Login/?/?"+userid;	//I want to get the information in the Login object that is
-		restTemplate.getForObject(url, Login.class);						//put in to the restTemplate there.
-		//This right here ^ and this 	^ still doesnt like these. I dont understand how this is going to recognize a class from another microservice
-		//I saw a thing on line where the guy said you do just have another copy of that Class in the other micro service.
-		//If that is the case than I will just make a copy of login in flight booking...
-		//With the future idea of moving some of user in to login and doing a one to one inheritance a user has a login.
+		String url = "http://localhost:8181/Capstone-Login/signIn/"+ userid; //login service @RequestMapping("/login") change?
+		restTemplate.getForObject(url, User.class);						
 		return flightBookingService.findUserFlightBooking(userid);
 	}
 	
@@ -64,9 +57,8 @@ public class FlightBookingController {
 			@RequestParam (value = "userid", required = true) Long userid,
 			@RequestParam (value = "departure", required = false) Date departure, 
 			@RequestParam (value = "arrival", required = false) Date arrival){ 
-				String url = "http://localhost:8181/Capstone-Login/signIn/" + userid;
-				restTemplate.getForObject(url, Login.class);// same issues as above on this line and now stops the build again...
-															//but the above part seems to work 
+				String url = "http://localhost:8181/Capstone-Login/signIn/" + userid; //login service @RequestMapping("/login") change?
+				restTemplate.getForObject(url, User.class);
 		return flightBookingService.findUserFlightBookingByTravalDate(userid, departure, arrival);
 	}
 

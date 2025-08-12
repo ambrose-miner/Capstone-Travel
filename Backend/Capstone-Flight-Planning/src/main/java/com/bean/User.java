@@ -19,13 +19,14 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long userid;
-	@OneToMany(mappedBy = "bookingid")// this would not be included in Capstone-Login bean.
-	@OneToOne(mappedBy = "userid")
-	private List<FlightBooking>FlightBooking;// this would not be included in Capstone-Login bean.
+	@OneToMany(mappedBy = "bookingid")
+	private List<FlightBooking>FlightBooking;
+	private String password;
 	private String email;
 	private String userfname;
 	private String userlname;
 	private String usertype;
+	
 	public User() {
 		super();
 	}
@@ -45,6 +46,14 @@ public class User {
 		return usertype;
 	}
 
+	public String getPassword() {
+		return password;
+	}
+
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
 	public void setUsertype(String usertype) {
 		this.usertype = usertype;

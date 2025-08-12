@@ -4,8 +4,9 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
-import com.bean.Login;
+import com.bean.User;
 import com.repository.LoginRepository;
 
 @Service
@@ -14,20 +15,25 @@ public class LoginService {
 	@Autowired
 	LoginRepository loginRepository;
 	
-	public String signIn(Login login) {		//Login should just be email and password. User has login one to one relationship
-											//Type of user and userid should be user characteristics.
-		//Here we should get in email and password and return a user object 
-		//stored in the rest template/session to be accessed by any other elements or micro services that need it specifically userid and usertype 
-		Optional<Login> result = loginRepository.findById(login.getUserid());// This is finding user by Id right?
-		if(result.isPresent()) {											// Will I need a copy of User bean here as well?
-							//I would think yes so it can query the data base and fill out that object?
-			Login ll = result.get();			// ll hold email, password and typeofuser from db.
+	private final RestTemplate restTemplate = new RestTemplate();
+	
+	public User
+	sendUserInfo(User user){
+		String url = "http://localhost:8282/Capstone-Flight-Planning";
+		User createdUser = restTemplate.postForObject(url, user, User.class);// does this need to be embedded in a way inside the sign in
+		return createdUser;										//method so that it is only trying to send the User object after it has it?
+	}
+	public String signIn(User user) {		
+		Optional<User> result = loginRepository.findById(user.getUserid());//This will no longer match up with the front end. User vs Login
+		if(result.isPresent()) {											
+							
+			User ll = result.get();			// ll hold email, password and typeofuser from db.
 												// will be taking email and password and getting userid and typeofuser from db.
-					if(ll.getPassword().equals(login.getPassword())) {
+					if(ll.getPassword().equals(user.getPassword())) {
 						
-							if(ll.getTypeofuser().equals(login.getTypeofuser()) && login.getTypeofuser().equals("admin")) {
-								return "Admin login";//must get type of user from User not login.
-							}else if(ll.getTypeofuser().equals(login.getTypeofuser()) && login.getTypeofuser().equals("customer")) {
+							if(ll.getUsertype().equals(user.getUsertype()) && user.getUsertype().equals("admin")) {
+								return "Admin login";
+							}else if(ll.getUsertype().equals(user.getUsertype()) && user.getUsertype().equals("customer")) {
 								return "You have loged in successfully";
 							}else {
 								return "You can not log in as Admin";
@@ -41,16 +47,25 @@ public class LoginService {
 			return "Wrong email or password E";
 		}
 	}
+//	public String signIn(User user) {					
+//		Optional<Login> validLogin = loginRepository.findById(user.getUserid());
+//		if(validLogin.isPresent()) {
+//			Login userLogin = validLogin.get();
+//			if(userLogin.)
+//		}
+//		
+//		
+//	}
 	
-	public String signUp(Login login) {		// emailid, password and typeof user if type of user is admin can't create account. 
-		Optional<Login> result = loginRepository.findById(login.getUserid());
+	public String signUp(User user) { 
+		Optional<User> result = loginRepository.findById(user.getUserid());
 		if(result.isPresent()) {
 				return "That account already exists";
 		}else {
-			if(login.getTypeofuser().equals("admin")) {
+			if(user.getUsertype().equals("admin")) {
 				return "You can't create admin account";
 			}else {
-			loginRepository.save(login);
+			loginRepository.save(user);
 			return "Account created successfully";
 			}
 		}

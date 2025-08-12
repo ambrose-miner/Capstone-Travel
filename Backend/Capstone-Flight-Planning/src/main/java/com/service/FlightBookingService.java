@@ -15,21 +15,13 @@ public class FlightBookingService {
 	@Autowired
 	FlightBookingRepository flightBookingRepository;
 	@Autowired
-	RestTemplate flightBookingRestTemplate;
+	RestTemplate restTemplate;
 	
 	public String bookFlight(FlightBooking flightBooking) {
 		flightBookingRepository.save(flightBooking);
 		System.out.println("book flight calling repository");
 		return "Your flight has been booked successfully";
 	}
-//		float amount = restTemplate.getForObject("http://localhost:8282/price/findPrice/"+fB.getOrigin()+"/"+fB.getDestination(), Float.class);
-//		if(amount==-1) {
-//			return "No Flights are avaiable with origin location as "+fB.getOrigin()+" and destination as "+fB.getDestination();
-//		}else {
-//			fB.setPrice(amount, fB); 
-//			flightBookingRepository.save(fB);
-//			System.out.println("book flight calling repository");
-//			return "Your flight has been booked successfully"; Old method... do not need price return based on destination.
 	
 	public List<FlightBooking> findAllFlightBooking() {
 		List<FlightBooking> bookedFlights = flightBookingRepository.findAll();

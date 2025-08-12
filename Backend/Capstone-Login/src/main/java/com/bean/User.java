@@ -19,21 +19,41 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long userid;
-	@OneToOne(mappedBy = "userid")
-	
+	@OneToMany(mappedBy = "bookingid")
+	//private List<FlightBooking>FlightBooking;
+	private String password;
 	private String email;
 	private String userfname;
 	private String userlname;
 	private String usertype;
+	
 	public User() {
 		super();
 	}
+
+	
+	//public List<FlightBooking> getFlightBooking() {
+	//	return FlightBooking;
+	//}
+
+
+//	public void setFlightBooking(List<FlightBooking> flightBooking) {
+//		FlightBooking = flightBooking;
+//	}
 
 
 	public String getUsertype() {
 		return usertype;
 	}
 
+	public String getPassword() {
+		return password;
+	}
+
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
 	public void setUsertype(String usertype) {
 		this.usertype = usertype;
@@ -75,5 +95,8 @@ public class User {
 	public void setUserlname(String userlname) {
 		this.userlname = userlname;
 	}
-
+	@Override
+	public String toString() {
+		return "User [emailid=" + email + ", password=" + password + "]";
+	}
 }
