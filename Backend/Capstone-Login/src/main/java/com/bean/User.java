@@ -19,7 +19,7 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long userid;
-	@OneToMany(mappedBy = "bookingid")
+	//@OneToMany(mappedBy = "bookingid")
 	//private List<FlightBooking>FlightBooking;
 	private String password;
 	private String email;

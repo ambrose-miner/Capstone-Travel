@@ -23,10 +23,12 @@ import org.springframework.web.client.RestTemplate;
 @EnableDiscoveryClient
 
 public class CapstoneFlightBookingApplication {
-	@Configuration
-	public class RestTemplateConfig {
-	@Autowired
-	public RestTemplate restTemplate;
+//	@Configuration
+//	public class RestTemplateConfig {
+	@Bean
+	public RestTemplate restTemplate() {
+		return restTemplate();
+		}
 	
 //	@Bean
 //	public CookieStore httpCookieStore() {
@@ -46,4 +48,4 @@ public class CapstoneFlightBookingApplication {
 	}
 
 }
-}
+

@@ -20,7 +20,6 @@ INDEX VERSION 1.134+C:\Projects\Capstone Project\Backend\.metadata\.plugins\org.
 481949838.index
 1849590604.index
 876088909.index
-3351680379.index
 3057091929.index
 1798645067.index
 922640117.index

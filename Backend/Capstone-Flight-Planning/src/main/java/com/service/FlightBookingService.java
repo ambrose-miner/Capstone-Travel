@@ -33,10 +33,10 @@ public class FlightBookingService {
 		return userBookings;												
 	}
 	
-	public List<FlightBooking> findUserFlightBookingByTravalDate(Long userid, Date departure, Date arrival){
-		List<FlightBooking> userBookedTravalDates = flightBookingRepository.findUserFlightBookingByTravalDate( userid, departure, arrival);
-		return userBookedTravalDates;
-	}
+//	public List<FlightBooking> findUserFlightBookingByTravalDate(Long userid, Date departure, Date arrival){
+//		List<FlightBooking> userBookedTravalDates = flightBookingRepository.findUserFlightBookingByTravalDate( userid, departure, arrival);
+//		return userBookedTravalDates;
+//	}
 	
 	public List<FlightBooking> findBookingsOnFlight(Flight flight) {
 		List<FlightBooking> flightBookings = flightBookingRepository.findBookingsOnFlight(flight);

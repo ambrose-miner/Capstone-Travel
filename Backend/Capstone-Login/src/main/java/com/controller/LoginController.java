@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.bean.User;
 import com.service.LoginService;
 
-@RestController
+
 @RequestMapping("/login")// added /before login
 @CrossOrigin			// allowing front end technologies to access that data.
 public class LoginController {
