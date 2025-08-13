@@ -24,7 +24,6 @@ import com.bean.User;
 import com.bean.Flight;
 import com.bean.FlightBooking;
 @CrossOrigin
-@RestController
 
 public class FlightBookingController {
 	

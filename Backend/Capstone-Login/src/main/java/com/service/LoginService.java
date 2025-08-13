@@ -14,8 +14,9 @@ public class LoginService {
 
 	@Autowired
 	LoginRepository loginRepository;
-	
-	private RestTemplate restTemplate = new RestTemplate();
+	@Autowired
+	RestTemplate restTemplate;
+	//private RestTemplate restTemplate = new RestTemplate();
 	//This is the only return of "new rest template" there should be only one all other uses should be putting in or pulling from
 	//the already existing rest template. But is this where it should be substantiated? As private do I need setter and getter methods?
 	//And if that is the case do I want to make a rest template bean class?

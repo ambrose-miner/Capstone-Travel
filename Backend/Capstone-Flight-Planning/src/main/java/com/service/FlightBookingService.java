@@ -15,7 +15,7 @@ public class FlightBookingService {
 	@Autowired
 	FlightBookingRepository flightBookingRepository;
 	@Autowired
-	RestTemplate restTemplate;
+	private RestTemplate restTemplate;
 	
 	public String bookFlight(FlightBooking flightBooking) {
 		flightBookingRepository.save(flightBooking);
