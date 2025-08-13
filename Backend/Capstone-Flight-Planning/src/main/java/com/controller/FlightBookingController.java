@@ -47,7 +47,8 @@ public class FlightBookingController {
 	
 	@GetMapping (value = "findUserFlightBooking",produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<FlightBooking> findUserFlightBooking(@RequestParam Long userid) {
-		String url = "http://localhost:8181/Capstone-Login/signIn/"+ userid; //login service @RequestMapping("/login") change?
+		//String url = "http://localhost:8181/Capstone-Login/signIn/"+ userid; //login service @RequestMapping("/login") change?
+		String url = "http://localhost:8181/Capstone-Login/login/"+ userid;
 		restTemplate.getForObject(url, User.class);						
 		return flightBookingService.findUserFlightBooking(userid);
 	}

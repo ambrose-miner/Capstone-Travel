@@ -14,12 +14,12 @@ import org.springframework.web.client.RestTemplate;
 @EnableDiscoveryClient
 
 public class CapstoneLoginApplication {
-	
-	@Bean
-	public RestTemplate restTemplate() {
-		return new RestTemplate();
-		
-	}
+//
+//	@Bean
+//	public RestTemplate restTemplate() {
+//		return restTemplate();
+//		}	
+
 	public static void main(String[] args) {
 		SpringApplication.run(CapstoneLoginApplication.class, args);
 		System.out.println("Login Microservice up on port 8181");

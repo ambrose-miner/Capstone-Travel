@@ -30,19 +30,6 @@ public class CapstoneFlightBookingApplication {
 		return restTemplate();
 		}
 	
-//	@Bean
-//	public CookieStore httpCookieStore() {
-//		return new BasicCookieStore();
-//	}
-//	@Bean
-//    public RestTemplate restTemplate(CookieStore cookieStore) {
-//		CloseableHttpClient httpClient = HttpClients.custom()
-//				.setDefaultCookieStore(cookieStore)
-//				.build();
-//	        return new RestTemplate(new HttpComponentsClientHttpRequestFactory(httpClient));// error on this line
-//	    }						//  ^The constructor HttpComponentsClientHttpRequestFactory(CloseableHttpClient) is undefined
-//	}
-	
 	public static void main(String[] args) {
 		SpringApplication.run(CapstoneFlightBookingApplication.class, args);
 	}
