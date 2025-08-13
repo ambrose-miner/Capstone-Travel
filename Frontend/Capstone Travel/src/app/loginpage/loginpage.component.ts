@@ -10,13 +10,12 @@ export class LoginpageComponent {
   loginForm = new FormGroup({
     emailid:new FormControl(''),
     password:new FormControl(''),
-    usertype:new FormControl(''),
   })
   constructor(public lg:LoginService){}
   signIn():void{
-    let login = this.loginForm.value;
-    console.log(login);
-    this.lg.signIn(login).subscribe({
+    let user = this.loginForm.value;
+    console.log(user);
+    this.lg.signIn(user).subscribe({
       next:(result: any)=>{
         console.log(result)
       },

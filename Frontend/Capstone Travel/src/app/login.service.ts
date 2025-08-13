@@ -9,11 +9,11 @@ baseURL:string="http://localhost:8181/Capstone-login";
 //this should be the correct path and port
   constructor(public httpClient:HttpClient) { }
 
-  signIn(login:any):Observable<string> {
-    return this.httpClient.post(this.baseURL+ "/signIn",login,{responseType:'text'});
+  signIn(user:any):Observable<string> {
+    return this.httpClient.post(this.baseURL+ "/signIn",user,{responseType:'text'});
   }
-  signUp(login:any):Observable<string> {
-    return this.httpClient.post(this.baseURL+ "/signUp",login, {responseType: 'text'});
+  signUp(user:any):Observable<string> {
+    return this.httpClient.post(this.baseURL+ "/signUp",user, {responseType: 'text'});
     
   }
 }
