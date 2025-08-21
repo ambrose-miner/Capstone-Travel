@@ -24,8 +24,8 @@ public class LoginService {
 	public User
 	sendUserInfo(User user){
 		String url = "http://localhost:8282/Capstone-Flight-Planning";
-		User createdUser = restTemplate.postForObject(url, user, User.class);// does this need to be embedded in a way inside the sign in
-		return createdUser;										//method so that it is only trying to send the User object after it has it?
+		User currentUser = restTemplate.postForObject(url, user, User.class);// does this need to be embedded in a way inside the sign in
+		return currentUser;										//method so that it is only trying to send the User object after it has it?
 	}
 	public String signIn(User user) {		
 		Optional<User> result = loginRepository.findById(user.getUserid());//This will no longer match up with the front end. User vs Login
@@ -51,14 +51,15 @@ public class LoginService {
 			return "Wrong email or password E";
 		}
 	}
+	//New attempt at cleaning up and combining above methods no need for checking user type here.
+	//will need to return user or admin page.
 //	public String signIn(User user) {					
-//		Optional<Login> validLogin = loginRepository.findById(user.getUserid());
-//		if(validLogin.isPresent()) {
-//			Login userLogin = validLogin.get();
-//			if(userLogin.)
-//		}
-//		
-//		
+//		Optional<User> currentUser = loginRepository.findById(user.getUserid());
+//		if(currentUser.isPresent()) {
+//			String url = "http://localhost:8282/Capstone-Flight-Planning";
+//			User currentUser = restTemplate.postForObject(url, user, User.class);
+//		}else {
+//			return "Wrong email or password";	
 //	}
 	
 	public String signUp(User user) { 
@@ -66,12 +67,11 @@ public class LoginService {
 		if(result.isPresent()) {
 				return "That account already exists";
 		}else {
-			if(user.getUsertype().equals("admin")) {
-				return "You can't create admin account";
-			}else {
+			//if(user.getUsertype().equals("admin")) {
+				//return "You can't create admin account";
+			//}else {
 			loginRepository.save(user);
 			return "Account created successfully";
 			}
 		}
 	}
-}
