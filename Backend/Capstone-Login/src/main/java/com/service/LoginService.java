@@ -51,12 +51,19 @@ public class LoginService {
 	//will need to return user or admin page on the front end currentUser object will have that in it.
 	
 //	public String signIn(User user) {					
-//		Optional<User> currentUser = loginRepository.findById(user.getUserid());
-//		if(currentUser.isPresent()) {
+//		Optional<User> varifyingUser = loginRepository.findById(user.getUserid());
+//		User currentUser = varifyingUser.get();
+//		if(varifyingUser.isPresent()) {
 //			String url = "http://localhost:8282/Capstone-Flight-Planning";
 //			User currentUser = restTemplate.postForObject(url, user, User.class);
-//		}else {
-//			return "Wrong email or password";	
+//				if(currentUser.getPassword().equals(user.getPassword()) && currentUser.getEmail().equals(user.getEmail()) {
+//					if(currentUser.getUsertype().equals("admin");
+//						return "admin home link";
+//					if{(currentUser.getUsertype().equals("customer");
+//						return "customer home link";
+	
+//				}else {
+//					return "Wrong email or password";	
 //	}
 	
 	public String signUp(User user) { 
