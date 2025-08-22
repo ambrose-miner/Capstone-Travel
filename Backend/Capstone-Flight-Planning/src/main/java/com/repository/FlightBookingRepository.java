@@ -26,9 +26,9 @@ public interface FlightBookingRepository extends JpaRepository<FlightBooking, In
 //			@Param("departure") Date departure, 
 //			@Param("arrival") Date arrival);
 	
-	@Query(value = "SELECT * FROM Flight_Booking WHERE Flight = :flight",
+	@Query(value = "SELECT * FROM Flight_Booking WHERE flightid = :flightid",
 			nativeQuery = true)
-	List<FlightBooking> findBookingsOnFlight(
-			@Param("flight") Flight flight);
+	List<FlightBooking> findBookingsOnFlightById(
+			@Param("flight") int flightid);
 	
 }

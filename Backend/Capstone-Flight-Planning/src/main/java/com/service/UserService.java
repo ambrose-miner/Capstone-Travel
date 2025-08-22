@@ -21,8 +21,8 @@ RestTemplate restTemplate;
 		List<User> users = userRepository.findAll();
 		return users;
 		}
-	public List<User> findUsersOnFlight(Flight flight){
-		List<User> passengers = userRepository.findUsersOnFlight(flight);
+	public List<User> findUsersOnFlight(int flightid){
+		List<User> passengers = userRepository.findUsersOnFlight(flightid);
 		return passengers;
 	}
 	public String createNewUser(User user) {
@@ -30,16 +30,16 @@ RestTemplate restTemplate;
 		System.out.println("Create New User calling repository");
 		return "You successfully created a new user";
 	}
-	public List<Date> findUserDepartureDates(User user){
-		List<Date> departures = userRepository.findUserDepartureDates(user);
+	public List<Date> findUserDepartureDates(Long userid){
+		List<Date> departures = userRepository.findUserDepartureDates(userid);
 		return departures;
 	}
-	public List<Date> findUserArrivalDates(User user){
-		List<Date> arrivals = userRepository.findUserArrivalDates(user);
+	public List<Date> findUserArrivalDates(Long userid){
+		List<Date> arrivals = userRepository.findUserArrivalDates(userid);
 		return arrivals;
 	}
-	public String deleteUser(User user) {
-		userRepository.delete(user);
+	public String deleteUser(Long userid) {
+		userRepository.deleteById(userid);
 		return "User deleted";
 	}
 }

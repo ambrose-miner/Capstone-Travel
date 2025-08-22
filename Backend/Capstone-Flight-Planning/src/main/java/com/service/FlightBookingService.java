@@ -34,12 +34,12 @@ public class FlightBookingService {
 	}
 	
 //	public List<FlightBooking> findUserFlightBookingByTravalDate(Long userid, Date departure, Date arrival){
-//		List<FlightBooking> userBookedTravalDates = flightBookingRepository.findUserFlightBookingByTravalDate( userid, departure, arrival);
-//		return userBookedTravalDates;
+//		List<FlightBooking> userBookedTraval = flightBookingRepository.findUserFlightBookingByTravalDate(userid, departure, arrival);
+//		return userBookedTravel;
 //	}
 	
-	public List<FlightBooking> findBookingsOnFlight(Flight flight) {
-		List<FlightBooking> flightBookings = flightBookingRepository.findBookingsOnFlight(flight);
+	public List<FlightBooking> findBookingsOnFlightById(int flightid) {
+		List<FlightBooking> flightBookings = flightBookingRepository.findBookingsOnFlightById(flightid);
 		return flightBookings;
 	}
 	public String deleteFlightBooking(FlightBooking flightBooking) {

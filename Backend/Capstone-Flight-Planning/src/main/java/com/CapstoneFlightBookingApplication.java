@@ -1,7 +1,5 @@
 package com;
 
-
-
 import org.apache.http.client.CookieStore;//new
 import org.apache.http.impl.client.BasicCookieStore;//new
 import org.apache.http.impl.client.CloseableHttpClient;//new

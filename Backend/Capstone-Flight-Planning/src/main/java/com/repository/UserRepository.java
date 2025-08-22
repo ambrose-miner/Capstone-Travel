@@ -15,11 +15,11 @@ import com.bean.User;
 public interface UserRepository extends JpaRepository<User, Long>{
 	
 	@Query(value = "SELECT * FROM User", nativeQuery = true)
-	List<User> findUsersOnFlight(@Param("flight") Flight flight);
+	List<User> findUsersOnFlight(@Param("flight") int flightid);
 
-	@Query(value = "SELECT flight.departure FROM Flight WHERE User = :user", nativeQuery = true)
-	List<Date> findUserDepartureDates(@Param("user") User user);
+	@Query(value = "SELECT flight.departure FROM Flight WHERE User = :userid", nativeQuery = true)
+	List<Date> findUserDepartureDates(@Param("user") Long userid);
 	
-	@Query(value = "SELECT flight.arrival FROM Flight WHERE User = :user", nativeQuery = true)
-	List<Date> findUserArrivalDates(@Param("user") User user);
+	@Query(value = "SELECT flight.arrival FROM Flight WHERE User = :userid", nativeQuery = true)
+	List<Date> findUserArrivalDates(@Param("user") Long userid);
 }

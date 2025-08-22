@@ -57,7 +57,7 @@ public class FlightBookingController {
 //			@RequestParam (value = "userid", required = true) Long userid,
 //			@RequestParam (value = "departure", required = false) Date departure, 
 //			@RequestParam (value = "arrival", required = false) Date arrival){ 
-//				String url = "http://localhost:8181/Capstone-Login/signIn/" + userid; //login service @RequestMapping("/login") change?
+//				String url = "http://localhost:8181/Capstone-Login/login/" + userid;
 //				restTemplate.getForObject(url, User.class);
 //		return flightBookingService.findUserFlightBookingByTravalDate(userid, departure, arrival);
 //	}
@@ -65,8 +65,8 @@ public class FlightBookingController {
 	
 	
 	@GetMapping (value = "findBookingsOnFlight",produces = MediaType.APPLICATION_JSON_VALUE)					
-	public List<FlightBooking> findBookingsOnFlight(@RequestParam Flight flight) {	
-		return flightBookingService.findBookingsOnFlight(flight);
+	public List<FlightBooking> findBookingsOnFlight(@RequestParam int flightid) {	
+		return flightBookingService.findBookingsOnFlightById(flightid);
 	}
 	
 	@DeleteMapping(value = "deleteFlightBooking",consumes = MediaType.APPLICATION_JSON_VALUE)

@@ -16,10 +16,6 @@ public class LoginService {
 	LoginRepository loginRepository;
 	@Autowired
 	RestTemplate restTemplate;
-	//private RestTemplate restTemplate = new RestTemplate();
-	//This is the only return of "new rest template" there should be only one all other uses should be putting in or pulling from
-	//the already existing rest template. But is this where it should be substantiated? As private do I need setter and getter methods?
-	//And if that is the case do I want to make a rest template bean class?
 	
 	public User
 	sendUserInfo(User user){
@@ -52,7 +48,8 @@ public class LoginService {
 		}
 	}
 	//New attempt at cleaning up and combining above methods no need for checking user type here.
-	//will need to return user or admin page.
+	//will need to return user or admin page on the front end currentUser object will have that in it.
+	
 //	public String signIn(User user) {					
 //		Optional<User> currentUser = loginRepository.findById(user.getUserid());
 //		if(currentUser.isPresent()) {
