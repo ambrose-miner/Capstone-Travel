@@ -12,7 +12,7 @@ import com.bean.User;
 import com.service.LoginService;
 
 @RestController
-@RequestMapping("/login")// added /before login
+@RequestMapping("/login")//This one was like this from the beginning.
 @CrossOrigin			// allowing front end technologies to access that data.
 public class LoginController {
 	
@@ -21,12 +21,12 @@ public class LoginController {
 
 	
 	// http://localhost:8181/Capstone-login/signIn  //This should be the correct path and port number.
-	@PostMapping(value = "signIn",consumes = MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping(value = "/signIn",consumes = MediaType.APPLICATION_JSON_VALUE)
 	public String signIn(@RequestBody User user) {
 		return loginService.signIn(user);
 	}
 	// http://localhost:8181/Capstone-login/signUp //This should be the correct path and port number.
-	@PostMapping(value = "signUp",consumes = MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping(value = "/signUp",consumes = MediaType.APPLICATION_JSON_VALUE)
 	public String signUp(@RequestBody User user) {
 		return loginService.signUp(user);
 	}

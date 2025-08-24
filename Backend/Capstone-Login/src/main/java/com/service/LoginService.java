@@ -47,6 +47,12 @@ public class LoginService {
 			return "Wrong email or password E";
 		}
 	}
+		//The below four lines removed from sign in method to simplify and stream line.
+			//if(currentUser.getUsertype().equals("admin");
+			//		return "admin home link";
+			//	if{(currentUser.getUsertype().equals("customer");
+			//		return "customer home link";
+	
 	//New attempt at cleaning up and combining above methods no need for checking user type here.
 	//will need to return user or admin page on the front end currentUser object will have that in it.
 	
@@ -57,11 +63,6 @@ public class LoginService {
 //			String url = "http://localhost:8282/Capstone-Flight-Planning";
 //			User currentUser = restTemplate.postForObject(url, user, User.class);
 //				if(currentUser.getPassword().equals(user.getPassword()) && currentUser.getEmail().equals(user.getEmail()) {
-//					if(currentUser.getUsertype().equals("admin");
-//						return "admin home link";
-//					if{(currentUser.getUsertype().equals("customer");
-//						return "customer home link";
-	
 //				}else {
 //					return "Wrong email or password";	
 //	}

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,38 +19,38 @@ import com.bean.User;
 import com.service.FlightService;
 @CrossOrigin
 @RestController
-
-public class FlightController {
+@RequestMapping("/flight")//New addition attempt to fix postman fail to find static resource error
+public class FlightController {//Have not updated all Postman requests just find all users has not fixed the problem
 	
 	@Autowired FlightService flightService;
 	
-	@PostMapping(value = "createFlight",consumes = MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping(value = "/createFlight",consumes = MediaType.APPLICATION_JSON_VALUE)
 	public String createFlight(@RequestBody Flight newFlight) {
 		 System.out.println("Call book flight method");
 		String Message = flightService.createFlight(newFlight);
 		 return Message;
 	}
-	@GetMapping(value = "findAllFlights",produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(value = "/findAllFlights",produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<Flight> findAllFlights() {
 		return flightService.findAllFlights();
 	}
-	@GetMapping (value = "findFlight",produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping (value = "/findFlight",produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<Flight> findFlight(@RequestParam FlightBooking flightBooking) { 
 		return flightService.findFlight(flightBooking);
 	}
-	@GetMapping (value = "searchFlightsByPlan",produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping (value = "/searchFlightsByPlan",produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<Flight> searchFlightsByOriginAndDestination(@RequestParam Flight flight) {
 		return flightService.searchFlightsByOriginAndDestination(flight);
 	}
-	@GetMapping (value = "searchFlightsByPlanAndDepartureDate",produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping (value = "/searchFlightsByPlanAndDepartureDate",produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<Flight> searchFlightsByOriginAndDestinationAndDepartureDate(@RequestParam Flight flight) {
 		return flightService.searchFlightsByOriginAndDestinationAndDepartureDate(flight);
 	}
-	@GetMapping (value = "searchFlightsByPlanAndArrivalDate",produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping (value = "/searchFlightsByPlanAndArrivalDate",produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<Flight> searchFlightsByOriginAndDestinationAndArrivalDate(@RequestParam Flight flight) {
 		return flightService.searchFlightsByOriginAndDestinationAndArrivalDate(flight);
 	}
-	@DeleteMapping (value = "deleteFlight" ,consumes = MediaType.APPLICATION_JSON_VALUE)
+	@DeleteMapping (value = "/deleteFlight" ,consumes = MediaType.APPLICATION_JSON_VALUE)
 	public String deleteFlight(Flight flight) {
 		String deleteMessage = flightService.deleteFlight(flight);
 		return deleteMessage;

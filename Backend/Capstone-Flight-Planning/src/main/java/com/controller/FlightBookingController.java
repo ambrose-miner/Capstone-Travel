@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
@@ -24,27 +25,27 @@ import com.bean.User;
 import com.bean.Flight;
 import com.bean.FlightBooking;
 @CrossOrigin
-
-public class FlightBookingController {
+@RequestMapping("/flightBooking")//New addition attempt to fix postman fail to find static resource error. 
+public class FlightBookingController {//Have not updated all Postman requests just find all users has not fixed the problem
 	
 	@Autowired
 	FlightBookingService flightBookingService;
 	@Autowired
 	RestTemplate restTemplate;
 	
-	@PostMapping(value = "bookFlight",consumes = MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping(value = "/bookFlight",consumes = MediaType.APPLICATION_JSON_VALUE)
 	public String bookFlight(@RequestBody FlightBooking flightBooking) {	
 		System.out.println("Call book flight method");
 		String Message = flightBookingService.bookFlight(flightBooking);
 		 return Message;
 	}
 	
-	@GetMapping(value = "findAllFlightBooking",produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(value = "/findAllFlightBooking",produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<FlightBooking> findAllFlightBooking() {
 		return flightBookingService.findAllFlightBooking();
 	}
 	
-	@GetMapping (value = "findUserFlightBooking",produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping (value = "/findUserFlightBooking",produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<FlightBooking> findUserFlightBooking(@RequestParam Long userid) {
 		//String url = "http://localhost:8181/Capstone-Login/signIn/"+ userid; //login service @RequestMapping("/login") change?
 		String url = "http://localhost:8181/Capstone-Login/login/"+ userid;
@@ -52,7 +53,7 @@ public class FlightBookingController {
 		return flightBookingService.findUserFlightBooking(userid);
 	}
 	
-//	@GetMapping (value = "findUserFlightBookingByTravalDate",produces = MediaType.APPLICATION_JSON_VALUE)
+//	@GetMapping (value = "/findUserFlightBookingByTravalDate",produces = MediaType.APPLICATION_JSON_VALUE)
 //	public List<FlightBooking> findUserFlightBookingByTravalDate(
 //			@RequestParam (value = "userid", required = true) Long userid,
 //			@RequestParam (value = "departure", required = false) Date departure, 
@@ -64,12 +65,12 @@ public class FlightBookingController {
 
 	
 	
-	@GetMapping (value = "findBookingsOnFlight",produces = MediaType.APPLICATION_JSON_VALUE)					
+	@GetMapping (value = "/findBookingsOnFlight",produces = MediaType.APPLICATION_JSON_VALUE)					
 	public List<FlightBooking> findBookingsOnFlight(@RequestParam int flightid) {	
 		return flightBookingService.findBookingsOnFlightById(flightid);
 	}
 	
-	@DeleteMapping(value = "deleteFlightBooking",consumes = MediaType.APPLICATION_JSON_VALUE)
+	@DeleteMapping(value = "/deleteFlightBooking",consumes = MediaType.APPLICATION_JSON_VALUE)
 	public String deleteFlightBooking(FlightBooking flightBooking) { 
 		String deleteMessage = flightBookingService.deleteFlightBooking(flightBooking);
 		return deleteMessage;

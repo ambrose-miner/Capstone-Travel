@@ -21,13 +21,6 @@ import org.springframework.web.client.RestTemplate;
 @EnableDiscoveryClient
 
 public class CapstoneFlightBookingApplication {
-//	@Configuration
-//	public class RestTemplateConfig {
-//	public RestTemplate restTemplate = new RestTemplate();
-//	@Bean
-//	public RestTemplate restTemplate() {
-//		return restTemplate();
-//		}
 	
 	public static void main(String[] args) {
 		SpringApplication.run(CapstoneFlightBookingApplication.class, args);
