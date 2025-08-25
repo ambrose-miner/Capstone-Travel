@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.annotation.Id;
 //import jakarta.persistence.Id;
 import org.springframework.http.MediaType;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,8 +26,9 @@ import com.bean.User;
 import com.bean.Flight;
 import com.bean.FlightBooking;
 @CrossOrigin
-@RequestMapping("/flightBooking")//New addition attempt to fix postman fail to find static resource error. 
-public class FlightBookingController {//Have not updated all Postman requests just find all users has not fixed the problem
+@RestController
+@RequestMapping("/flightBooking")
+public class FlightBookingController {//Have not updated all Postman requests just find all users
 	
 	@Autowired
 	FlightBookingService flightBookingService;

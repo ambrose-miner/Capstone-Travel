@@ -30,70 +30,52 @@ public class User {
 	public User() {
 		super();
 	}
-
-	
 	public List<FlightBooking> getFlightBooking() {
 		return FlightBooking;
 	}
-
-
 	public void setFlightBooking(List<FlightBooking> flightBooking) {
 		FlightBooking = flightBooking;
 	}
-
-
 	public String getUsertype() {
 		return usertype;
 	}
-
 	public String getPassword() {
 		return password;
 	}
-
-
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
 	public void setUsertype(String usertype) {
 		this.usertype = usertype;
 	}
-
-
 	public Long getUserid() {
 		return userid;
 	}
-
-
 	public void setUserid(Long userid) {
 		this.userid = userid;
 	}
-
-
 	public String getEmail() {
 		return email;
 	}
-
-
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
-
 	public String getUserfname() {
 		return userfname;
 	}
-
 	public void setUserfname(String userfname) {
 		this.userfname = userfname;
 	}
-
 	public String getUserlname() {
 		return userlname;
 	}
-
 	public void setUserlname(String userlname) {
 		this.userlname = userlname;
 	}
-
+	//************New***********
+	public User(Long verifyId, String password, String email) {
+		this.userid = verifyId;
+		this.password = password;
+		this.email = email;
+		}
 }

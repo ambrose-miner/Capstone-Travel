@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.web.client.RestTemplate;
 @SpringBootApplication(scanBasePackages = "com")
-@EntityScan(basePackages = "com.bean")	
+@EntityScan(basePackages = "com")	
 @EnableJpaRepositories(basePackages = "com.repository")
 @EnableDiscoveryClient
 
