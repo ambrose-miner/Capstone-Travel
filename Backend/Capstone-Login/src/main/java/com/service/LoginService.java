@@ -74,18 +74,18 @@ public class LoginService {
 	//Attempt to reform the above method around a login object and compairing login properties to user then get userid
 	//http://localhost:8282/user/{password}/{email}
 	public String sighnIn(Login login){
-		Optional<Login> varifyingUser = getUser(login.getPassword(), login.getEmail());
-		if( varifyingUser.isPresent()) {
-			String url = "http://localhost:8282/Capstone-Flight-Planning";
-			Login currentUser = restTemplate.postForObject(url, login, Login.class);
+		String url1 = "http://localhost:8282/user/{password}/{email}";
+		Optional<Long> varifyingUser = restTemplate.postForObject(url1, login, Login.class);
+		if( varifyingUser.isPresent()) {//Type mismatch: cannot convert from Login to Optional<Long>
+			//Not totally sure how to bring these elements together.
+			String url2 = "http://localhost:8282/Capstone-Flight-Planning";
+			Login currentUser = restTemplate.postForObject(url2, login, Login.class);
 			return
-	
-	
-//	
-//	
-//	
-//	
-//	}
+		}	
+	//public Optional<Long> getUser(String password , String email){
+		//login.getPassword(), login.getEmail())
+	}
+
 	
 
 	public String signUp(Login login) { 
