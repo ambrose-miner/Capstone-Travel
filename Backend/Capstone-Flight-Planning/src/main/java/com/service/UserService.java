@@ -27,10 +27,13 @@ RestTemplate restTemplate;
 		List<User> users = userRepository.findAll();
 		return users;
 		}
-	public Optional<Long> verifyUser(String password, String email) { //New method to facilitate login 
-		Optional<Long> userid = userRepository.verifyUser(password, email);//checking password and email against userid
-		return userid; 
-	}
+	public Optional<User> verifyUser(String password, String email) { 
+		Optional<User> userLogin = userRepository.verifyUser(password, email);
+		String url = "http://localhost:8181/Capstone-login/signIn";
+		User userLogin1 = restTemplate.postForObject(url, userLogin, User.class);
+		Optional<User> optionalUserLogin = Optional.ofNullable(userLogin1);
+		return optionalUserLogin;
+		}						
 	public List<User> findUsersOnFlight(int flightid){
 		List<User> passengers = userRepository.findUsersOnFlight(flightid);
 		return passengers;

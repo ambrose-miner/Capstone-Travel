@@ -75,19 +75,29 @@ public class LoginService {
 	//Attempt to reform the above method around a login object and compairing login properties to user then get userid
 	//http://localhost:8282/user/{password}/{email}
 	public String signIn(Login login){
-		String url1 = "http://localhost:8282/user/{password}/{email}";
-		restTemplate.postForObject(url1, login, Login.class);
-		String url2 = "http://localhost:8282/user";// This url needs to be double checked.
-		Optional<Long> varifyingUser = restTemplate.getForObject(url2, userid, User.class);	//userid can not resolve to a variable...??
-		if( varifyingUser.isPresent()) {
-			//Not totally sure how to bring these elements together.
-			String url3= "http://localhost:8282/Capstone-Flight-Planning";
-			Login currentUser = restTemplate.postForObject(url3, login, Login.class);
-			return
-		}	
-	//public Optional<Long> getUser(String password , String email){
-		//login.getPassword(), login.getEmail())
+		String url1 = "http://localhost:8282/user/userVerification/{password}/{email}";
+		User verifyingUser = restTemplate.postForObject(url1, login, User.class);
+		Optional<User> optionalVerifyingUser = Optional.ofNullable(verifyingUser);
+		
+		if(optionalVerifyingUser.isPresent()) {
+			
+			return "Login sucessful";
+		}else {
+			return "Wrong email or password";
+					
+		}
+		//error return. Double nullable logic? url path?
+		//org.springframework.web.client.HttpClientErrorException$NotFound: 404  on POST request for "http://localhost:8181/Capstone-login/signIn": "{"timestamp":"2025-08-28T16:34:18.625+00:00","status":404,"error":"Not Found","trace":"org.springframework.web.servlet.resource.NoResourceFoundException: No static resource Capstone-login/signIn.\r\n\tat org.springframework.web.servlet.resource.ResourceHttpRequestHandler.handleRequest(ResourceHttpRequestHandler.java:585)\r\n\tat org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter.handle(HttpRequestHandlerAdapter.java:52)\r\n\tat org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089)\r\n\tat org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)\r\n\tat org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)\r\n\tat org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914)\r\n\tat jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)\r\n\tat org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)\r\n\tat jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)\r\n\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)\r\n\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)\r\n\tat org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)\r\n\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)\r\n\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)\r\n\tat org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)\r\n\tat org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)\r\n\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)\r\n\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)\r\n\tat org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)\r\n\tat org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)\r\n\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)\r\n\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)\r\n\tat org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)\r\n\tat org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)\r\n\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)\r\n\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)\r\n\tat org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)\r\n\tat org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)\r\n\tat org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)\r\n\tat org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:116)\r\n\tat org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)\r\n\tat org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)\r\n\tat org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)\r\n\tat org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:398)\r\n\tat org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)\r\n\tat org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)\r\n\tat org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1769)\r\n\tat org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)\r\n\tat org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1189)\r\n\tat org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:658)\r\n\tat org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)\r\n\tat java.base/java.lang.Thread.run(Thread.java:842)\r\n","message":"No static resource Capstone-login/signIn.","path":"/Capstone-login/signIn"}"
+		
 	}
+	
+		//String url2 = "http://localhost:8282/user";
+		//Optional<Long> varifyingUser = restTemplate.getForObject(url2, User.class);
+		//String url3= "http://localhost:8282/Capstone-Flight-Planning";
+		//Login currentUser = restTemplate.postForObject(url3, login, Login.class);
+		//public Optional<Long> getUser(String password , String email){
+		//login.getPassword(), login.getEmail())
+
 
 	
 
