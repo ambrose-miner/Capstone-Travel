@@ -1,35 +1,42 @@
-//package com.bean;
-//
-//import java.util.List;
-//
-//import org.springframework.context.annotation.Scope;
-//import org.springframework.stereotype.Component;
-//
-//import jakarta.persistence.Entity;
-//import jakarta.persistence.GeneratedValue;
-//import jakarta.persistence.GenerationType;
-//import jakarta.persistence.Id;
-//import jakarta.persistence.OneToMany;
-//import jakarta.persistence.OneToOne;
+package com.bean;
+
+import java.util.List;
+
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 //
 //@Entity
 //@Component
 //@Scope("prototype")
-//public class User {
+public class User {
 //	@Id
 //	@GeneratedValue(strategy = GenerationType.IDENTITY)
-//	private Long userid;
+	private Long userid;
 //	//@OneToMany(mappedBy = "bookingid")
 //	//private List<FlightBooking>FlightBooking;
-//	private String password;
-//	private String email;
+	private String password;
+	private String email;
 //	private String userfname;
 //	private String userlname;
 //	private String usertype;
 //	
-//	public User() {
-//		super();
-//	}
+//This is for reference only.					//public User(Long verifyId, String password, String email) {
+													//		this.userid = verifyId;
+													//		this.password = password;
+													//		this.email = email;
+													//		}
+
+
+	public User() {
+		super();
+	}
 //
 //	
 //	//public List<FlightBooking> getFlightBooking() {
@@ -42,42 +49,30 @@
 ////	}
 //
 //
-//	public String getUsertype() {
-//		return usertype;
-//	}
-//
-//	public String getPassword() {
-//		return password;
-//	}
-//
-//
-//	public void setPassword(String password) {
-//		this.password = password;
-//	}
-//
-//	public void setUsertype(String usertype) {
-//		this.usertype = usertype;
-//	}
-//
-//
-//	public Long getUserid() {
-//		return userid;
-//	}
-//
-//
-//	public void setUserid(Long userid) {
-//		this.userid = userid;
-//	}
-//
-//
-//	public String getEmail() {
-//		return email;
-//	}
-//
-//
-//	public void setEmail(String email) {
-//		this.email = email;
-//	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public Long getUserid() {
+		return userid;
+	}
+
+	public void setUserid(Long userid) {
+		this.userid = userid;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
 //
 //
 //	public String getUserfname() {

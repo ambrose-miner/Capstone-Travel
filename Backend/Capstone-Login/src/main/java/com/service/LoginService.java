@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import com.bean.Login;
+import com.bean.User;
 //import com.bean.User;
 import com.repository.LoginRepository;
 
@@ -73,13 +74,15 @@ public class LoginService {
 	
 	//Attempt to reform the above method around a login object and compairing login properties to user then get userid
 	//http://localhost:8282/user/{password}/{email}
-	public String sighnIn(Login login){
+	public String signIn(Login login){
 		String url1 = "http://localhost:8282/user/{password}/{email}";
-		Optional<Long> varifyingUser = restTemplate.postForObject(url1, login, Login.class);
-		if( varifyingUser.isPresent()) {//Type mismatch: cannot convert from Login to Optional<Long>
+		restTemplate.postForObject(url1, login, Login.class);
+		String url2 = "http://localhost:8282/user";// This url needs to be double checked.
+		Optional<Long> varifyingUser = restTemplate.getForObject(url2, userid, User.class);	//userid can not resolve to a variable...??
+		if( varifyingUser.isPresent()) {
 			//Not totally sure how to bring these elements together.
-			String url2 = "http://localhost:8282/Capstone-Flight-Planning";
-			Login currentUser = restTemplate.postForObject(url2, login, Login.class);
+			String url3= "http://localhost:8282/Capstone-Flight-Planning";
+			Login currentUser = restTemplate.postForObject(url3, login, Login.class);
 			return
 		}	
 	//public Optional<Long> getUser(String password , String email){
