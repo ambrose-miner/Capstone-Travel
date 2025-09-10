@@ -29,11 +29,9 @@ RestTemplate restTemplate;
 		return users;
 		}
 	//****New Method***
-	//Login still returns 404 not found even with known example in the database code builds and
-	//runs has no errors/ no known errors. This had so many issues to get it to convert an Optional<User>to a User
 	public Optional<User> verifyUser(String password, String email) { 
 		Optional<User> userLogin = userRepository.verifyUser(password, email);
-		String url = "http://localhost:8181/Capstone-login/login";
+		String url = "http://localhost:8282/Capstone-Flight-Planning/{userid}";
 		User userCurrent = restTemplate.postForObject(url, userLogin, User.class);
 		return Optional.ofNullable(userCurrent);
 		

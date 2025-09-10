@@ -28,7 +28,7 @@ import com.bean.FlightBooking;
 @CrossOrigin
 @RestController
 @RequestMapping("/flightBooking")
-public class FlightBookingController {//Have not updated all Postman requests just find all users
+public class FlightBookingController {
 	
 	@Autowired
 	FlightBookingService flightBookingService;
@@ -62,7 +62,7 @@ public class FlightBookingController {//Have not updated all Postman requests ju
 		return flightBookingService.findUserFlightBooking(userid);
 	}
 	
-	@GetMapping (value = "/findUserFlightBookingByTravalDate",produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping (value = "/findUserFlightBookingByArrivalDate",produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<FlightBooking> findUserFlightBookingByArrivalDate(
 			@RequestParam (value = "userid", required = true) Long userid, 
 			@RequestParam (value = "arrival", required = false) Date arrival){ 
@@ -71,7 +71,7 @@ public class FlightBookingController {//Have not updated all Postman requests ju
 			return flightBookingService.findUserFlightBookingByArrivalDate(userid, arrival);
 	}
 
-	@GetMapping (value = "/findUserFlightBookingByTravalDate",produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping (value = "/findUserFlightBookingByDepartureDate",produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<FlightBooking> findUserFlightBookingByTravalDate(
 			@RequestParam (value = "userid", required = true) Long userid,
 			@RequestParam (value = "departure", required = false) Date departure){

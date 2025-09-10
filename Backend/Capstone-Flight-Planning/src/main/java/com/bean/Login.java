@@ -4,12 +4,15 @@ import org.springframework.stereotype.Component;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 
-@Entity
+//Removed its a component of User.
+//@Entity
 @Component
 public class Login {
 	@Id
 	private String loginid;
+	@OneToOne(mappedBy = "userid")
 	private String password;
 	private String email;
 	

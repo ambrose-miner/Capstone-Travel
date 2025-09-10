@@ -12,10 +12,16 @@ import com.repository.FlightBookingRepository;
 
 @Service
 public class FlightBookingService {
+	//private final RestTemplate restTemplate;//New
 	@Autowired
 	FlightBookingRepository flightBookingRepository;
+//	@Autowired											//New /Speculative
+//	public FlightBookingService (RestTemplate restTemplate) {//New
+//		this.restTemplate = restTemplate;//New
+		
+	//***Old Version
 	@Autowired
-	private RestTemplate restTemplate;
+	RestTemplate restTemplate;
 	
 	public String bookFlight(FlightBooking flightBooking) {
 		flightBookingRepository.save(flightBooking);

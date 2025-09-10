@@ -21,8 +21,8 @@ public class User {
 	private Long userid;
 	@OneToMany(mappedBy = "bookingid")
 	private List<FlightBooking>FlightBooking;
-	private String password;
-	private String email;
+	//private String password;//Components of Login
+	//private String email;//Components of Login
 	private String userfname;
 	private String userlname;
 	private String usertype;
@@ -39,12 +39,12 @@ public class User {
 	public String getUsertype() {
 		return usertype;
 	}
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
-	}
+//	public String getPassword() {
+//		return password;
+//	}
+//	public void setPassword(String password) {
+//		this.password = password;
+//	}
 	public void setUsertype(String usertype) {
 		this.usertype = usertype;
 	}
@@ -54,12 +54,12 @@ public class User {
 	public void setUserid(Long userid) {
 		this.userid = userid;
 	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
+//	public String getEmail() {
+//		return email;
+//	}
+//	public void setEmail(String email) {
+//		this.email = email;
+//	}
 	public String getUserfname() {
 		return userfname;
 	}
@@ -73,9 +73,9 @@ public class User {
 		this.userlname = userlname;
 	}
 	//************New***********
-	public User(Long verifyId, String password, String email) {
-		this.userid = verifyId;
-		this.password = password;
-		this.email = email;
-		}
+//	public User(Long verifyId, String password, String email) {
+//		this.userid = verifyId;
+//		this.password = password;
+//		this.email = email;
+//		}
 }
