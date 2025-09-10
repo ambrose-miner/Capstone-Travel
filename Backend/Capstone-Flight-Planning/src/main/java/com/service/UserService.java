@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import com.bean.Flight;
 import com.bean.FlightBooking;
+//import com.bean.Login;
 import com.bean.User;
 import com.repository.UserRepository;
 @Service
@@ -27,13 +28,29 @@ RestTemplate restTemplate;
 		List<User> users = userRepository.findAll();
 		return users;
 		}
+	//****New Method***
+	//Login still returns 404 not found even with known example in the database code builds and
+	//runs has no errors/ no known errors. This had so many issues to get it to convert an Optional<User>to a User
 	public Optional<User> verifyUser(String password, String email) { 
 		Optional<User> userLogin = userRepository.verifyUser(password, email);
-		String url = "http://localhost:8181/Capstone-login/signIn";
-		User userLogin1 = restTemplate.postForObject(url, userLogin, User.class);
-		Optional<User> optionalUserLogin = Optional.ofNullable(userLogin1);
-		return optionalUserLogin;
-		}						
+		String url = "http://localhost:8181/Capstone-login/login";
+		User userCurrent = restTemplate.postForObject(url, userLogin, User.class);
+		return Optional.ofNullable(userCurrent);
+		
+		
+		}	
+//	 ****Reference Code*****
+//	public String signIn(Login login){ 
+//		String url1 = "http://localhost:8282/user/userVerification/{password}/{email}";
+//		
+//		User verifyingUser = restTemplate.postForObject(url1, login, User.class);
+//		
+//		Optional<User> optionalVerifyingUser = Optional.ofNullable(verifyingUser);
+	//String url = "http://localhost:8181/Capstone-login/login";
+	//Optional<User> userLogin = restTemplate.postForObject(url, userLogin, User.class);
+	//User userLoggedIn = Optional.ofNullable(userLogin)
+	//return userLogin1;
+		
 	public List<User> findUsersOnFlight(int flightid){
 		List<User> passengers = userRepository.findUsersOnFlight(flightid);
 		return passengers;

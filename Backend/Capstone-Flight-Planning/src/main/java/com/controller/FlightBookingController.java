@@ -55,17 +55,30 @@ public class FlightBookingController {//Have not updated all Postman requests ju
 		return flightBookingService.findUserFlightBooking(userid);
 	}
 	
-//	@GetMapping (value = "/findUserFlightBookingByTravalDate",produces = MediaType.APPLICATION_JSON_VALUE)
-//	public List<FlightBooking> findUserFlightBookingByTravalDate(
-//			@RequestParam (value = "userid", required = true) Long userid,
-//			@RequestParam (value = "departure", required = false) Date departure, 
-//			@RequestParam (value = "arrival", required = false) Date arrival){ 
-//				String url = "http://localhost:8181/Capstone-Login/login/" + userid;
-//				restTemplate.getForObject(url, User.class);
-//		return flightBookingService.findUserFlightBookingByTravalDate(userid, departure, arrival);
-//	}
-
+	@GetMapping (value = "/findUserFlightBookingAdmin",produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<FlightBooking> findUserFlightBookingAdmin(@RequestParam Long userid) {
+		String url = "http://localhost:8181/Capstone-Login/login/"+ userid;//This line not needed/different Url.
+		restTemplate.getForObject(url, User.class);
+		return flightBookingService.findUserFlightBooking(userid);
+	}
 	
+	@GetMapping (value = "/findUserFlightBookingByTravalDate",produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<FlightBooking> findUserFlightBookingByArrivalDate(
+			@RequestParam (value = "userid", required = true) Long userid, 
+			@RequestParam (value = "arrival", required = false) Date arrival){ 
+				String url = "http://localhost:8181/Capstone-Login/login/" + userid;
+				restTemplate.getForObject(url, User.class);
+			return flightBookingService.findUserFlightBookingByArrivalDate(userid, arrival);
+	}
+
+	@GetMapping (value = "/findUserFlightBookingByTravalDate",produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<FlightBooking> findUserFlightBookingByTravalDate(
+			@RequestParam (value = "userid", required = true) Long userid,
+			@RequestParam (value = "departure", required = false) Date departure){
+				String url = "http://localhost:8181/Capstone-Login/login/" + userid;
+				restTemplate.getForObject(url, User.class);
+			return flightBookingService.findUserFlightBookingByDepartureDate(userid, departure);
+	}
 	
 	@GetMapping (value = "/findBookingsOnFlight",produces = MediaType.APPLICATION_JSON_VALUE)					
 	public List<FlightBooking> findBookingsOnFlight(@RequestParam int flightid) {	

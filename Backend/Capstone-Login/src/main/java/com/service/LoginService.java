@@ -76,7 +76,9 @@ public class LoginService {
 	//http://localhost:8282/user/{password}/{email}
 	public String signIn(Login login){
 		String url1 = "http://localhost:8282/user/userVerification/{password}/{email}";
+		
 		User verifyingUser = restTemplate.postForObject(url1, login, User.class);
+		
 		Optional<User> optionalVerifyingUser = Optional.ofNullable(verifyingUser);
 		
 		if(optionalVerifyingUser.isPresent()) {
