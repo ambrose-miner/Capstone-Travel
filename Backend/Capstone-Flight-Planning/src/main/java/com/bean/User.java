@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -19,7 +20,9 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long userid;
-	@OneToMany(mappedBy = "bookingid")
+	@OneToOne(mappedBy = "user", cascade = CascadeType.ALL)//this is ALL!!
+	private Login login;
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)//not all will revise.
 	private List<FlightBooking>FlightBooking;
 	//private String password;//Components of Login
 	//private String email;//Components of Login
@@ -30,6 +33,12 @@ public class User {
 	public User() {
 		super();
 	}
+	public Login getLogin() {
+		return login;
+	}
+	public void setLogin(Login login) {
+		this.login = login;
+	}
 	public List<FlightBooking> getFlightBooking() {
 		return FlightBooking;
 	}
@@ -39,12 +48,7 @@ public class User {
 	public String getUsertype() {
 		return usertype;
 	}
-//	public String getPassword() {
-//		return password;
-//	}
-//	public void setPassword(String password) {
-//		this.password = password;
-//	}
+
 	public void setUsertype(String usertype) {
 		this.usertype = usertype;
 	}

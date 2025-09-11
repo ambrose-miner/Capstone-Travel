@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bean.Login;
-//import com.bean.User;
 import com.service.LoginService;
 
 @RestController
@@ -24,7 +23,8 @@ public class LoginController {
 	// http://localhost:8181/Capstone-login/signIn  //This should be the correct path and port number.
 	@PostMapping(value = "/signIn",consumes = MediaType.APPLICATION_JSON_VALUE)
 	public String signIn(@RequestBody Login login) {
-		return loginService.signIn(login);
+		String response = loginService.signIn(login);
+		return response;
 	}
 	// http://localhost:8181/Capstone-login/signUp //This should be the correct path and port number.
 	@PostMapping(value = "/signUp",consumes = MediaType.APPLICATION_JSON_VALUE)

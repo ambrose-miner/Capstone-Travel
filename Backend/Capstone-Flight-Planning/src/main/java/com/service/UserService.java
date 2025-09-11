@@ -20,26 +20,26 @@ UserRepository userRepository;
 RestTemplate restTemplate;
 
 	public String createNewUser(User user) {
-		userRepository.save(user);
-		System.out.println("Create New User calling repository");
+			userRepository.save(user);
+			System.out.println("Create New User calling repository");
 		return "You successfully created a new user";
 	}
 	public List<User> findAllUsers() {
-		List<User> users = userRepository.findAll();
+			List<User> users = userRepository.findAll();
 		return users;
 		}
 	//****New Method***
 	public Optional<Long> verifyUser(String password, String email) { 
 		Optional<User> userLogin = userRepository.verifyUser(password, email);
-		if (userLogin.isPresent()){
-		String url = "http://localhost:8282/Capstone-Flight-Planning/userCurrent";
-		User userCurrent = restTemplate.postForObject(url, userLogin, User.class);
-		Long X = userCurrent.getUserid();
-		return X;
-		}else {
-			return Null;
-		}
-		
+			if (userLogin.isPresent()){
+				String url = "http://localhost:8282/Capstone-Flight-Planning/userCurrent";
+				User userCurrent = restTemplate.postForObject(url, userLogin, User.class);
+				Long X = userCurrent.getUserid();
+				return Optional.ofNullable(X);
+			}else {
+				return null;
+			}
+	}	
 	
 //	 ****Reference Code*****
 //	public String signIn(Login login){ 

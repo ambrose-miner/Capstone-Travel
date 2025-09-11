@@ -3,12 +3,15 @@ package com.bean;
 import org.springframework.stereotype.Component;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
 @Component
 public class Login {
-	@Id
+	@Id//needs to be generated value?
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private String loginid;
 	private String password;
 	private String email;
