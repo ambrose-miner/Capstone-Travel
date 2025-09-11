@@ -31,12 +31,16 @@ RestTemplate restTemplate;
 	//****New Method***
 	public Optional<Long> verifyUser(String password, String email) { 
 		Optional<User> userLogin = userRepository.verifyUser(password, email);
+		if (userLogin.isPresent()){
 		String url = "http://localhost:8282/Capstone-Flight-Planning/userCurrent";
-		Long userCurrent = restTemplate.postForObject(url, userLogin, Long.class);
-		return Optional.ofNullable(userCurrent);
+		User userCurrent = restTemplate.postForObject(url, userLogin, User.class);
+		Long X = userCurrent.getUserid();
+		return X;
+		}else {
+			return Null;
+		}
 		
-		
-		}	
+	
 //	 ****Reference Code*****
 //	public String signIn(Login login){ 
 //		String url1 = "http://localhost:8282/user/userVerification/{password}/{email}";
