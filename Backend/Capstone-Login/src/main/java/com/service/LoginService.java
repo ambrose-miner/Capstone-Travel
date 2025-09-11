@@ -76,11 +76,11 @@ public class LoginService {
 	//It does not even need to know the userid just that there is one in the rest template this means 
 	//the rest template only needs to have the userid in it to login and further logic will have user fields put in restTemplate.
 	public String signIn(Login login){
-		String url1 = "http://localhost:8282/user/userVerification/{password}/{email}";
+		String url = "http://localhost:8282/user/userVerification/";
 		
-		Login verifyingUser = restTemplate.postForObject(url1, login, Login.class);
+		Long verifyingUser = restTemplate.postForObject(url, login, Long.class);
 		
-		Optional<Login> optionalVerifyingUser = Optional.ofNullable(verifyingUser);
+		Optional<Long> optionalVerifyingUser = Optional.ofNullable(verifyingUser);
 		
 		if(optionalVerifyingUser.isPresent()) {
 			

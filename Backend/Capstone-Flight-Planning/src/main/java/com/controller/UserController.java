@@ -45,7 +45,7 @@ UserService userService;
 	}
 	//http://localhost:8282/user/{password}/{email}
 	@GetMapping("/userVerification/{password}/{email}")//New method to be called from login service
-	public Optional<User> getUserVerification(		//change from Optional<Long> passing back whole user object
+	public Optional<Long> getUserVerification(		//change from Optional<Long> passing back whole user object
 			@PathVariable String password,
 			@PathVariable String email){
 		return userService.verifyUser(password, email);
