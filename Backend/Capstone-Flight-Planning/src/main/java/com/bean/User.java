@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -20,7 +21,7 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long userid;
-	@OneToOne(mappedBy = "user", cascade = CascadeType.ALL)//this is ALL!!
+	@OneToOne(mappedBy = "user", cascade = CascadeType.ALL,  fetch = FetchType.LAZY)//this is ALL!!
 	private Login login;
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)//not all will revise.
 	private List<FlightBooking>FlightBooking;

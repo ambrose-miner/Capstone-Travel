@@ -51,13 +51,13 @@ public class LoginService {
 	//New attempt at cleaning up and combining above methods no need for checking user type here.
 	//will need to return user or admin page on the front end currentUser object will have that in it.
 	
-//	public String signIn(Login login) {			//This needs to be changed back to Login. create login class...?		
+//	public String signIn(Login login) {				
 //		Optional<Login> varifyingUser = loginRepository.findById(login.getLoginid());
-//		Login currentUser = varifyingLogin.get();
 //		if(varifyingUser.isPresent()) {
 //			String url = "http://localhost:8282/user/userVerification";
-//			Login currentUser = restTemplate.postForObject(url, login, Login.class);//currentUser is flagged as duplicate local variable.
+//			Login currentUser = restTemplate.postForObject(url, login, Login.class);
 //				if(currentUser.getPassword().equals(login.getPassword()) && currentUser.getEmail().equals(login.getEmail())) {
+//					return "Login sucessful";
 //				}else {
 //	
 //						return "Wrong email or password";
@@ -65,9 +65,9 @@ public class LoginService {
 //		}
 //	}
 	public String signIn(Login login){
-			String url = "http://localhost:8282/user/userVerification";
-			Long verifyingUser = restTemplate.postForObject(url, login, Long.class);
-			Optional<Long> optionalVerifyingUser = Optional.ofNullable(verifyingUser);
+			String url = "http://localhost:8282/user/userVerification";					//**********
+			Long verifyingUser = restTemplate.postForObject(url, login, Long.class);//Right here between this line and the next
+			Optional<Long> optionalVerifyingUser = Optional.ofNullable(verifyingUser);// it shit the bed.
 		if(optionalVerifyingUser.isPresent()) {
 			
 			return "Login sucessful";
