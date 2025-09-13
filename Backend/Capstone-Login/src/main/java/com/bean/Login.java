@@ -11,7 +11,7 @@ import jakarta.persistence.Id;
 @Component
 public class Login {
 	@Id//needs to be generated value?
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private String loginid;
 	private String password;
 	private String email;

@@ -16,19 +16,19 @@ public class Login {
 	@Id
 	//@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private String loginid;
-	@OneToOne
-	@JoinColumn(name = "userid")
-	private User user;
+	//@OneToOne
+	//@JoinColumn(name = "userid")
+	//private User user;
 	private String password;
 	private String email;
 	
 	
-	public User getUser() {
-		return user;
-	}
-	public void setUser(User user) {
-		this.user = user;
-	}
+//	public User getUser() {
+//		return user;
+//	}
+//	public void setUser(User user) {
+//		this.user = user;
+//	}
 	public String getLoginid() {
 		return loginid;
 	}

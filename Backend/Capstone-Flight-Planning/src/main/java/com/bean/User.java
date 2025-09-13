@@ -11,6 +11,7 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 
@@ -21,7 +22,8 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long userid;
-	@OneToOne(mappedBy = "user", cascade = CascadeType.ALL,  fetch = FetchType.LAZY)//this is ALL!!
+	@OneToOne( cascade = CascadeType.ALL,  fetch = FetchType.LAZY)//this is ALL!!
+	@JoinColumn(name = "loginid")
 	private Login login;
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)//not all will revise.
 	private List<FlightBooking>FlightBooking;

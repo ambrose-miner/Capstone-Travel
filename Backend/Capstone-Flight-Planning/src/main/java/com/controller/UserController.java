@@ -45,7 +45,7 @@ UserService userService;
 			return userService.findAllUsers();	
 	}
 	//http://localhost:8282/user/{password}/{email}
-	@GetMapping(value = "/userVerification",consumes = MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping(value = "/userVerification",consumes = MediaType.APPLICATION_JSON_VALUE)
 	public Optional<Long> getUserVerification
 				(@RequestBody Login login){
 				//@PathVariable String password,
