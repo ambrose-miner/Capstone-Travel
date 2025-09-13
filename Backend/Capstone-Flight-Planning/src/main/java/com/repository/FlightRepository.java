@@ -2,6 +2,7 @@ package com.repository;
 
 import java.sql.Date;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -15,8 +16,9 @@ import com.bean.User;
 @Repository
 public interface FlightRepository extends JpaRepository<Flight, Integer>{
 	
-	@Query(value = "SELECT * FROM Flight", nativeQuery = true)
-	List<Flight> findByFlightBooking(@Param("flightBooking") FlightBooking flightBooking);
+	@Query(value = "SELECT * FROM Flight WHERE flight.bookingid = :bookingid", nativeQuery = true)//rework for true find by flight booking params
+	Optional<Flight> findByFlightBooking(
+			@Param("bookingid") int bookingid);
 	
 	@Query(value = "SELECT * FROM Flight WHERE flight.origin = :origin AND Flight.destination = :destination", nativeQuery = true)
 	List<Flight> findFlightsByOriginAndDestination(

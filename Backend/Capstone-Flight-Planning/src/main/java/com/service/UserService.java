@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import com.bean.Flight;
 import com.bean.FlightBooking;
+import com.bean.Login;
 //import com.bean.Login;
 import com.bean.User;
 import com.repository.UserRepository;
@@ -30,7 +31,7 @@ RestTemplate restTemplate;
 		}
 	//****New Method***
 	public String verifyUser(String password, String email) { 
-		Optional<User> userLogin = userRepository.verifyUser(password, email);
+		Optional<Login> userLogin = userRepository.verifyUser(password, email);
 			if (userLogin.isPresent()){
 				//String url = "http://localhost:8282/Capstone-Flight-Planning/userCurrent";
 				//User userCurrent = restTemplate.postForObject(url, userLogin, User.class);

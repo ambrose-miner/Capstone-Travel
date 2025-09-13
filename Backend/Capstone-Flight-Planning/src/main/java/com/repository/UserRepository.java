@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import com.bean.Flight;
 import com.bean.FlightBooking;
+import com.bean.Login;
 import com.bean.User;
 
 import jakarta.ws.rs.Path;
@@ -18,7 +19,7 @@ import jakarta.ws.rs.Path;
 public interface UserRepository extends JpaRepository<User, Long>{
 	
 	@Query(value = "SELECT * FROM User WHERE password = :password AND email = :email", nativeQuery = true)
-	Optional<User>  verifyUser(//New method for Login verification re tooled for User object not userid.
+	Optional<Login>  verifyUser(
 						@Param("password") String password,
 						@Param("email")String email);
 	

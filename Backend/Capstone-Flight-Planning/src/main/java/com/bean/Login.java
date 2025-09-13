@@ -14,7 +14,7 @@ import jakarta.persistence.OneToOne;
 @Component
 public class Login {
 	@Id
-	//@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private String loginid;
 	//@OneToOne
 	//@JoinColumn(name = "userid")
@@ -22,7 +22,7 @@ public class Login {
 	private String password;
 	private String email;
 	
-	
+//	
 //	public User getUser() {
 //		return user;
 //	}

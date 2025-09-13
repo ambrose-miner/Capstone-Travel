@@ -2,6 +2,7 @@ package com.service;
 
 import java.sql.Date;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,9 +28,18 @@ public class FlightService {
 		List<Flight> Flights = flightRepository.findAll();
 		return Flights;
 	}
-	public List<Flight> findFlight(FlightBooking flightBooking) { 
-		List<Flight> flightBooked = flightRepository.findByFlightBooking(flightBooking);
-		return flightBooked;
+	public Optional<Flight> findFlight(int flightid) { 
+		Optional<Flight> idedFlight = flightRepository.findById(
+				flightid
+				);
+		return idedFlight;
+	}
+	public Optional<Flight> findFlightByBooking(int bookingid){
+		Optional<Flight> bookedFlight;
+			bookedFlight = flightRepository.findByFlightBooking(
+				bookingid
+				);
+		return bookedFlight;
 	}
 	public List<Flight> searchFlightsByOriginAndDestination(String destination, String origin) {
 		List<Flight> flightPlan = flightRepository.findFlightsByOriginAndDestination(
@@ -55,7 +65,9 @@ public class FlightService {
 		return flightArrivalPlan;
 	}
 	public String deleteFlight(int flightid) {
-		flightRepository.deleteById(flightid);
+		flightRepository.deleteById(
+				flightid
+				);
 		return "flight deleted";
 	}
 }

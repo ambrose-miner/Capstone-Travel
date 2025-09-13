@@ -2,6 +2,7 @@ package com.controller;
 
 import java.sql.Date;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -37,8 +38,14 @@ public class FlightController {//Have not updated all Postman requests just find
 		return flightService.findAllFlights();
 	}
 	@GetMapping (value = "/findFlight",produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<Flight> findFlight(@RequestParam FlightBooking flightBooking) { 
-		return flightService.findFlight(flightBooking);
+	public Optional<Flight> findFlight(
+			@PathVariable int flightid) { 
+		return flightService.findFlight(flightid);
+	}
+	@GetMapping (value = "/findFlightByBooking", produces = MediaType.APPLICATION_JSON_VALUE)
+	public Optional<Flight> findFlightByBooking(
+			@PathVariable int bookingid){
+		return flightService.findFlightByBooking(bookingid);
 	}
 	@GetMapping (value = "/searchFlightsByPlan {destination},{origin}",produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<Flight> searchFlightsByOriginAndDestination(

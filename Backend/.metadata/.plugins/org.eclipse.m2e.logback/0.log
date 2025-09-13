@@ -6246,3 +6246,84 @@ org.eclipse.core.runtime.CoreException: Launch configuration CapstoneLoginApplic
 2025-09-13 14:04:07,931 [Worker-544: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
 2025-09-13 14:04:07,933 [Worker-544: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Projects\Capstone Project\Backend\Capstone-Flight-Planning\src\test\resources
 2025-09-13 14:04:53,919 [Worker-553: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-09-13 14:04:53,924 [Worker-553: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-09-13 14:04:53,926 [Worker-553: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Projects\Capstone Project\Backend\Capstone-Flight-Planning\src\test\resources
+2025-09-13 14:13:03,251 [Worker-557: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-09-13 14:13:03,275 [Worker-557: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-09-13 14:13:03,282 [Worker-557: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Projects\Capstone Project\Backend\Capstone-Flight-Planning\src\test\resources
+2025-09-13 14:13:47,488 [Worker-556: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-09-13 14:13:47,494 [Worker-556: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-09-13 14:13:47,496 [Worker-556: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Projects\Capstone Project\Backend\Capstone-Flight-Planning\src\test\resources
+2025-09-13 14:16:27,405 [Worker-556: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-09-13 14:16:27,410 [Worker-556: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-09-13 14:16:27,412 [Worker-556: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Projects\Capstone Project\Backend\Capstone-Flight-Planning\src\test\resources
+2025-09-13 14:16:45,441 [Worker-558: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-09-13 14:16:45,447 [Worker-558: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-09-13 14:16:45,449 [Worker-558: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Projects\Capstone Project\Backend\Capstone-Flight-Planning\src\test\resources
+2025-09-13 14:16:53,215 [Worker-558: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-09-13 14:16:53,219 [Worker-558: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-09-13 14:16:53,221 [Worker-558: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Projects\Capstone Project\Backend\Capstone-Flight-Planning\src\test\resources
+2025-09-13 14:18:22,157 [Worker-555: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-09-13 14:18:22,165 [Worker-555: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-09-13 14:18:22,168 [Worker-555: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Projects\Capstone Project\Backend\Capstone-Flight-Planning\src\test\resources
+2025-09-13 14:21:09,776 [Worker-555: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-09-13 14:21:09,781 [Worker-555: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-09-13 14:21:09,782 [Worker-555: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Projects\Capstone Project\Backend\Capstone-Flight-Planning\src\test\resources
+2025-09-13 14:21:39,590 [Worker-557: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-09-13 14:21:39,596 [Worker-557: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-09-13 14:21:39,598 [Worker-557: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Projects\Capstone Project\Backend\Capstone-Flight-Planning\src\test\resources
+2025-09-13 14:31:14,183 [Worker-563: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-09-13 14:31:14,191 [Worker-563: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-09-13 14:31:14,192 [Worker-563: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Projects\Capstone Project\Backend\Capstone-Flight-Planning\src\test\resources
+2025-09-13 14:33:41,584 [Worker-563: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-09-13 14:33:41,592 [Worker-563: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-09-13 14:33:41,595 [Worker-563: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Projects\Capstone Project\Backend\Capstone-Flight-Planning\src\test\resources
+2025-09-13 14:35:53,272 [Worker-561: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-09-13 14:35:53,278 [Worker-561: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-09-13 14:35:53,280 [Worker-561: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Projects\Capstone Project\Backend\Capstone-Flight-Planning\src\test\resources
+2025-09-13 14:36:16,934 [Worker-564: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-09-13 14:36:16,939 [Worker-564: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-09-13 14:36:16,941 [Worker-564: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Projects\Capstone Project\Backend\Capstone-Flight-Planning\src\test\resources
+2025-09-13 14:37:23,956 [Worker-563: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-09-13 14:37:23,962 [Worker-563: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-09-13 14:37:23,963 [Worker-563: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Projects\Capstone Project\Backend\Capstone-Flight-Planning\src\test\resources
+2025-09-13 14:37:57,722 [Worker-563: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-09-13 14:37:57,729 [Worker-563: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-09-13 14:37:57,731 [Worker-563: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Projects\Capstone Project\Backend\Capstone-Flight-Planning\src\test\resources
+2025-09-13 14:38:13,714 [Worker-561: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-09-13 14:38:13,719 [Worker-561: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-09-13 14:38:13,721 [Worker-561: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Projects\Capstone Project\Backend\Capstone-Flight-Planning\src\test\resources
+2025-09-13 14:39:15,412 [Worker-557: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-09-13 14:39:15,416 [Worker-557: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-09-13 14:39:15,418 [Worker-557: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Projects\Capstone Project\Backend\Capstone-Flight-Planning\src\test\resources
+2025-09-13 14:41:08,799 [Worker-563: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-09-13 14:41:08,806 [Worker-563: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-09-13 14:41:08,807 [Worker-563: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Projects\Capstone Project\Backend\Capstone-Flight-Planning\src\test\resources
+2025-09-13 14:41:48,052 [Worker-565: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-09-13 14:41:48,059 [Worker-565: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-09-13 14:41:48,061 [Worker-565: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Projects\Capstone Project\Backend\Capstone-Flight-Planning\src\test\resources
+2025-09-13 14:57:58,846 [Worker-566: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-09-13 14:57:58,854 [Worker-566: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-09-13 14:57:58,856 [Worker-566: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Projects\Capstone Project\Backend\Capstone-Flight-Planning\src\test\resources
+2025-09-13 15:05:30,233 [Worker-572: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-09-13 15:05:30,240 [Worker-572: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-09-13 15:05:30,242 [Worker-572: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Projects\Capstone Project\Backend\Capstone-Flight-Planning\src\test\resources
+2025-09-13 15:21:26,495 [Worker-583: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-09-13 15:21:26,504 [Worker-583: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-09-13 15:21:26,506 [Worker-583: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Projects\Capstone Project\Backend\Capstone-Flight-Planning\src\test\resources
+2025-09-13 15:23:07,854 [Worker-573: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-09-13 15:23:07,860 [Worker-573: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-09-13 15:23:07,862 [Worker-573: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Projects\Capstone Project\Backend\Capstone-Flight-Planning\src\test\resources
+2025-09-13 15:25:02,749 [Worker-573: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-09-13 15:25:02,758 [Worker-573: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-09-13 15:25:02,760 [Worker-573: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Projects\Capstone Project\Backend\Capstone-Flight-Planning\src\test\resources
+2025-09-13 15:25:14,445 [Worker-588: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-09-13 15:25:14,454 [Worker-588: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-09-13 15:25:14,457 [Worker-588: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Projects\Capstone Project\Backend\Capstone-Flight-Planning\src\test\resources
+2025-09-13 15:27:09,616 [Worker-589: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-09-13 15:27:09,622 [Worker-589: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-09-13 15:27:09,623 [Worker-589: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Projects\Capstone Project\Backend\Capstone-Flight-Planning\src\test\resources
+2025-09-13 15:30:32,655 [Worker-573: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-09-13 15:30:32,661 [Worker-573: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-09-13 15:30:32,663 [Worker-573: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Projects\Capstone Project\Backend\Capstone-Flight-Planning\src\test\resources
+2025-09-13 15:55:34,049 [Worker-596: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
