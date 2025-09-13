@@ -20,13 +20,13 @@ public class LoginController {
 	LoginService loginService;
 
 	
-	// http://localhost:8181/Capstone-login/signIn  //This should be the correct path and port number.
+	// http://localhost:8181/Capstone-login/login/signIn  //This should be the correct path and port number.
 	@PostMapping(value = "/signIn",consumes = MediaType.APPLICATION_JSON_VALUE)
 	public String signIn(@RequestBody Login login) {
 		String response = loginService.signIn(login);
 		return response;
 	}
-	// http://localhost:8181/Capstone-login/signUp //This should be the correct path and port number.
+	// http://localhost:8181/Capstone-login/login/signUp //This should be the correct path and port number.
 	@PostMapping(value = "/signUp",consumes = MediaType.APPLICATION_JSON_VALUE)
 	public String signUp(@RequestBody Login login) {
 		return loginService.signUp(login);

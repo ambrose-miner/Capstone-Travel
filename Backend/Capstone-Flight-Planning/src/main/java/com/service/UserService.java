@@ -32,12 +32,12 @@ RestTemplate restTemplate;
 	public String verifyUser(String password, String email) { 
 		Optional<User> userLogin = userRepository.verifyUser(password, email);
 			if (userLogin.isPresent()){
-				String url = "http://localhost:8282/Capstone-Flight-Planning/userCurrent";
-				User userCurrent = restTemplate.postForObject(url, userLogin, User.class);
-				String X = ""+userCurrent.getUserid();
-				return X;//Optional.ofNullable(X);
+				//String url = "http://localhost:8282/Capstone-Flight-Planning/userCurrent";
+				//User userCurrent = restTemplate.postForObject(url, userLogin, User.class);
+				//String X = ""+userCurrent.getUserid();
+				return "1";//Successful Login
 			}else {
-				return "No User";
+				return "-1";//Failed Login
 			}
 	}	
 	

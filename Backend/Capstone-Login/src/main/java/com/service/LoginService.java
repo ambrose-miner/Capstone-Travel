@@ -69,16 +69,23 @@ public class LoginService {
 			System.out.println("**********1");
 			String verifyingUser = restTemplate.postForObject(url, login, String.class);
 			System.out.println("***********2");
-			Optional<String> optionalVerifyingUser = Optional.ofNullable(verifyingUser);
-		if(optionalVerifyingUser.isPresent()) {
-			
-			return "Login sucessful";
-		}else {
-			return "Wrong email or password";
+			Optional<String> optionalVerifyingUser = Optional.of(verifyingUser);
+			String verifyMessage = Answer(optionalVerifyingUser);
+			return verifyMessage;
+			}
+		String
+		Answer(Optional<String> optionalVerifyUser) {
+			if (optionalVerifyUser.isEmpty()) {
+				return "Unknown Error contact your Administrator";
+			}
+		int messageNum = Integer.parseInt(optionalVerifyUser.get());
 					
+							if (messageNum > 0) return "Successful Login";
+								
+							else if (messageNum < 0) return "Incrorrect email or Password";
+								
+							else return "Error Value";
 		}
-		
-	}
 	
 		//String url2 = "http://localhost:8282/user";
 		//Optional<Long> varifyingUser = restTemplate.getForObject(url2, User.class);
