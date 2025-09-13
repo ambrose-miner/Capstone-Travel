@@ -26,7 +26,7 @@ import com.service.UserService;
 @CrossOrigin
 @RestController
 @RequestMapping("/user")
-public class UserController {//Have not updated all Postman requests just findAllUsers and createNewUser
+public class UserController {
 @Autowired					
 RestTemplate restTemplate;
 @Autowired
@@ -46,10 +46,8 @@ UserService userService;
 	}
 	//http://localhost:8282/user/{password}/{email}
 	@PostMapping(value = "/userVerification",consumes = MediaType.APPLICATION_JSON_VALUE)
-	public Optional<Long> getUserVerification
+	public String getUserVerification
 				(@RequestBody Login login){
-				//@PathVariable String password,
-				//@PathVariable String email){
 				String password = login.getPassword();
 				String email = login.getEmail();	
 			return userService.verifyUser(password, email);
@@ -72,11 +70,9 @@ UserService userService;
 				restTemplate.getForObject(url, User.class);
 			return userService.findUserArrivalDates(userid);
 	}
-	//User delete account/ unsign-up
-	@DeleteMapping(value = "/deleteUser",consumes = MediaType.APPLICATION_JSON_VALUE)
-	public String deleteUserById(@RequestParam Long userid) {
-				String url = "http://localhost:8181/Capstone-Login/login/"+ userid;
-				restTemplate.getForObject(url, User.class);
+	
+	@DeleteMapping(value = "/deleteUser/{userid}")
+	public String deleteUserById(@PathVariable Long userid) {
 				String deleteMessage = userService.deleteUser(userid);
 			return deleteMessage;
 	}

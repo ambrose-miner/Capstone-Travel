@@ -29,15 +29,15 @@ RestTemplate restTemplate;
 		return users;
 		}
 	//****New Method***
-	public Optional<Long> verifyUser(String password, String email) { 
+	public String verifyUser(String password, String email) { 
 		Optional<User> userLogin = userRepository.verifyUser(password, email);
 			if (userLogin.isPresent()){
 				String url = "http://localhost:8282/Capstone-Flight-Planning/userCurrent";
 				User userCurrent = restTemplate.postForObject(url, userLogin, User.class);
-				Long X = userCurrent.getUserid();
-				return Optional.ofNullable(X);
+				String X = ""+userCurrent.getUserid();
+				return X;//Optional.ofNullable(X);
 			}else {
-				return null;
+				return "No User";
 			}
 	}	
 	

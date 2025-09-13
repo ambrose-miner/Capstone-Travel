@@ -67,9 +67,9 @@ public class LoginService {
 	public String signIn(Login login){
 			String url = "http://localhost:8282/user/userVerification";
 			System.out.println("**********1");
-			Long verifyingUser = restTemplate.postForObject(url, login, Long.class);
-			System.out.println("***********2");//Right here between this line and the next
-			Optional<Long> optionalVerifyingUser = Optional.ofNullable(verifyingUser);// it shit the bed.
+			String verifyingUser = restTemplate.postForObject(url, login, String.class);
+			System.out.println("***********2");
+			Optional<String> optionalVerifyingUser = Optional.ofNullable(verifyingUser);
 		if(optionalVerifyingUser.isPresent()) {
 			
 			return "Login sucessful";

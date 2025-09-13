@@ -8,6 +8,7 @@ import org.springframework.web.client.RestTemplate;
 public class RestTemplateConfig {
 	@Bean
 	public RestTemplate restTemplate() {
+		System.out.println("************Made Rest Template Login");
 		return new RestTemplate();
 	}
 
