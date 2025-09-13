@@ -1,5 +1,6 @@
 package com.controller;
 
+import java.sql.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,21 +40,29 @@ public class FlightController {//Have not updated all Postman requests just find
 	public List<Flight> findFlight(@RequestParam FlightBooking flightBooking) { 
 		return flightService.findFlight(flightBooking);
 	}
-	@GetMapping (value = "/searchFlightsByPlan",produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<Flight> searchFlightsByOriginAndDestination(@RequestParam Flight flight) {
-		return flightService.searchFlightsByOriginAndDestination(flight);
+	@GetMapping (value = "/searchFlightsByPlan {destination},{origin}",produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<Flight> searchFlightsByOriginAndDestination(
+			@PathVariable String destination,
+			@PathVariable String origin) {
+		return flightService.searchFlightsByOriginAndDestination(destination, origin);
 	}
 	@GetMapping (value = "/searchFlightsByPlanAndDepartureDate",produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<Flight> searchFlightsByOriginAndDestinationAndDepartureDate(@RequestParam Flight flight) {
-		return flightService.searchFlightsByOriginAndDestinationAndDepartureDate(flight);
+	public List<Flight> searchFlightsByOriginAndDestinationAndDepartureDate(
+			@PathVariable String origin,
+			@PathVariable String destination,
+			@PathVariable Date departure){
+		return flightService.searchFlightsByOriginAndDestinationAndDepartureDate(origin, destination, departure);
 	}
 	@GetMapping (value = "/searchFlightsByPlanAndArrivalDate",produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<Flight> searchFlightsByOriginAndDestinationAndArrivalDate(@RequestParam Flight flight) {
-		return flightService.searchFlightsByOriginAndDestinationAndArrivalDate(flight);
+	public List<Flight> searchFlightsByOriginAndDestinationAndArrivalDate(
+			@PathVariable String origin,
+			@PathVariable String destination,
+			@PathVariable Date arrival){
+		return flightService.searchFlightsByOriginAndDestinationAndArrivalDate(origin, destination, arrival);
 	}
 	@DeleteMapping (value = "/deleteFlight" ,consumes = MediaType.APPLICATION_JSON_VALUE)
-	public String deleteFlight(Flight flight) {
-		String deleteMessage = flightService.deleteFlight(flight);
+	public String deleteFlight(int flightid) {
+		String deleteMessage = flightService.deleteFlight(flightid);
 		return deleteMessage;
 	}
 }

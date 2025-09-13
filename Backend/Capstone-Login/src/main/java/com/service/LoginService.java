@@ -75,9 +75,9 @@ public class LoginService {
 			}
 		String
 		Answer(Optional<String> optionalVerifyUser) {
-			if (optionalVerifyUser.isEmpty()) {
-				return "Unknown Error contact your Administrator";
-			}
+			//if (optionalVerifyUser.isEmpty()) {
+				//return "Unknown Error contact your Administrator";
+			//}
 		int messageNum = Integer.parseInt(optionalVerifyUser.get());
 					
 							if (messageNum > 0) return "Successful Login";

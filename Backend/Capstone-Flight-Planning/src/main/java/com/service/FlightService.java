@@ -31,31 +31,31 @@ public class FlightService {
 		List<Flight> flightBooked = flightRepository.findByFlightBooking(flightBooking);
 		return flightBooked;
 	}
-	public List<Flight> searchFlightsByOriginAndDestination(Flight flight) {
+	public List<Flight> searchFlightsByOriginAndDestination(String destination, String origin) {
 		List<Flight> flightPlan = flightRepository.findFlightsByOriginAndDestination(
-				flight.getOrigin(),
-				flight.getDestination()
+				destination,
+				origin
 				);
 		return flightPlan;
 	}
-	public List<Flight> searchFlightsByOriginAndDestinationAndDepartureDate(Flight flight){
+	public List<Flight> searchFlightsByOriginAndDestinationAndDepartureDate(String origin, String destination, Date departure){
 		List<Flight> flightDeparturePlan = flightRepository.findFlightsByOriginAndDestinationAndDepartureDate(
-				flight.getOrigin(),
-				flight.getDestination(),
-				flight.getDeparture()
+				origin,
+				destination,
+				departure
 				);
 		return flightDeparturePlan;
 	}
-	public List<Flight> searchFlightsByOriginAndDestinationAndArrivalDate(Flight flight){
+	public List<Flight> searchFlightsByOriginAndDestinationAndArrivalDate(String origin, String destination, Date arrival){
 		List<Flight> flightArrivalPlan = flightRepository.findFlightsByOriginAndDestinationAndArrivalDate(
-				flight.getOrigin(),
-				flight.getDestination(),
-				flight.getArrival()
+				origin,
+				destination,
+				arrival
 				);
 		return flightArrivalPlan;
 	}
-	public String deleteFlight(Flight flight) {
-		flightRepository.delete(flight);
+	public String deleteFlight(int flightid) {
+		flightRepository.deleteById(flightid);
 		return "flight deleted";
 	}
 }
