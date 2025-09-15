@@ -1,10 +1,13 @@
 package com.bean;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -19,9 +22,9 @@ public class Flight {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int flightid;
-	@OneToMany(mappedBy = "bookingid")
+	@OneToMany(mappedBy = "bookingid", cascade = CascadeType.ALL)
+	private List<FlightBooking> flightBooking = new ArrayList<>();
 	
-	private List<FlightBooking> FlightBooking; 
 	private String origin;
 	private String destination;
 	private Date arrival;

@@ -24,6 +24,7 @@ public class FlightBooking {
 		@JoinColumn(name = "userid")
 		private User user;
 		@ManyToOne
+		@JoinColumn(name = "flightid")
 		private Flight flight;
 		
 	

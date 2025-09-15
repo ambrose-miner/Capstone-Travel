@@ -14,10 +14,7 @@ import com.repository.FlightBookingRepository;
 public class FlightBookingService {
 	@Autowired
 	FlightBookingRepository flightBookingRepository;
-//	@Autowired											//New /Speculative
-//	public FlightBookingService (RestTemplate restTemplate) {//New
-//		this.restTemplate = restTemplate;//New
-		
+
 	@Autowired
 	RestTemplate restTemplate;
 	

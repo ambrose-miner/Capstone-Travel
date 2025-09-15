@@ -2,7 +2,7 @@ package com.controller;
 import com.service.FlightBookingService;
 import com.service.FlightService;
 
-
+import jakarta.ws.rs.PathParam;
 
 import java.sql.Date;
 import java.util.List;
@@ -37,12 +37,15 @@ public class FlightBookingController {
 	RestTemplate restTemplate;
 	
 	@PostMapping(value = "/bookFlight",consumes = MediaType.APPLICATION_JSON_VALUE)//This works but does not have user attached
-	public String bookFlight(@RequestBody FlightBooking flightBooking) {	
+	public String bookFlight(
+			@RequestBody FlightBooking flightBooking,
+			@RequestParam("userid") Long userid)
+			 {	
 		System.out.println("Call book flight method");
 		String url = "http://localhost:8181/Capstone-Login/login/";
 		Long userid = restTemplate.getForObject(url, Long.class);//getting userid from rest template need to attach to flight booking
-		String Message = flightBookingService.bookFlight(flightBooking, userid);
-		 return Message;
+		String Message = flightBookingService.bookFlight(flightBooking, userid);//userid is error on ln46 "Duplicate local variable userid"
+		 return Message;														//this doesnt get user id from login either...
 	}
 	
 	@GetMapping(value = "/findAllFlightBooking",produces = MediaType.APPLICATION_JSON_VALUE)
@@ -50,18 +53,18 @@ public class FlightBookingController {
 		return flightBookingService.findAllFlightBooking();
 	}
 	
-	@GetMapping (value = "/findUserFlightBooking{userid}",produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<FlightBooking> findUserFlightBooking(//Required path variable 'userid' is not present.",
-			@PathVariable Long userid) {//Required path variable 'userid' is not present.
-		String url = "http://localhost:8181/Capstone-Login/login/"+ userid;
-		restTemplate.getForObject(url, User.class);						
+	@GetMapping (value = "/findUserFlightBooking/{userid}",produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<FlightBooking> findUserFlightBooking(
+			@PathVariable("userid") Long userid) {//works but returns empty....
+		//String url = "http://localhost:8181/Capstone-Login/login/"+ userid;
+		//restTemplate.getForObject(url, User.class);						
 		return flightBookingService.findUserFlightBooking(userid);
 	}
 	
-	@GetMapping (value = "/findUserFlightBookingAdmin",produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping (value = "/findUserFlightBookingAdmin/{userid}",produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<FlightBooking> findUserFlightBookingAdmin(
-			@RequestParam Long userid) {
-		String url = "http://localhost:8181/Capstone-Login/login/"+ userid;
+			@PathVariable("userid") Long userid) {
+		String url = "http://localhost:8181/Capstone-Login/login/"+ userid;//this is not getting the userid from login
 		restTemplate.getForObject(url, User.class);
 		return flightBookingService.findUserFlightBooking(userid);
 	}
