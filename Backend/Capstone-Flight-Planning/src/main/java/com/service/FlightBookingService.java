@@ -12,18 +12,16 @@ import com.repository.FlightBookingRepository;
 
 @Service
 public class FlightBookingService {
-	//private final RestTemplate restTemplate;//New
 	@Autowired
 	FlightBookingRepository flightBookingRepository;
 //	@Autowired											//New /Speculative
 //	public FlightBookingService (RestTemplate restTemplate) {//New
 //		this.restTemplate = restTemplate;//New
 		
-	//***Old Version
 	@Autowired
 	RestTemplate restTemplate;
 	
-	public String bookFlight(FlightBooking flightBooking) {
+	public String bookFlight(FlightBooking flightBooking, Long userid) {//Test to see if this works remove old bookings.
 		flightBookingRepository.save(flightBooking);
 		System.out.println("book flight calling repository");
 		return "Your flight has been booked successfully";
@@ -39,7 +37,7 @@ public class FlightBookingService {
 		return userBookings;												
 	}
 	public List<FlightBooking> findUserFlightBookingAdmin(Long userid) {
-		List<FlightBooking> userBookings = flightBookingRepository.findAllById(userid);
+		List<FlightBooking> userBookings = flightBookingRepository.findAllById(userid);//Admin
 		return userBookings;
 	}
 	public List<FlightBooking> findUserFlightBookingByDepartureDate(Long userid, Date departure){
@@ -50,13 +48,10 @@ public class FlightBookingService {
 		List<FlightBooking> userBookedTravel = flightBookingRepository.findUserFlightBookingByArrivalDate(userid, arrival);
 		return userBookedTravel;
 	}
-	public List<FlightBooking> findBookingsOnFlightById(int flightid) {
-		List<FlightBooking> flightBookings = flightBookingRepository.findBookingsOnFlightById(flightid);
-		return flightBookings;
-	}
+	
 	public String deleteFlightBooking(FlightBooking flightBooking) {
 		flightBookingRepository.delete(flightBooking);
-		return "Flight booking has been deleted";
+		return "Flight booking has been canceled";
 	}
 }
 	

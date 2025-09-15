@@ -29,10 +29,6 @@ public interface FlightBookingRepository extends JpaRepository<FlightBooking, In
 			@Param("userid")Long userid, 
 			@Param("arrival") Date arrival);		
 	
-	@Query(value = "SELECT * FROM Flight_Booking WHERE flightid = :flightid",
-			nativeQuery = true)
-	List<FlightBooking> findBookingsOnFlightById(
-			@Param("flight") int flightid);
 	
 	
 }

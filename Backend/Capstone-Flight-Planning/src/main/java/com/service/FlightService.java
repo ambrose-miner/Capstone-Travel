@@ -64,6 +64,12 @@ public class FlightService {
 				);
 		return flightArrivalPlan;
 	}
+	public List<FlightBooking> findBookingsOnFlightById(int flightid) {//Admin
+		List<FlightBooking> flightBookings = flightRepository.findBookingsOnFlightById(
+				flightid
+				);
+		return flightBookings;
+	}
 	public String deleteFlight(int flightid) {
 		flightRepository.deleteById(
 				flightid

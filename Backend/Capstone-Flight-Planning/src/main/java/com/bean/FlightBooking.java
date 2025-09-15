@@ -24,7 +24,6 @@ public class FlightBooking {
 		@JoinColumn(name = "userid")
 		private User user;
 		@ManyToOne
-		@JoinColumn(name = "flightid")
 		private Flight flight;
 		
 	
@@ -36,13 +35,13 @@ public class FlightBooking {
 			this.user = user;
 		}
 
-		public Flight getFlight() {
-			return flight;
-		}
-
-		public void setFlight(Flight flight) {
-			this.flight = flight;
-		}
+//		public Flight getFlight() {
+//			return flight;
+//		}
+//
+//		public void setFlight(Flight flight) {
+//			this.flight = flight;
+//		}
 
 		public int getBookingid() {
 			return bookingid;

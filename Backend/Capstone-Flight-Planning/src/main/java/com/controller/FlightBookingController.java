@@ -15,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,10 +36,12 @@ public class FlightBookingController {
 	@Autowired
 	RestTemplate restTemplate;
 	
-	@PostMapping(value = "/bookFlight",consumes = MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping(value = "/bookFlight",consumes = MediaType.APPLICATION_JSON_VALUE)//This works but does not have user attached
 	public String bookFlight(@RequestBody FlightBooking flightBooking) {	
 		System.out.println("Call book flight method");
-		String Message = flightBookingService.bookFlight(flightBooking);
+		String url = "http://localhost:8181/Capstone-Login/login/";
+		Long userid = restTemplate.getForObject(url, Long.class);//getting userid from rest template need to attach to flight booking
+		String Message = flightBookingService.bookFlight(flightBooking, userid);
 		 return Message;
 	}
 	
@@ -47,17 +50,18 @@ public class FlightBookingController {
 		return flightBookingService.findAllFlightBooking();
 	}
 	
-	@GetMapping (value = "/findUserFlightBooking",produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<FlightBooking> findUserFlightBooking(@RequestParam Long userid) {
-		//String url = "http://localhost:8181/Capstone-Login/signIn/"+ userid; //login service @RequestMapping("/login") change?
+	@GetMapping (value = "/findUserFlightBooking{userid}",produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<FlightBooking> findUserFlightBooking(//Required path variable 'userid' is not present.",
+			@PathVariable Long userid) {//Required path variable 'userid' is not present.
 		String url = "http://localhost:8181/Capstone-Login/login/"+ userid;
 		restTemplate.getForObject(url, User.class);						
 		return flightBookingService.findUserFlightBooking(userid);
 	}
 	
 	@GetMapping (value = "/findUserFlightBookingAdmin",produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<FlightBooking> findUserFlightBookingAdmin(@RequestParam Long userid) {
-		String url = "http://localhost:8181/Capstone-Login/login/"+ userid;//This line not needed/different Url.
+	public List<FlightBooking> findUserFlightBookingAdmin(
+			@RequestParam Long userid) {
+		String url = "http://localhost:8181/Capstone-Login/login/"+ userid;
 		restTemplate.getForObject(url, User.class);
 		return flightBookingService.findUserFlightBooking(userid);
 	}
@@ -78,11 +82,6 @@ public class FlightBookingController {
 				String url = "http://localhost:8181/Capstone-Login/login/" + userid;
 				restTemplate.getForObject(url, User.class);
 			return flightBookingService.findUserFlightBookingByDepartureDate(userid, departure);
-	}
-	
-	@GetMapping (value = "/findBookingsOnFlight",produces = MediaType.APPLICATION_JSON_VALUE)					
-	public List<FlightBooking> findBookingsOnFlight(@RequestParam int flightid) {	
-		return flightBookingService.findBookingsOnFlightById(flightid);
 	}
 	
 	@DeleteMapping(value = "/deleteFlightBooking",consumes = MediaType.APPLICATION_JSON_VALUE)
