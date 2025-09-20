@@ -34,24 +34,40 @@ private HttpSession session;
 			List<User> users = userRepository.findAll();
 		return users;
 		}
-	//****New Method***
-	public String verifyUser(String password, String email) { 
+	//@@@@@@@@@@Second Attempt@@@@@@@@@@@
+//	public String verifyUser(String password, String email) { 
+//		Optional<Login> userLogin = userRepository.verifyUser(password, email);
+//			if (userLogin.isPresent()){
+//				String url = "http://localhost:8282/Capstone-Flight-Planning/userCurrent";
+//				User userCurrent = restTemplate.postForObject(url, userLogin, User.class);
+//				//String X = ""+userCurrent.getUserid();
+//				storeDataInSession(userCurrent);
+//				//*****This is a first attempt to put user in to the session
+//				//*****When hit from postman always returns -1 even when there is a user with
+//				//*****corresponding email and password
+//				return "1";//Successful Login
+//			}else {
+//				return "-1";//Failed Login
+//			}
+//	}	
+//	&&&&&&&&&&&&&&&&&&&&&&&&&&&Added to my Second Attempt&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+//	public void storeDataInSession(User user) {session.setAttribute("user", user);
+//	}public User retrieveDataFromSession() {return (User) session.getAttribute("user");
+//	}
+	//******************************New Attempt********************************************
+	public void verifyUser(String password, String email) { 
 		Optional<Login> userLogin = userRepository.verifyUser(password, email);
 			if (userLogin.isPresent()){
-				String url = "http://localhost:8282/Capstone-Flight-Planning/userCurrent";
-				User userCurrent = restTemplate.postForObject(url, userLogin, User.class);
-				String X = ""+userCurrent.getUserid();
-				storeDataInSession(userCurrent);
-				//*****This is a first attempt to put user in to the session
-				return "1"+ X;//Successful Login
+				String url1 = "http://localhost:8181/Capstone-Login/successfulLogin";
+				User userCurrent = restTemplate.postForObject(url1, userLogin, User.class);
+				//storeDataInSession(userCurrent);
 			}else {
-				return "-1";//Failed Login
+				String url2 = "http://localhost:8181/Capstone-Login/faliedLogin";
+				User notSignedUp = restTemplate.postForObject(url2, userLogin, User.class);
 			}
-	}	
-	public void storeDataInSession(User user) {session.setAttribute("user", user);
-	}public User retrieveDataFromSession() {return (User) session.getAttribute("user");
-	}
-	
+			return;//userCurrent v.s. notSighnedUp.....if I'm not using those values this should be
+			//able to be simplified....???
+		}
 //	 ****Reference Code*****
 //	public String signIn(Login login){ 
 //		String url1 = "http://localhost:8282/user/userVerification/{password}/{email}";
