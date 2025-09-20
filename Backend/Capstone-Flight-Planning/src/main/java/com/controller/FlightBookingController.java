@@ -43,11 +43,12 @@ public class FlightBookingController {
 			 {	
 		System.out.println("Call book flight method");
 		String url = "http://localhost:8181/Capstone-Login/login/";
-		Long userid = restTemplate.getForObject(url, Long.class);//getting userid from rest template need to attach to flight booking
-		String Message = flightBookingService.bookFlight(flightBooking, userid);//userid is error on ln46 "Duplicate local variable userid"
-		 return Message;														//this doesnt get user id from login either...
-	}
-	
+		Long X = restTemplate.getForObject(url, Long.class);
+		String Message = flightBookingService.bookFlight(flightBooking, userid);
+		 return Message + X;														
+	}//getting userid from rest template need to attach to flight booking
+	//userid is error on ln46 "Duplicate local variable userid"
+	//this doesnt get user id from login either...
 	@GetMapping(value = "/findAllFlightBooking",produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<FlightBooking> findAllFlightBooking() {
 		return flightBookingService.findAllFlightBooking();
@@ -69,19 +70,19 @@ public class FlightBookingController {
 		return flightBookingService.findUserFlightBooking(userid);
 	}
 	
-	@GetMapping (value = "/findUserFlightBookingByArrivalDate",produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping (value = "/findUserFlightBookingByArrivalDate/{userid}/{arrival}",produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<FlightBooking> findUserFlightBookingByArrivalDate(
-			@RequestParam (value = "userid", required = true) Long userid, 
-			@RequestParam (value = "arrival", required = false) Date arrival){ 
+			@PathVariable (value = "userid", required = true) Long userid, 
+			@PathVariable (value = "arrival", required = false) Date arrival){ 
 				String url = "http://localhost:8181/Capstone-Login/login/" + userid;
 				restTemplate.getForObject(url, User.class);
 			return flightBookingService.findUserFlightBookingByArrivalDate(userid, arrival);
 	}
 
-	@GetMapping (value = "/findUserFlightBookingByDepartureDate",produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping (value = "/findUserFlightBookingByDepartureDate/{userid}/{departure}",produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<FlightBooking> findUserFlightBookingByTravalDate(
-			@RequestParam (value = "userid", required = true) Long userid,
-			@RequestParam (value = "departure", required = false) Date departure){
+			@PathVariable (value = "userid", required = true) Long userid,
+			@PathVariable (value = "departure", required = false) Date departure){
 				String url = "http://localhost:8181/Capstone-Login/login/" + userid;
 				restTemplate.getForObject(url, User.class);
 			return flightBookingService.findUserFlightBookingByDepartureDate(userid, departure);

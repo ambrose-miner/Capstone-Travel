@@ -13,12 +13,17 @@ import com.bean.Login;
 //import com.bean.Login;
 import com.bean.User;
 import com.repository.UserRepository;
+
+import jakarta.servlet.http.HttpSession;
 @Service
 public class UserService {
 @Autowired
 UserRepository userRepository;
 @Autowired
 RestTemplate restTemplate;
+@Autowired
+private HttpSession session;
+
 
 	public String createNewUser(User user) {
 			userRepository.save(user);
@@ -33,14 +38,19 @@ RestTemplate restTemplate;
 	public String verifyUser(String password, String email) { 
 		Optional<Login> userLogin = userRepository.verifyUser(password, email);
 			if (userLogin.isPresent()){
-				//String url = "http://localhost:8282/Capstone-Flight-Planning/userCurrent";
-				//User userCurrent = restTemplate.postForObject(url, userLogin, User.class);
-				//String X = ""+userCurrent.getUserid();
-				return "1";//Successful Login
+				String url = "http://localhost:8282/Capstone-Flight-Planning/userCurrent";
+				User userCurrent = restTemplate.postForObject(url, userLogin, User.class);
+				String X = ""+userCurrent.getUserid();
+				storeDataInSession(userCurrent);
+				//*****This is a first attempt to put user in to the session
+				return "1"+ X;//Successful Login
 			}else {
 				return "-1";//Failed Login
 			}
 	}	
+	public void storeDataInSession(User user) {session.setAttribute("user", user);
+	}public User retrieveDataFromSession() {return (User) session.getAttribute("user");
+	}
 	
 //	 ****Reference Code*****
 //	public String signIn(Login login){ 
