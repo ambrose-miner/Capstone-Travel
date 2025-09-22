@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.client.RestTemplate;
 import com.bean.Flight;
 import com.bean.FlightBooking;
@@ -19,11 +20,12 @@ import jakarta.servlet.http.HttpSession;
 public class UserService {
 @Autowired
 UserRepository userRepository;
-@Autowired
+@Autowired 
 RestTemplate restTemplate;
+
 @Autowired
 private HttpSession session;
-
+//needs getter and setter?
 
 	public String createNewUser(User user) {
 			userRepository.save(user);
@@ -54,7 +56,7 @@ private HttpSession session;
 //	public void storeDataInSession(User user) {session.setAttribute("user", user);
 //	}public User retrieveDataFromSession() {return (User) session.getAttribute("user");
 //	}
-	//******************************New Attempt********************************************
+	//******************************Third Attempt********************************************
 	public void verifyUser(String password, String email) { 
 		Optional<Login> userLogin = userRepository.verifyUser(password, email);
 			if (userLogin.isPresent()){
@@ -68,6 +70,11 @@ private HttpSession session;
 			return;//userCurrent v.s. notSighnedUp.....if I'm not using those values this should be
 			//able to be simplified....???
 		}
+	//**********************************Fourth Attempt*********************************************
+	@PostMapping("/verifyUserLogin")
+	public String verifyUserLogin() {
+		return "Login Successful";
+	}
 //	 ****Reference Code*****
 //	public String signIn(Login login){ 
 //		String url1 = "http://localhost:8282/user/userVerification/{password}/{email}";

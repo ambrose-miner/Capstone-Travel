@@ -4,6 +4,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.client.RestTemplate;
 
 import com.bean.Login;
@@ -14,8 +15,12 @@ public class LoginService {
 
 	@Autowired
 	LoginRepository loginRepository;
-	@Autowired
+	//@Autowired //Removed on Fourth Attempt
 	RestTemplate restTemplate;
+	public LoginService(RestTemplate restTemplate) {
+		this.restTemplate = restTemplate;
+	}
+	//Lines 20 - 22 added on Fourth Attempt
 	
 //^^^^^^^^^^^^^^^^^^^^^^^^^^^^Professors Code^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 //	public String signIn(Login login) {		
@@ -91,7 +96,7 @@ public class LoginService {
 //								
 //							else return "Error Value";
 //		}
-	//*****************************3 new methods*******************************
+	//*****************************3 new methods for Third Attempt*******************************
 	//sign in will just call the method in user service
 	//The other two methods will return messages depending on whitch one is called from user service.
 	//No logic required in Login service and no user info needed all taken care of in user service.
@@ -114,7 +119,13 @@ public class LoginService {
 				return "Incrorrect email or Password";
 			}
 		}
-
+//*****************************************Fourth Attempt*********************************************
+	public String verifyUser() {
+		String url = "http://localhost:8282/verifyUserLogin";
+		String response = restTemplate.postForObject(url, null, String.class);
+		return "Login " + response;
+	}
+		
 	public String signUp(Login login) { 
 		Optional<Login> result = loginRepository.findById(login.getPassword());//Id should be userid not password.
 		if(result.isPresent()) {
