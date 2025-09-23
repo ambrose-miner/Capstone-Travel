@@ -57,17 +57,19 @@ private HttpSession session;
 //	}public User retrieveDataFromSession() {return (User) session.getAttribute("user");
 //	}
 	//******************************Third Attempt********************************************
-	public void verifyUser(String password, String email) { 
+	public String verifyUser(String password, String email) { 
 		Optional<Login> userLogin = userRepository.verifyUser(password, email);
 			if (userLogin.isPresent()){
 				String url1 = "http://localhost:8181/Capstone-Login/successfulLogin";
 				User userCurrent = restTemplate.postForObject(url1, userLogin, User.class);
 				//storeDataInSession(userCurrent);
+				String loginResult = "Successfully logged in!!";
 			}else {
 				String url2 = "http://localhost:8181/Capstone-Login/faliedLogin";
 				User notSignedUp = restTemplate.postForObject(url2, userLogin, User.class);
+				String loginResult = "Login Failed";
 			}
-			return;//userCurrent v.s. notSighnedUp.....if I'm not using those values this should be
+			return ""+ loginResult;//userCurrent v.s. notSighnedUp.....if I'm not using those values this should be
 			//able to be simplified....???
 		}
 	//**********************************Fourth Attempt*********************************************
