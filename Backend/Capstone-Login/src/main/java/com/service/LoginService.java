@@ -15,11 +15,11 @@ public class LoginService {
 
 	@Autowired
 	LoginRepository loginRepository;
-	//@Autowired //Removed on Fourth Attempt
+	@Autowired //Removed on Fourth Attempt
 	RestTemplate restTemplate;
-	public LoginService(RestTemplate restTemplate) {
-		this.restTemplate = restTemplate;
-	}
+//	public LoginService(RestTemplate restTemplate) {
+//		this.restTemplate = restTemplate;
+//	}
 	//Lines 20 - 22 added on Fourth Attempt
 	
 //^^^^^^^^^^^^^^^^^^^^^^^^^^^^Professors Code^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -88,43 +88,28 @@ public class LoginService {
 //			if (optionalVerifyUser.isEmpty()) {
 //				return "Unknown Error contact your Administrator";
 //			}
-//		int messageNum = Integer.parseInt(optionalVerifyUser.get());
+//		int messageNum = Integer.parseInt(optionalVerifyUser.get()); //look up switch statement for this method
 //					
 //							if (messageNum > 0) return "Successful Login";
 //								
-//							else if (messageNum < 0) return "Incrorrect email or Password";
+//							else if (messageNum < 0) return "Incorrect email or Password";
 //								
 //							else return "Error Value";
 //		}
 	//*****************************3 new methods for Third Attempt*******************************
-	//sign in will just call the method in user service
-	//The other two methods will return messages depending on whitch one is called from user service.
-	//No logic required in Login service and no user info needed all taken care of in user service.
-	public void signIn(Login login){
+	
+	public String signIn(Login login){
 		String url = "http://localhost:8282/user/userVerification";
 		String verifyingUser = restTemplate.postForObject(url, login, String.class);
-		Optional<String> optionalVerifyingUser = Optional.of(verifyingUser);
+		return verifyingUser;
 		}
-	public String successfulLogin(Optional<String> optionalUserVerification) {	
-		if (optionalUserVerification.isEmpty()) {
-			return "Unknown Error contact your Administrator";
-		}else {
-			return "Successful Login";
-		}
-	}	
-		public String failedLogin(Optional<String> optionalUserVerification) {	
-			if (optionalUserVerification.isEmpty()) {
-				return "Unknown Error contact your Administrator";
-			}else {
-				return "Incrorrect email or Password";
-			}
-		}
-//*****************************************Fourth Attempt*********************************************
-	public String verifyUser() {
-		String url = "http://localhost:8282/verifyUserLogin";
-		String response = restTemplate.postForObject(url, null, String.class);
-		return "Login " + response;
-	}
+	
+//***************************************** Fourth Attempt *********************************************
+//	public String verifyUser() {
+//		String url = "http://localhost:8282/verifyUserLogin";
+//		String response = restTemplate.postForObject(url, null, String.class);
+//		return "Login " + response;
+//	}
 		
 	public String signUp(Login login) { 
 		Optional<Login> result = loginRepository.findById(login.getPassword());//Id should be userid not password.

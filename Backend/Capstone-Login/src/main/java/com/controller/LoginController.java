@@ -32,11 +32,11 @@ public class LoginController {
 		return loginService.signUp(login);
 	}
 	//******************** Added for Fourth Attempt***************************
-	public LoginController(LoginService loginService) {
-		this.loginService = loginService;
-	}
-	@PostMapping("/login")
-	public String login() {
-		return loginService.verifyUser();
-	}
+//	public LoginController(LoginService loginService) {
+//		this.loginService = loginService;
+//	}
+//	@PostMapping("/login")
+//	public String login() {
+//		return loginService.verifyUser();
+//	}
 }

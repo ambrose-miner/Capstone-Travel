@@ -19,7 +19,7 @@ import jakarta.ws.rs.Path;
 public interface UserRepository extends JpaRepository<User, Long>{
 	
 	@Query(value = "SELECT * FROM User WHERE password = :password AND email = :email", nativeQuery = true)
-	Optional<Login>  verifyUser(
+	Optional<User>  verifyUser(
 						@Param("password") String password,
 						@Param("email")String email);
 	

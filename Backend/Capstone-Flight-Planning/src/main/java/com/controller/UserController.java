@@ -23,10 +23,14 @@ import com.bean.FlightBooking;
 import com.bean.Login;
 import com.bean.User;
 import com.service.UserService;
+
+import jakarta.servlet.http.HttpSession;
 @CrossOrigin
 @RestController
 @RequestMapping("/user")
 public class UserController {
+@Autowired
+private HttpSession session;
 @Autowired					
 RestTemplate restTemplate;
 @Autowired
@@ -52,27 +56,46 @@ UserService userService;
 				String email = login.getEmail();	
 			return userService.verifyUser(password, email);
 	}
+	//Test get session value code hmmm... returns
+	//Cannot invoke \"com.bean.User.getUserid()\" because \"userCurrent\" is null",
+	@GetMapping(value = "/Test",produces = MediaType.APPLICATION_JSON_VALUE)
+	public Long getObject() {
+		User userCurrent = (User) session.getAttribute("userCurrent");
+		Long userid = userCurrent.getUserid();
+		return userid;
+	}
 	@GetMapping(value = "/findUsersOnFlight",produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<User> findUsersOnFlight(@RequestParam int flightid){
+	public List<User> findUsersOnFlight(@RequestParam int flightid){//Admin
 			return userService.findUsersOnFlight(flightid);
 	}
 	
 	@GetMapping(value = "/findUserDepartureDates", produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<Date> findUserDepartureDates(@RequestParam Long userid){
-				String url = "http://localhost:8181/Capstone-Login/login/"+ userid;
-				restTemplate.getForObject(url, User.class);
+				//String url = "http://localhost:8181/Capstone-Login/login/"+ userid;
+				//restTemplate.getForObject(url, User.class);
+		User userCurrent = (User) session.getAttribute("userCurrent");
+		userid = userCurrent.getUserid();
 			return userService.findUserDepartureDates(userid);
 	}
 	
 	@GetMapping(value = "/findUserArrivalDates", produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<Date> findUserArrivalDates(@RequestParam Long userid){
-				String url = "http://localhost:8181/Capstone-Login/login/"+ userid;
-				restTemplate.getForObject(url, User.class);
+				//String url = "http://localhost:8181/Capstone-Login/login/"+ userid;
+				//restTemplate.getForObject(url, User.class);
+		User userCurrent = (User) session.getAttribute("userCurrent");
+		userid = userCurrent.getUserid();
 			return userService.findUserArrivalDates(userid);
 	}
 	
-	@DeleteMapping(value = "/deleteUser/{userid}")
-	public String deleteUserById(@PathVariable Long userid) {
+	@DeleteMapping(value = "/deleteUser")
+	public String userDeleteUserById(@PathVariable Long userid) {		//user delete user
+		User userCurrent = (User) session.getAttribute("userCurrent");
+		userid = userCurrent.getUserid();
+				String deleteMessage = userService.deleteUser(userid);
+			return deleteMessage;
+	}//These two delete methods call the same method in user service and just have different in puts for the userid.
+	@DeleteMapping(value = "/deleteUser/{userid}")//Admin delete user
+	public String adminDeleteUserById(@PathVariable Long userid) {
 				String deleteMessage = userService.deleteUser(userid);
 			return deleteMessage;
 	}

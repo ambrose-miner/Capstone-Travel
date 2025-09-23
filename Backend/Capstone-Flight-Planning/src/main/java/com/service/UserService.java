@@ -11,7 +11,6 @@ import org.springframework.web.client.RestTemplate;
 import com.bean.Flight;
 import com.bean.FlightBooking;
 import com.bean.Login;
-//import com.bean.Login;
 import com.bean.User;
 import com.repository.UserRepository;
 
@@ -36,7 +35,7 @@ private HttpSession session;
 			List<User> users = userRepository.findAll();
 		return users;
 		}
-	//@@@@@@@@@@Second Attempt@@@@@@@@@@@
+	//@@@@@@@@@@ Second Attempt @@@@@@@@@@@
 //	public String verifyUser(String password, String email) { 
 //		Optional<Login> userLogin = userRepository.verifyUser(password, email);
 //			if (userLogin.isPresent()){
@@ -52,31 +51,28 @@ private HttpSession session;
 //				return "-1";//Failed Login
 //			}
 //	}	
-//	&&&&&&&&&&&&&&&&&&&&&&&&&&&Added to my Second Attempt&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+//	&&&&&&&&&&&&&&&&&&&&&&&&&&& Added to my Second Attempt &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 //	public void storeDataInSession(User user) {session.setAttribute("user", user);
 //	}public User retrieveDataFromSession() {return (User) session.getAttribute("user");
 //	}
-	//******************************Third Attempt********************************************
+	//****************************** Third Attempt ********************************************
 	public String verifyUser(String password, String email) { 
-		Optional<Login> userLogin = userRepository.verifyUser(password, email);
+		Optional<User> userLogin = userRepository.verifyUser(password, email);
+		String loginResult;
 			if (userLogin.isPresent()){
-				String url1 = "http://localhost:8181/Capstone-Login/successfulLogin";
-				User userCurrent = restTemplate.postForObject(url1, userLogin, User.class);
-				//storeDataInSession(userCurrent);
-				String loginResult = "Successfully logged in!!";
+				User userCurrent = userLogin.get();
+				session.setAttribute("userCurrent", userCurrent);//userCurrent = (User) session.getAttribute("userCurrent");
+				loginResult = "Successfully logged in!!";			//for getting back out of the session
 			}else {
-				String url2 = "http://localhost:8181/Capstone-Login/faliedLogin";
-				User notSignedUp = restTemplate.postForObject(url2, userLogin, User.class);
-				String loginResult = "Login Failed";
+				loginResult = "Login Failed";
 			}
-			return ""+ loginResult;//userCurrent v.s. notSighnedUp.....if I'm not using those values this should be
-			//able to be simplified....???
+			return ""+ loginResult;
 		}
-	//**********************************Fourth Attempt*********************************************
-	@PostMapping("/verifyUserLogin")
-	public String verifyUserLogin() {
-		return "Login Successful";
-	}
+	//********************************** Fourth Attempt *********************************************
+//	@PostMapping("/verifyUserLogin")
+//	public String verifyUserLogin() {
+//		return "Login Successful";
+//	}
 //	 ****Reference Code*****
 //	public String signIn(Login login){ 
 //		String url1 = "http://localhost:8282/user/userVerification/{password}/{email}";

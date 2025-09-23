@@ -22,13 +22,13 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long userid;
-	@OneToOne( cascade = CascadeType.ALL,  fetch = FetchType.LAZY)//this is ALL!!
-	@JoinColumn(name = "loginid")
-	private Login login;
+//	@OneToOne( cascade = CascadeType.ALL,  fetch = FetchType.LAZY)//this is ALL!!
+//	@JoinColumn(name = "loginid")
+//	private Login login;
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)//not all will revise.
 	private List<FlightBooking>FlightBooking;
-	//private String password;//Components of Login
-	//private String email;//Components of Login
+	private String password;//Components of Login
+	private String email;//Components of Login
 	private String userfname;
 	private String userlname;
 	private String usertype;
@@ -36,12 +36,12 @@ public class User {
 	public User() {
 		super();
 	}
-	public Login getLogin() {
-		return login;
-	}
-	public void setLogin(Login login) {
-		this.login = login;
-	}
+//	public Login getLogin() {
+//		return login;
+//	}
+//	public void setLogin(Login login) {
+//		this.login = login;
+//	}
 	public List<FlightBooking> getFlightBooking() {
 		return FlightBooking;
 	}
@@ -61,12 +61,19 @@ public class User {
 	public void setUserid(Long userid) {
 		this.userid = userid;
 	}
-//	public String getEmail() {
-//		return email;
-//	}
-//	public void setEmail(String email) {
-//		this.email = email;
-//	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	
 	public String getUserfname() {
 		return userfname;
 	}
@@ -79,10 +86,5 @@ public class User {
 	public void setUserlname(String userlname) {
 		this.userlname = userlname;
 	}
-	//************New***********
-//	public User(Long verifyId, String password, String email) {
-//		this.userid = verifyId;
-//		this.password = password;
-//		this.email = email;
-//		}
+
 }

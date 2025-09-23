@@ -10,11 +10,14 @@ import com.bean.Flight;
 import com.bean.FlightBooking;
 import com.repository.FlightBookingRepository;
 
+import jakarta.servlet.http.HttpSession;
+
 @Service
 public class FlightBookingService {
 	@Autowired
 	FlightBookingRepository flightBookingRepository;
-
+	@Autowired
+	private HttpSession session;
 	@Autowired
 	RestTemplate restTemplate;
 	
@@ -29,12 +32,14 @@ public class FlightBookingService {
 		return bookedFlights;
 	}
 	
-	public List<FlightBooking> findUserFlightBooking(Long userid) { 					
+	public List<FlightBooking> findUserFlightBooking(Long userid) { 
+		User userCurrent = (User) session.getAttribute("userCurrent");
+		userid = userCurrent.getUserid();
 		List<FlightBooking> userBookings = flightBookingRepository.findAllById(userid);
 		return userBookings;												
 	}
 	public List<FlightBooking> findUserFlightBookingAdmin(Long userid) {
-		List<FlightBooking> userBookings = flightBookingRepository.findAllById(userid);//Admin
+		List<FlightBooking> userBookings = flightBookingRepository.findAllById(userid);//Admin does not get userid from the session.
 		return userBookings;
 	}
 	public List<FlightBooking> findUserFlightBookingByDepartureDate(Long userid, Date departure){
