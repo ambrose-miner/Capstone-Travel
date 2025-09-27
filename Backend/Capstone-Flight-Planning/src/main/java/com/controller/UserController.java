@@ -71,8 +71,6 @@ UserService userService;
 	
 	@GetMapping(value = "/findUserDepartureDates", produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<Date> findUserDepartureDates(@RequestParam Long userid){
-				//String url = "http://localhost:8181/Capstone-Login/login/"+ userid;
-				//restTemplate.getForObject(url, User.class);
 		User userCurrent = (User) session.getAttribute("userCurrent");
 		userid = userCurrent.getUserid();
 			return userService.findUserDepartureDates(userid);
@@ -80,8 +78,6 @@ UserService userService;
 	
 	@GetMapping(value = "/findUserArrivalDates", produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<Date> findUserArrivalDates(@RequestParam Long userid){
-				//String url = "http://localhost:8181/Capstone-Login/login/"+ userid;
-				//restTemplate.getForObject(url, User.class);
 		User userCurrent = (User) session.getAttribute("userCurrent");
 		userid = userCurrent.getUserid();
 			return userService.findUserArrivalDates(userid);

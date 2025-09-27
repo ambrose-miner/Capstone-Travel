@@ -38,6 +38,7 @@ public class FlightBookingController {
 	RestTemplate restTemplate;
 	@Autowired
 	private HttpSession session;
+	
 	@PostMapping(value = "/bookFlight",consumes = MediaType.APPLICATION_JSON_VALUE)//This works but does not have user attached
 	public String bookFlight(
 			@RequestBody FlightBooking flightBooking,
@@ -69,6 +70,8 @@ public class FlightBookingController {
 			@PathVariable("userid") Long userid) {
 		//this does not get the userid from login
 		//gets user ID from Admin input
+		//Returns error that the userCurrent is null in the session...?? This method doesn't use the session.
+		//<Error Return in Postman> Cannot invoke \"com.bean.User.getUserid()\" because \"userCurrent\" is null 
 		return flightBookingService.findUserFlightBooking(userid);
 	}
 	

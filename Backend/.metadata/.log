@@ -2470,3 +2470,9 @@ java.lang.IllegalStateException
 	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:130)
 	at org.eclipse.jdt.internal.ui.text.java.hover.JavaEditorTextHoverProxy.getHoverInfo2(JavaEditorTextHoverProxy.java:89)
 	at org.eclipse.jface.text.TextViewerHoverManager$1.run(TextViewerHoverManager.java:155)
+
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2025-09-24 09:36:56.736
+!MESSAGE The digest algorithms (md5) used to verify osgi.bundle,javaewah,1.1.6.v20160919-1400 have severely compromised security. Please report this concern to the artifact provider.
+
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2025-09-24 09:36:57.324
+!MESSAGE The digest algorithms (md5) used to verify osgi.bundle,cdi.api,1.0.0.v201105160744 have severely compromised security. Please report this concern to the artifact provider.
