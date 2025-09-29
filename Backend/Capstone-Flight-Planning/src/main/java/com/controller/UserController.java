@@ -60,6 +60,11 @@ UserService userService;
 	//Cannot invoke \"com.bean.User.getUserid()\" because \"userCurrent\" is null",
 	@GetMapping(value = "/Test",produces = MediaType.APPLICATION_JSON_VALUE)
 	public Long getObject() {
+		String attributeValue = (String) session.getAttribute("Test Atribute");
+//		User myUser = new User();
+//		myUser.setUserid(1234567L);
+//		session.setAttribute("userCurrent", myUser);
+		System.out.println("************* sessionid from Controller =" +session.getId());
 		User userCurrent = (User) session.getAttribute("userCurrent");
 		Long userid = userCurrent.getUserid();
 		return userid;

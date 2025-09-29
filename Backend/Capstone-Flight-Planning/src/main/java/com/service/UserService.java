@@ -60,7 +60,9 @@ private HttpSession session;
 		Optional<User> userLogin = userRepository.verifyUser(password, email);
 		String loginResult;
 			if (userLogin.isPresent()){
+				System.out.println("************* sessionidfrom Service =" +session.getId());
 				User userCurrent = userLogin.get();
+				session.setAttribute("Test Atribute", "Test Atribute Value");
 				session.setAttribute("userCurrent", userCurrent);//userCurrent = (User) session.getAttribute("userCurrent");
 				loginResult = "Successfully logged in!!";			//for getting back out of the session
 			}else {

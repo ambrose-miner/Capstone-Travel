@@ -22,8 +22,8 @@ import com.bean.User;
 import com.service.FlightService;
 @CrossOrigin
 @RestController
-@RequestMapping("/flight")//New addition attempt to fix postman fail to find static resource error
-public class FlightController {//Have not updated all Postman requests just find all users has not fixed the problem
+@RequestMapping("/flight")
+public class FlightController {
 	
 	@Autowired FlightService flightService;
 	

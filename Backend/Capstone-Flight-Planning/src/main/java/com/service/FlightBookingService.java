@@ -21,7 +21,11 @@ public class FlightBookingService {
 	@Autowired
 	RestTemplate restTemplate;
 	
-	public String bookFlight(FlightBooking flightBooking, Long userid) {//Test to see if this works remove old bookings.
+	public String bookFlight(int flightid, Long userid) {//Taking in userid and flightid to create a flightBooking
+		FlightBooking flightBooking = new FlightBooking(flightid, userid);
+		//Error "The constructor FlightBooking(int, Long) is undefined" What am I missing here?
+		//Flightbooking is only Flights and Users do I need to find those Objects by Id first and save it
+		//That seems there should be a better way....?
 		flightBookingRepository.save(flightBooking);
 		System.out.println("book flight calling repository");
 		return "Your flight has been booked successfully";

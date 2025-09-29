@@ -45,9 +45,9 @@
 	</section>
 	<section name="DialogBounds_GetterSetterTreeSelectionDialog">
 		<item key="DIALOG_X_ORIGIN" value="630"/>
-		<item key="DIALOG_Y_ORIGIN" value="9"/>
+		<item key="DIALOG_Y_ORIGIN" value="551"/>
 		<item key="DIALOG_WIDTH" value="678"/>
-		<item key="DIALOG_HEIGHT" value="889"/>
+		<item key="DIALOG_HEIGHT" value="347"/>
 		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>
 	</section>
 	<section name="NewInterfaceCreationWizard.dialogBounds">
@@ -65,5 +65,8 @@
 		<item key="DIALOG_WIDTH" value="703"/>
 		<item key="DIALOG_HEIGHT" value="716"/>
 		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>
+	</section>
+	<section name="SelfEncapsulateFieldWizard">
+		<item key="GenerateJavadoc" value="false"/>
 	</section>
 </section>

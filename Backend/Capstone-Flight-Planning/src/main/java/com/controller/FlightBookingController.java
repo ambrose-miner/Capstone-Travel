@@ -41,16 +41,14 @@ public class FlightBookingController {
 	
 	@PostMapping(value = "/bookFlight",consumes = MediaType.APPLICATION_JSON_VALUE)//This works but does not have user attached
 	public String bookFlight(
-			@RequestBody FlightBooking flightBooking,
+			@RequestParam("flightid") int flightid,
 			@RequestParam("userid") Long userid)
 			 {	
 		System.out.println("Call book flight method");
-		//String url = "http://localhost:8181/Capstone-Login/login/";
-		//Long X = restTemplate.getForObject(url, Long.class);
 		User userCurrent = (User) session.getAttribute("userCurrent");
 		userid = userCurrent.getUserid();	
-		String Message = flightBookingService.bookFlight(flightBooking, userid);//does this want to be a whole flightBooking object or only part...?
-		 return Message;// + X;														
+		String Message = flightBookingService.bookFlight(flightid, userid);
+		 return Message;// + X;	//													
 	}
 	@GetMapping(value = "/findAllFlightBooking",produces = MediaType.APPLICATION_JSON_VALUE)//Admin
 	public List<FlightBooking> findAllFlightBooking() {
