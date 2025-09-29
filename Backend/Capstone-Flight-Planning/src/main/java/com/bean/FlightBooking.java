@@ -27,7 +27,9 @@ public class FlightBooking {
 		@JoinColumn(name = "flightid")
 		private Flight flight;
 		
-	
+		public FlightBooking(Flight flight, User user) {
+		}
+		
 		public User getUser() {
 			return user;
 		}

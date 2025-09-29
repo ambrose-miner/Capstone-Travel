@@ -1,6 +1,7 @@
 package com.service;
 import java.sql.Date;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,6 +10,7 @@ import com.bean.User;
 import com.bean.Flight;
 import com.bean.FlightBooking;
 import com.repository.FlightBookingRepository;
+import com.repository.FlightRepository;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -17,18 +19,32 @@ public class FlightBookingService {
 	@Autowired
 	FlightBookingRepository flightBookingRepository;
 	@Autowired
+	FlightRepository flightRepository;
+	@Autowired
 	private HttpSession session;
 	@Autowired
 	RestTemplate restTemplate;
 	
-	public String bookFlight(int flightid, Long userid) {//Taking in userid and flightid to create a flightBooking
-		FlightBooking flightBooking = new FlightBooking(flightid, userid);
+	public String bookFlight(int flightid, User userCurrent) {//Taking in userid and flightid to create a flightBooking
+		Optional<Flight> workingFlight = flightRepository.findById(flightid);
+		if (workingFlight.isPresent()){
+			Flight toBook = workingFlight.get();
+			FlightBooking flightBooking = new FlightBooking(toBook, userCurrent);
+			flightBookingRepository.save(flightBooking);
+			System.out.println("book flight calling repository");
+			return "Your flight has been booked successfully";
+		}else {
+			return "Flight Booking Error";
+			
+			
+		}
+		
+		
 		//Error "The constructor FlightBooking(int, Long) is undefined" What am I missing here?
 		//Flightbooking is only Flights and Users do I need to find those Objects by Id first and save it
 		//That seems there should be a better way....?
-		flightBookingRepository.save(flightBooking);
-		System.out.println("book flight calling repository");
-		return "Your flight has been booked successfully";
+		
+		
 	}
 	
 	public List<FlightBooking> findAllFlightBooking() {

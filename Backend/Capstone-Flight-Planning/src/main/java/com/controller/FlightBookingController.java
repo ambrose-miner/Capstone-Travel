@@ -41,14 +41,14 @@ public class FlightBookingController {
 	
 	@PostMapping(value = "/bookFlight",consumes = MediaType.APPLICATION_JSON_VALUE)//This works but does not have user attached
 	public String bookFlight(
-			@RequestParam("flightid") int flightid,
-			@RequestParam("userid") Long userid)
+			@RequestParam("flightid") int flightid)
+			//@RequestParam("userid") Long userid)
 			 {	
 		System.out.println("Call book flight method");
 		User userCurrent = (User) session.getAttribute("userCurrent");
-		userid = userCurrent.getUserid();	
-		String Message = flightBookingService.bookFlight(flightid, userid);
-		 return Message;// + X;	//													
+		//userid = userCurrent.getUserid();	
+		String message = flightBookingService.bookFlight(flightid, userCurrent);
+		 return message;													
 	}
 	@GetMapping(value = "/findAllFlightBooking",produces = MediaType.APPLICATION_JSON_VALUE)//Admin
 	public List<FlightBooking> findAllFlightBooking() {
