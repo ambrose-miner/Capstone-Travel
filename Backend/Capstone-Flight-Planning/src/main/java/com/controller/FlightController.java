@@ -56,20 +56,20 @@ public class FlightController {
 		return flightService.searchFlightsByOriginAndDestination(destination, origin);
 	}
 	@GetMapping (value = "/searchFlightsByPlanAndDepartureDate/{origin}/{destination}/{departure}",produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<Flight> searchFlightsByOriginAndDestinationAndDepartureDate(//404 No static resource flight/searchFlightsByPlanAndArrivalDate.",
+	public List<Flight> searchFlightsByOriginAndDestinationAndDepartureDate(
 			@PathVariable String origin,
 			@PathVariable String destination,
 			@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") Date departure){
-		return flightService.searchFlightsByOriginAndDestinationAndDepartureDate(origin, destination, departure);
-	}
+		return flightService.searchFlightsByOriginAndDestinationAndDepartureDate(origin, destination, departure);//This returns the appropriate list.
+	}//These two methods basically have the same methods and SQL but this one works and the later does not.
 	@GetMapping (value = "/searchFlightsByPlanAndArrivalDate/{origin}/{destination}/{arrival}",produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<Flight> searchFlightsByOriginAndDestinationAndArrivalDate(//Returns Error 404 No static resource flight/searchFlightsByPlanAndArrivalDate.",
+	public List<Flight> searchFlightsByOriginAndDestinationAndArrivalDate(
 			@PathVariable String origin,
 			@PathVariable String destination,
 			@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") Date arrival){
-		return flightService.searchFlightsByOriginAndDestinationAndArrivalDate(origin, destination, arrival);
-	}
-	@GetMapping (value = "/findBookingsOnFlight/{flightid}",produces = MediaType.APPLICATION_JSON_VALUE)//404 not found					
+		return flightService.searchFlightsByOriginAndDestinationAndArrivalDate(origin, destination, arrival);//This returns an empty list.
+	}//SQL tested from command line and returns the appropriate list
+	@GetMapping (value = "/findBookingsOnFlight/{flightid}",produces = MediaType.APPLICATION_JSON_VALUE)					
 	public List<FlightBooking> findBookingsOnFlight(
 			@PathVariable int flightid) {	
 		return flightService.findBookingsOnFlightById(flightid);

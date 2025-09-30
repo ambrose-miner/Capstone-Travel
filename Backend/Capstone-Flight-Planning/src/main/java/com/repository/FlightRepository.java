@@ -27,14 +27,17 @@ public interface FlightRepository extends JpaRepository<Flight, Integer>{
 			@Param("destination") String destination);
 	
 	@Query(value = "SELECT * FROM Flight WHERE origin = :origin AND destination = :destination AND departure = :departure",
-			nativeQuery = true)
+			nativeQuery = true)//This query returns the appropriate list.
 	List<Flight> findFlightsByOriginAndDestinationAndDepartureDate(
 			@Param("origin") String origin,
 			@Param("destination") String destination,
 			@Param("departure") Date departure);
 	
 	@Query(value = "SELECT * FROM Flight WHERE origin = :origin AND destination = :destination AND arrival = :arrival",
-			nativeQuery = true)
+			nativeQuery = true)//This Query returns an empty list. SQL run on command line returns the appropriate list.
+								//Removed the fields one by one select all from Flight returns all flights
+								//select * from Flight where arrival = :arrival also returns the appropriate list.
+								//How can the previous Query work and this one does not.
 	List<Flight> findFlightsByOriginAndDestinationAndArrivalDate(
 			@Param("origin") String origin, 
 			@Param("destination") String destination,
