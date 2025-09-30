@@ -33,7 +33,10 @@ public class FlightController {
 	public String createFlight(@RequestBody Flight newFlight) {
 		 System.out.println("Call book flight method");
 		String Message = flightService.createFlight(newFlight);
-		 return Message;
+		 return Message;//Day values are not being saved as the correct input!?
+		 				//Postman requests save but as wrong value?
+		 				//No code changes since previous tests how is this possible?
+		 				//Day value of created flight is always one less than the entered day.
 	}
 	@GetMapping(value = "/findAllFlights",produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<Flight> findAllFlights() {
@@ -78,5 +81,8 @@ public class FlightController {
 	public String deleteFlight(int flightid) {
 		String deleteMessage = flightService.deleteFlight(flightid);
 		return deleteMessage;
+		//Postman Error???
+		//"Optional int parameter 'flightid' is present but cannot be translated into a 
+		//null value due to being declared as a primitive type. Consider declaring it as object wrapper for the corresponding primitive type."
 	}
 }

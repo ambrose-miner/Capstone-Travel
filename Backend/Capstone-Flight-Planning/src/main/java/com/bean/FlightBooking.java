@@ -9,7 +9,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-
+import com.bean.User;//Is this needed? public FlightBooking constructor displayed an error until I put this in... but now says its unused.
+//same constructor was working previously to putting this in. Eclipse bug?
 
 @Entity
 @Component
