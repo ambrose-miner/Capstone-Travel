@@ -28,8 +28,11 @@ public class FlightBooking {
 		private Flight flight;
 		
 		public FlightBooking(Flight flight, User user) {
+			this.flight = flight;
+			this.user = user;
 		}
-		
+		public FlightBooking() {
+		}
 		public User getUser() {
 			return user;
 		}
@@ -38,13 +41,13 @@ public class FlightBooking {
 			this.user = user;
 		}
 
-//		public Flight getFlight() {
-//			return flight;
-//		}
-//
-//		public void setFlight(Flight flight) {
-//			this.flight = flight;
-//		}
+		public Flight getFlight() {
+			return flight;
+		}
+
+		public void setFlight(Flight flight) {
+			this.flight = flight;
+		}
 
 		public int getBookingid() {
 			return bookingid;

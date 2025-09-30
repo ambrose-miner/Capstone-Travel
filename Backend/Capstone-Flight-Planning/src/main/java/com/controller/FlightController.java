@@ -1,10 +1,12 @@
 package com.controller;
 
-import java.sql.Date;
+
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -37,42 +39,42 @@ public class FlightController {
 	public List<Flight> findAllFlights() {
 		return flightService.findAllFlights();
 	}
-	@GetMapping (value = "/findFlight",produces = MediaType.APPLICATION_JSON_VALUE)//404????
+	@GetMapping (value = "/findFlight/{flightid}",produces = MediaType.APPLICATION_JSON_VALUE)//404????
 	public Optional<Flight> findFlight(
 			@PathVariable int flightid) { 
 		return flightService.findFlight(flightid);
 	}
-	@GetMapping (value = "/findFlightByBooking {bookingid}", produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping (value = "/findFlightByBooking/{bookingid}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public Optional<Flight> findFlightByBooking(
 			@PathVariable int bookingid){
 		return flightService.findFlightByBooking(bookingid);
 	}
-	@GetMapping (value = "/searchFlightsByPlan {destination},{origin}",produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping (value = "/searchFlightsByPlan/{destination}/{origin}",produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<Flight> searchFlightsByOriginAndDestination(
 			@PathVariable String destination,
 			@PathVariable String origin) {
 		return flightService.searchFlightsByOriginAndDestination(destination, origin);
 	}
-	@GetMapping (value = "/searchFlightsByPlanAndDepartureDate {origin},{destination},{departure}",produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping (value = "/searchFlightsByPlanAndDepartureDate/{origin}/{destination}/{departure}",produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<Flight> searchFlightsByOriginAndDestinationAndDepartureDate(//404 No static resource flight/searchFlightsByPlanAndArrivalDate.",
 			@PathVariable String origin,
 			@PathVariable String destination,
-			@PathVariable Date departure){
+			@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") Date departure){
 		return flightService.searchFlightsByOriginAndDestinationAndDepartureDate(origin, destination, departure);
 	}
-	@GetMapping (value = "/searchFlightsByPlanAndArrivalDate {origin},{destination},{arrival}",produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping (value = "/searchFlightsByPlanAndArrivalDate/{origin}/{destination}/{arrival}",produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<Flight> searchFlightsByOriginAndDestinationAndArrivalDate(//Returns Error 404 No static resource flight/searchFlightsByPlanAndArrivalDate.",
 			@PathVariable String origin,
 			@PathVariable String destination,
-			@PathVariable Date arrival){
+			@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") Date arrival){
 		return flightService.searchFlightsByOriginAndDestinationAndArrivalDate(origin, destination, arrival);
 	}
-	@GetMapping (value = "/findBookingsOnFlight {flightid}",produces = MediaType.APPLICATION_JSON_VALUE)//404 not found					
+	@GetMapping (value = "/findBookingsOnFlight/{flightid}",produces = MediaType.APPLICATION_JSON_VALUE)//404 not found					
 	public List<FlightBooking> findBookingsOnFlight(
 			@PathVariable int flightid) {	
 		return flightService.findBookingsOnFlightById(flightid);
 	}
-	@DeleteMapping (value = "/deleteFlight" ,consumes = MediaType.APPLICATION_JSON_VALUE)
+	@DeleteMapping (value = "/deleteFlight" ,produces = MediaType.APPLICATION_JSON_VALUE)
 	public String deleteFlight(int flightid) {
 		String deleteMessage = flightService.deleteFlight(flightid);
 		return deleteMessage;

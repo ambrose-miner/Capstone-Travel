@@ -25,8 +25,8 @@ public class User {
 //	@OneToOne( cascade = CascadeType.ALL,  fetch = FetchType.LAZY)//this is ALL!!
 //	@JoinColumn(name = "loginid")
 //	private Login login;
-	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)//not all will revise.
-	private List<FlightBooking>FlightBooking;
+//	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)//not all will revise.
+//	private List<FlightBooking>FlightBooking;
 	private String password;//Components of Login
 	private String email;//Components of Login
 	private String userfname;
@@ -42,12 +42,12 @@ public class User {
 //	public void setLogin(Login login) {
 //		this.login = login;
 //	}
-	public List<FlightBooking> getFlightBooking() {
-		return FlightBooking;
-	}
-	public void setFlightBooking(List<FlightBooking> flightBooking) {
-		FlightBooking = flightBooking;
-	}
+//	public List<FlightBooking> getFlightBooking() {
+//		return FlightBooking;
+//	}
+//	public void setFlightBooking(List<FlightBooking> flightBooking) {
+//		FlightBooking = flightBooking;
+//	}
 	public String getUsertype() {
 		return usertype;
 	}

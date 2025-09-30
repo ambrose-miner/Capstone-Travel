@@ -91,9 +91,9 @@ public class FlightBookingController {
 			return flightBookingService.findUserFlightBookingByDepartureDate(userid, departure);
 	}
 	
-	@DeleteMapping(value = "/deleteFlightBooking",consumes = MediaType.APPLICATION_JSON_VALUE)
-	public String deleteFlightBooking(FlightBooking flightBooking) { 
-		String deleteMessage = flightBookingService.deleteFlightBooking(flightBooking);
+	@DeleteMapping(value = "/deleteFlightBooking",produces = MediaType.APPLICATION_JSON_VALUE)
+	public String deleteFlightBooking(int bookingId) { 
+		String deleteMessage = flightBookingService.deleteFlightBooking(bookingId);
 		return deleteMessage;
 	}
 	

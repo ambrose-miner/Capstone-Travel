@@ -25,25 +25,17 @@ public class FlightBookingService {
 	@Autowired
 	RestTemplate restTemplate;
 	
-	public String bookFlight(int flightid, User userCurrent) {//Taking in userid and flightid to create a flightBooking
-		Optional<Flight> workingFlight = flightRepository.findById(flightid);
-		if (workingFlight.isPresent()){
-			Flight toBook = workingFlight.get();
-			FlightBooking flightBooking = new FlightBooking(toBook, userCurrent);
+	public String bookFlight(int flightid, User userCurrent) {
+		Optional<Flight> optionalFlight = flightRepository.findById(flightid);
+		if (optionalFlight.isPresent()){
+			Flight workingFlight = optionalFlight.get();
+			FlightBooking flightBooking = new FlightBooking(workingFlight, userCurrent);
 			flightBookingRepository.save(flightBooking);
 			System.out.println("book flight calling repository");
 			return "Your flight has been booked successfully";
 		}else {
-			return "Flight Booking Error";
-			
-			
+			return "Flight Booking Error";	
 		}
-		
-		
-		//Error "The constructor FlightBooking(int, Long) is undefined" What am I missing here?
-		//Flightbooking is only Flights and Users do I need to find those Objects by Id first and save it
-		//That seems there should be a better way....?
-		
 		
 	}
 	
@@ -71,8 +63,8 @@ public class FlightBookingService {
 		return userBookedTravel;
 	}
 	
-	public String deleteFlightBooking(FlightBooking flightBooking) {
-		flightBookingRepository.delete(flightBooking);
+	public String deleteFlightBooking(int bookingId) {
+		flightBookingRepository.deleteById(bookingId);
 		return "Flight booking has been canceled";
 	}
 }
