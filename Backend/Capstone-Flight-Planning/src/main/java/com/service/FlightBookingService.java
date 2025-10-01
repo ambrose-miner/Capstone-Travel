@@ -1,5 +1,6 @@
 package com.service;
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -54,11 +55,11 @@ public class FlightBookingService {
 		List<FlightBooking> userBookings = flightBookingRepository.findAllById(userid);//Admin does not get userid from the session.
 		return userBookings;
 	}
-	public List<FlightBooking> findUserFlightBookingByDepartureDate(Long userid, Date departure){
+	public List<FlightBooking> findUserFlightBookingByDepartureDate(Long userid, LocalDate departure){
 		List<FlightBooking> userBookedTravel = flightBookingRepository.findUserFlightBookingByDepartureDate(userid, departure);
 		return userBookedTravel;
 	}
-	public List<FlightBooking> findUserFlightBookingByArrivalDate(Long userid, Date arrival){
+	public List<FlightBooking> findUserFlightBookingByArrivalDate(Long userid, LocalDate arrival){
 		List<FlightBooking> userBookedTravel = flightBookingRepository.findUserFlightBookingByArrivalDate(userid, arrival);
 		return userBookedTravel;
 	}

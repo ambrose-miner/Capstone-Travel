@@ -6,6 +6,7 @@ import jakarta.servlet.http.HttpSession;
 import jakarta.ws.rs.PathParam;
 
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -76,7 +77,7 @@ public class FlightBookingController {
 	@GetMapping (value = "/findUserFlightBookingByArrivalDate/{arrival}",produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<FlightBooking> findUserFlightBookingByArrivalDate(
 			@PathVariable (value = "userid", required = true) Long userid, 
-			@PathVariable (value = "arrival", required = false) Date arrival){ 
+			@PathVariable (value = "arrival", required = false) LocalDate arrival){ 
 				User userCurrent = (User) session.getAttribute("userCurrent");
 				userid = userCurrent.getUserid();
 			return flightBookingService.findUserFlightBookingByArrivalDate(userid, arrival);
@@ -85,7 +86,7 @@ public class FlightBookingController {
 	@GetMapping (value = "/findUserFlightBookingByDepartureDate/{departure}",produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<FlightBooking> findUserFlightBookingByTravalDate(
 			@PathVariable (value = "userid", required = true) Long userid,
-			@PathVariable (value = "departure", required = false) Date departure){
+			@PathVariable (value = "departure", required = false) LocalDate departure){
 				User userCurrent = (User) session.getAttribute("userCurrent");
 				userid = userCurrent.getUserid();
 			return flightBookingService.findUserFlightBookingByDepartureDate(userid, departure);

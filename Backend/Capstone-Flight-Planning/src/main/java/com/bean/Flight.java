@@ -1,6 +1,7 @@
 package com.bean;
 
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,8 +28,8 @@ public class Flight {
 	
 	private String origin;
 	private String destination;
-	private Date arrival;
-	private Date departure;
+	private LocalDate arrival;
+	private LocalDate departure;
 	private String airline;
 	private float price;
 	
@@ -50,16 +51,16 @@ public class Flight {
 	public void setDestination(String destination) {
 		this.destination = destination;
 	}
-	public Date getArrival() {
+	public LocalDate getArrival() {
 		return arrival;
 	}
-	public void setArrival(Date arrival) {
+	public void setArrival(LocalDate arrival) {
 		this.arrival = arrival;
 	}
-	public Date getDeparture() {
+	public LocalDate getDeparture() {
 		return departure;
 	}
-	public void setDeparture(Date departure) {
+	public void setDeparture(LocalDate departure) {
 		this.departure = departure;
 	}
 	public String getAirline() {

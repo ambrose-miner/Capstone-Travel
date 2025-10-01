@@ -1,5 +1,6 @@
 package com.repository;
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -22,12 +23,12 @@ public interface FlightBookingRepository extends JpaRepository<FlightBooking, In
 	@Query(value = "SELECT * FROM Flight_Booking WHERE User = :user AND (Flight.departure) = :departure",nativeQuery = true)
 	List<FlightBooking> findUserFlightBookingByDepartureDate(
 			@Param("userid")Long userid, 
-			@Param("departure") Date departure);
+			@Param("departure") LocalDate departure);
 	
 	@Query(value = "SELECT * FROM Flight_Booking WHERE User = :user AND (Flight.arrival) = :arrival",nativeQuery = true)
 	List<FlightBooking> findUserFlightBookingByArrivalDate(
 			@Param("userid")Long userid, 
-			@Param("arrival") Date arrival);		
+			@Param("arrival") LocalDate arrival);		
 	
 	
 	

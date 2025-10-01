@@ -1,6 +1,7 @@
 package com.service;
 
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -49,7 +50,7 @@ public class FlightService {
 				);
 		return flightPlan;
 	}
-	public List<Flight> searchFlightsByOriginAndDestinationAndDepartureDate(String origin, String destination, Date departure){
+	public List<Flight> searchFlightsByOriginAndDestinationAndDepartureDate(String origin, String destination, LocalDate departure){
 		List<Flight> flightDeparturePlan = flightRepository.findFlightsByOriginAndDestinationAndDepartureDate(
 				origin,
 				destination,
@@ -57,7 +58,7 @@ public class FlightService {
 				);
 		return flightDeparturePlan;
 	}
-	public List<Flight> searchFlightsByOriginAndDestinationAndArrivalDate(String origin, String destination, Date arrival){
+	public List<Flight> searchFlightsByOriginAndDestinationAndArrivalDate(String origin, String destination, LocalDate arrival){
 		List<Flight> flightArrivalPlan = flightRepository.findFlightsByOriginAndDestinationAndArrivalDate(
 				origin,
 				destination,

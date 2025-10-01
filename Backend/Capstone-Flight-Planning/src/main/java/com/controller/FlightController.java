@@ -1,6 +1,7 @@
 package com.controller;
 
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.bean.Flight;
 import com.bean.FlightBooking;
 import com.bean.User;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.service.FlightService;
 @CrossOrigin
 @RestController
@@ -62,16 +64,16 @@ public class FlightController {
 	public List<Flight> searchFlightsByOriginAndDestinationAndDepartureDate(
 			@PathVariable String origin,
 			@PathVariable String destination,
-			@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") Date departure){
-		return flightService.searchFlightsByOriginAndDestinationAndDepartureDate(origin, destination, departure);//This returns the appropriate list.
-	}//These two methods basically have the same methods and SQL but this one works and the later does not.
+			@PathVariable @JsonFormat(pattern = "yyyy-MM-dd") LocalDate departure){
+		return flightService.searchFlightsByOriginAndDestinationAndDepartureDate(origin, destination, departure);
+	}
 	@GetMapping (value = "/searchFlightsByPlanAndArrivalDate/{origin}/{destination}/{arrival}",produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<Flight> searchFlightsByOriginAndDestinationAndArrivalDate(
 			@PathVariable String origin,
 			@PathVariable String destination,
-			@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") Date arrival){
+			@PathVariable @JsonFormat(pattern = "yyyy-MM-dd") LocalDate arrival){
 		return flightService.searchFlightsByOriginAndDestinationAndArrivalDate(origin, destination, arrival);//This returns an empty list.
-	}//SQL tested from command line and returns the appropriate list
+	}
 	@GetMapping (value = "/findBookingsOnFlight/{flightid}",produces = MediaType.APPLICATION_JSON_VALUE)					
 	public List<FlightBooking> findBookingsOnFlight(
 			@PathVariable int flightid) {	

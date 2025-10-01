@@ -1,6 +1,7 @@
 package com.repository;
 
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -17,7 +18,8 @@ import com.bean.User;
 @Repository
 public interface FlightRepository extends JpaRepository<Flight, Integer>{
 	
-	@Query(value = "SELECT * FROM Flight WHERE flight.bookingid = :bookingid", nativeQuery = true)//rework for true find by flight booking params
+	@Query(value = "SELECT * FROM Flight WHERE flight.bookingid = :bookingid", nativeQuery = true)
+	//rework for true find by flight booking params/keep as admin method
 	Optional<Flight> findByFlightBooking(
 			@Param("bookingid") int bookingid);
 	
@@ -31,17 +33,14 @@ public interface FlightRepository extends JpaRepository<Flight, Integer>{
 	List<Flight> findFlightsByOriginAndDestinationAndDepartureDate(
 			@Param("origin") String origin,
 			@Param("destination") String destination,
-			@Param("departure") Date departure);
+			@Param("departure") LocalDate departure);
 	
 	@Query(value = "SELECT * FROM Flight WHERE origin = :origin AND destination = :destination AND arrival = :arrival",
-			nativeQuery = true)//This Query returns an empty list. SQL run on command line returns the appropriate list.
-								//Removed the fields one by one select all from Flight returns all flights
-								//select * from Flight where arrival = :arrival also returns the appropriate list.
-								//How can the previous Query work and this one does not.
+			nativeQuery = true)
 	List<Flight> findFlightsByOriginAndDestinationAndArrivalDate(
 			@Param("origin") String origin, 
 			@Param("destination") String destination,
-			@Param("arrival") Date arrival);
+			@Param("arrival") LocalDate arrival);
 	
 	@Query(value = "SELECT * FROM Flight_Booking WHERE flightid = :flightid",nativeQuery = true)			
 	List<FlightBooking> findBookingsOnFlightById(
