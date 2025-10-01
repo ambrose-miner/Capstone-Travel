@@ -79,12 +79,13 @@ public class FlightController {
 			@PathVariable int flightid) {	
 		return flightService.findBookingsOnFlightById(flightid);
 	}
-	@DeleteMapping (value = "/deleteFlight" ,produces = MediaType.APPLICATION_JSON_VALUE)
+	@DeleteMapping (value = "/deleteFlight/{flightid}" ,produces = MediaType.APPLICATION_JSON_VALUE)
 	public String deleteFlight(int flightid) {
 		String deleteMessage = flightService.deleteFlight(flightid);
 		return deleteMessage;
 		//Postman Error???
-		//"Optional int parameter 'flightid' is present but cannot be translated into a 
-		//null value due to being declared as a primitive type. Consider declaring it as object wrapper for the corresponding primitive type."
+		//Optional int parameter 'flightid' is present but cannot be translated into a null value due to being declared as a primitive type.
+		//Consider declaring it as object wrapper for the corresponding primitive type.",
+	    //"path": "/flight/deleteFlight/1"
 	}
 }
