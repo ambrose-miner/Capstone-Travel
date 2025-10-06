@@ -15,12 +15,12 @@ public class LoginService {
 
 	@Autowired
 	LoginRepository loginRepository;
-	@Autowired //Removed on Fourth Attempt
+	@Autowired 
 	RestTemplate restTemplate;
-//	public LoginService(RestTemplate restTemplate) {
-//		this.restTemplate = restTemplate;
-//	}
-	//Lines 20 - 22 added on Fourth Attempt
+	public LoginService(RestTemplate restTemplate) {
+		this.restTemplate = restTemplate;
+	}
+	
 	
 //^^^^^^^^^^^^^^^^^^^^^^^^^^^^Professors Code^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 //	public String signIn(Login login) {		
@@ -96,11 +96,11 @@ public class LoginService {
 //								
 //							else return "Error Value";
 //		}
-	//*****************************3 new methods for Third Attempt*******************************
+	//*****************************Current Attempt*******************************
 	
 	public String signIn(Login login){
 		String url = "http://localhost:8282/user/userVerification";
-		String verifyingUser = restTemplate.postForObject(url, login, String.class);
+		String verifyingUser = restTemplate.postForObject(url, login, String.class);//need to add headers to return "name tag"
 		return verifyingUser;
 		}
 	
