@@ -108,18 +108,21 @@ public class LoginService {
 	public String signIn(Login login){
 		String url = "http://localhost:8282/user/userVerification";
 		HttpHeaders headers = new HttpHeaders();
-			headers.set("User-Agent", "Capstone-Travel");//do I send the login in the headers.... That doesn't seem like it would be very secure...
-			headers.set("Custom-Identifyer", "Generated value");//but that could be a separate element to address at another time.
+		headers.setContentType(MediaType.APPLICATION_JSON);
+		headers.setAccept(List.of(MediaType.APPLICATION_JSON));
+			headers.set("User-Agent", "Capstone-Travel");
+			headers.set("Custom-Identifyer", "Generated value");
+				Login requestBody = new Login("email", "password");//"The constructor Login(String, String) is undefined"
+				HttpEntity<Login> entity = new HttpEntity<>(requestBody, headers);
+				ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.POST, entity, String.class);
 			
-			headers.setAccept(List.of(MediaType.APPLICATION_JSON));
-				HttpEntity<String> entity = new HttpEntity<>(headers);
-				ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
-				String verifyingUser = restTemplate.postForObject(url, login, String.class);
+//				HttpEntity<String> entity = new HttpEntity<>(headers);
+//				ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
+//				String verifyingUser = restTemplate.postForObject(url, login, String.class);
 				return response.getBody();
 		
-		//String verifyingUser = restTemplate.postForObject(url, login, String.class);//need to add headers to return "name tag"
+		//need to add headers to return "name tag"
 		//return verifyingUser; 
-		// I still need this code otherwise I am not sending the login... ????
 		}
 	
 //***************************************** Fourth Attempt *********************************************
