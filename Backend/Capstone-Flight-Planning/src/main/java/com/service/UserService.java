@@ -55,7 +55,7 @@ private HttpSession session;
 //	public void storeDataInSession(User user) {session.setAttribute("user", user);
 //	}public User retrieveDataFromSession() {return (User) session.getAttribute("user");
 //	}
-	//****************************** Third Attempt ********************************************
+	//****************************** Current Attempt********************************************
 	public String verifyUser(String password, String email) { 
 		Optional<User> userLogin = userRepository.verifyUser(password, email);
 		String loginResult;

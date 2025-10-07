@@ -107,22 +107,22 @@ public class LoginService {
 	
 	public String signIn(Login login){
 		String url = "http://localhost:8282/user/userVerification";
-		HttpHeaders headers = new HttpHeaders();
-		headers.setContentType(MediaType.APPLICATION_JSON);
-		headers.setAccept(List.of(MediaType.APPLICATION_JSON));
-			headers.set("User-Agent", "Capstone-Travel");
-			headers.set("Custom-Identifyer", "Generated value");
-				Login requestBody = new Login("email", "password");//"The constructor Login(String, String) is undefined"
-				HttpEntity<Login> entity = new HttpEntity<>(requestBody, headers);
-				ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.POST, entity, String.class);
-			
-//				HttpEntity<String> entity = new HttpEntity<>(headers);
-//				ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
-//				String verifyingUser = restTemplate.postForObject(url, login, String.class);
-				return response.getBody();
+//		HttpHeaders headers = new HttpHeaders();
+//		headers.setContentType(MediaType.APPLICATION_JSON);
+//		headers.setAccept(List.of(MediaType.APPLICATION_JSON));
+//			headers.set("User-Agent", "Capstone-Travel");
+//			headers.set("Custom-Identifyer", "Generated value");
+//				Login requestBody = new Login("email", "password");//"The constructor Login(String, String) is undefined"
+//				HttpEntity<Login> entity = new HttpEntity<>(requestBody, headers);
+//				ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.POST, entity, String.class);
+//			
+////				HttpEntity<String> entity = new HttpEntity<>(headers);
+////				ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
+				String verifyingUser = restTemplate.postForObject(url, login, String.class);
+//				return response.getBody();
 		
 		//need to add headers to return "name tag"
-		//return verifyingUser; 
+		return verifyingUser; 
 		}
 	
 //***************************************** Fourth Attempt *********************************************
