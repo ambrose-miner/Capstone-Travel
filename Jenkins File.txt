@@ -1,0 +1,21 @@
+pipeline{
+	agent any
+		stages{
+			stage ("Build"){
+			steps{
+				sh "mvn clean package"
+				}
+			}
+			stage("Stope old Container"){
+			steps{
+				sh "docker-compose down"
+				}
+			}
+			stage ("Run docker Container"){
+			steps{
+				sh "docker-compose up --build -d"
+				}
+			}
+		}
+	}
+
