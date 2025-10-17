@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class LoginService {
-baseURL:string="http://localhost:8181/Capstone-login";
+baseURL:string="http://localhost:8181/Capstone-login/login";
 //this should be the correct path and port
   constructor(public httpClient:HttpClient) { }
 
