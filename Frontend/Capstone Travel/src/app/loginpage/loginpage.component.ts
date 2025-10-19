@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { LoginService } from '../login.service';
+
 @Component({
   selector: 'app-loginpage',
   templateUrl: './loginpage.component.html',
@@ -13,9 +14,10 @@ export class LoginpageComponent {
   })
   constructor(public lg:LoginService){}
   signIn():void{
-    let user = this.loginForm.value;
-    console.log(user);
-    this.lg.signIn(user).subscribe({
+    let login = this.loginForm.value;
+    console.log(login);
+    this.lg.signIn(login).subscribe({
+      
       next:(result: any)=>{
         console.log(result)
       },
