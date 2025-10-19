@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./user-dashboard.component.css']
 })
 export class UserDashboardComponent {
-
+logout():void{//logout function
+  sessionStorage.clear();
+  this.RouterOutlet.navigate(["/login"]);//not RouterOutlet...?
+  //not router or Router
+}
 }

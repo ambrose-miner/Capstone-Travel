@@ -1,23 +1,23 @@
 export class Flight {
     
     isFull: boolean;
-    flightid: int;//int not angular compatable.
+    flightid: Number;//int not angular compatable.
 	origin: string;
 	destination: string;
-	arrival: localDate;// localDate not angular compatable.
-	departure: localDate;// localDate not angular compatable.
+	arrival: Date;// localDate not angular compatable.
+	departure: Date;// localDate not angular compatable.
 	airline: string;
-	price: float;//float not angular compatable.
+	price: Number;//float not angular compatable.
     constructor(
         isFull: boolean,//boolean to register if the flight is full.
         //could be a cool feature to add...
-        flightid: int,
+        flightid: Number,
         origin: string,
         destination: string,
-        arrival: localDate,
-        departure: localDate,
+        arrival: Date,
+        departure: Date,
         airline: string,
-        price: float,
+        price: Number,
     ){
     this.isFull = isFull;
     this.flightid = flightid
