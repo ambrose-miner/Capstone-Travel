@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Flight } from '../flight';
 import { FlightBookingService } from '../flight-booking.service';
 import { FlightService } from '../flight.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-flight-booking',
@@ -9,7 +10,10 @@ import { FlightService } from '../flight.service';
   styleUrls: ['./flight-booking.component.css']
 })
 export class FlightBookingComponent {
-searchFlight(): Array(Flight) {
-FlightService.findAllFlights();
+  constructor(private flightService: FlightService){}
+searchFlight(): Observable<string> {
+return this.flightService.findAllFlights();
+//Property 'findAllFlights' does not exist on type 'typeof FlightService'
+//Error on findAllFlights
 }
 }
