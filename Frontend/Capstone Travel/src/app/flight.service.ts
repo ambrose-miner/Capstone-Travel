@@ -14,7 +14,7 @@ findAllFlights(flight:any):Observable<object> {
 findFlight(flight:any):Observable<string> {
       return this.httpClient.post(this.baseURL+ "/findFlight",flight,{responseType:'text'});
     }
-searchFlightsByPlan(flight:any):Observable<string> {
+searchFlightsByPlan(flight:any):Observable<string> {//does this need to be a list not a string?
       return this.httpClient.post(this.baseURL+ "/searchFlightsByPlan",flight,{responseType:'text'});
     }
 searchFlightsByPlanAndDepartureDate(flight:any):Observable<string> {

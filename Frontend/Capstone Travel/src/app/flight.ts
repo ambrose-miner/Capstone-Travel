@@ -28,7 +28,8 @@ export class Flight {
     this.airline = airline;
     this.price = price;
     }
-    loginStatus() {
+    flightFull() {//use set & get have a radio button for
+    //  view users and admin might both want to see full flights.
         this.isFull = !this.isFull;// this method flips the boolean right...?
     }
 }

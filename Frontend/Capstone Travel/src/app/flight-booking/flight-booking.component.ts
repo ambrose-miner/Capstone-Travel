@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Flight } from '../flight';
+import { FlightBookingService } from '../flight-booking.service';
+import { FlightService } from '../flight.service';
 
 @Component({
   selector: 'app-flight-booking',
@@ -6,5 +9,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./flight-booking.component.css']
 })
 export class FlightBookingComponent {
-
+searchFlight(): Array(Flight) {
+FlightService.findAllFlights();
+}
 }

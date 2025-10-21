@@ -1,7 +1,8 @@
 <p>flight-booking works!</p>
 <main>
-     <form []="login"(ngSubmit)="searchFlight()">
+     <form []="searchFlight"(ngSubmit)="searchFlight()">
         <label>Search for a Flight</label><br>
+        <input type="origin"/><br>
         <input type="destination"/><br>
         <input type="arivalDate"/><br>
         <input type="departureDate"/><br>
