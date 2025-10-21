@@ -9,8 +9,8 @@ baseURL:string="http://localhost:8282/flight/Capstone-Flight-Booking/flight";
   constructor(public httpClient:HttpClient) { }
 
 findAllFlights():Observable<string> {
-      return this.httpClient.post(this.baseURL+ "/findAllFlights",{responseType:'text'});
-    }//removed ",flight," after "/findAllFlights" changed "Observable<string>" to observable<object>
+      return this.httpClient.post(this.baseURL+ "/findAllFlights",null,{responseType:'text'});
+    }
 findFlight(flight:any):Observable<string> {
       return this.httpClient.post(this.baseURL+ "/findFlight",flight,{responseType:'text'});
     }

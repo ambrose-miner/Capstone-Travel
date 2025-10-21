@@ -6,12 +6,12 @@ import { SignuppageComponent } from './signuppage/signuppage.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 const routes: Routes = [
-  {path:'',component:LoginpageComponent},
+  {path:"loginpage",component:LoginpageComponent},
   {path:"flight-booking",component:FlightBookingComponent},
   {path:"signuppage",component:SignuppageComponent},
   {path:"user-dashboard",component:UserDashboardComponent},
   {path:"admin-dashboard",component:AdminDashboardComponent},
-  {path:'**' , redirectTo: ''}
+  //{path:'**' , redirectTo: ''}
 
 ];
 

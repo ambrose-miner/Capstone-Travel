@@ -11,9 +11,19 @@ import { Observable } from 'rxjs';
 })
 export class FlightBookingComponent {
   constructor(private flightService: FlightService){}
-searchFlight(): Observable<string> {
+
+findAllFlights(): Observable<string> {
 return this.flightService.findAllFlights();
-//Property 'findAllFlights' does not exist on type 'typeof FlightService'
-//Error on findAllFlights
+//Why does it only allow this one to be Observable<Object> but bellow 
+//can be Observable<string>????
+}
+searchFlightsByPlan(flight:any): Observable<string> {
+  return this.flightService.searchFlightsByPlan(flight);
+}
+searchFlightsByPlanAndDepartureDate(flight:any): Observable<string> {
+  return this.flightService.searchFlightsByPlan(flight);
+}
+searchFlightsByPlanAndArrivalDate(flight:any): Observable<string> {
+  return this.flightService.searchFlightsByPlan(flight);
 }
 }
