@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginpageComponent } from './loginpage/loginpage.component';
@@ -12,7 +12,7 @@ import { FlightBookingComponent } from './flight-booking/flight-booking.componen
 
 @NgModule({
   declarations: [
-    AppComponent,
+   // AppComponent,
     LoginpageComponent,
     SignuppageComponent,
     AdminDashboardComponent,
@@ -22,9 +22,12 @@ import { FlightBookingComponent } from './flight-booking/flight-booking.componen
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserModule,
+    RouterModule
+
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  //bootstrap: [AppComponent]
 })
 export class AppModule { }
