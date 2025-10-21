@@ -6,9 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./user-dashboard.component.css']
 })
 export class UserDashboardComponent {
+routerLink: any;//what is this and what is the "any"?
+//line 9 was the auto generated fix for my implementation of routerLink bellow.
 logout():void{//logout function
   sessionStorage.clear();
-  this.RouterOutlet.navigate(["/login"]);//not RouterOutlet...?
-  //not router or Router
+ // <a href= "http:CapstoneTravel/login"></a>
+  this.routerLink.navigate(["/login"]);
 }
 }

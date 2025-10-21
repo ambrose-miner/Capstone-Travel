@@ -1,4 +1,11 @@
 <p>flight-booking works!</p>
 <main>
+     <form []="login"(ngSubmit)="searchFlight()">
+        <label>Search for a Flight</label><br>
+        <input type="destination"/><br>
+        <input type="arivalDate"/><br>
+        <input type="departureDate"/><br>
+    </form>
     <router-outlet></router-outlet>
+    <a href= "http:CapstoneTravel/login">Sign Out</a>
 </main>
