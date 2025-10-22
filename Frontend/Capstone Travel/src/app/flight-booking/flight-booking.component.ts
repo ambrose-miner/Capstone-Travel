@@ -14,8 +14,7 @@ export class FlightBookingComponent {
 
 findAllFlights(): Observable<string> {
 return this.flightService.findAllFlights();
-//Why does it only allow this one to be Observable<Object> but bellow 
-//can be Observable<string>????
+
 }
 searchFlightsByPlan(flight:any): Observable<string> {
   return this.flightService.searchFlightsByPlan(flight);

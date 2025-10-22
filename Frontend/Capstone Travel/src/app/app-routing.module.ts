@@ -6,12 +6,12 @@ import { SignuppageComponent } from './signuppage/signuppage.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 const routes: Routes = [
-  {path:"loginpage",component:LoginpageComponent},
-  {path:"flight-booking",component:FlightBookingComponent},
-  {path:"signuppage",component:SignuppageComponent},
-  {path:"user-dashboard",component:UserDashboardComponent},
-  {path:"admin-dashboard",component:AdminDashboardComponent},
-  //{path:'**' , redirectTo: ''}
+  {path:"loginpage", title: "Login" ,component:LoginpageComponent},
+  {path:"flight-booking", title: "Flight Booking" ,component:FlightBookingComponent},
+  {path:"signuppage", title: "Sign Up" ,component:SignuppageComponent},
+  {path:"user-dashboard", title: "Your Capstone" ,component:UserDashboardComponent},
+  {path:"admin-dashboard", title: "Admin Hub" ,component:AdminDashboardComponent},
+  //{path:'**' , redirectTo: ''}// Use this if using routerLink with id's
 
 ];
 

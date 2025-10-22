@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule } from '@angular/router';
+import { RouterModule, ROUTES } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginpageComponent } from './loginpage/loginpage.component';
@@ -9,7 +9,7 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { RideBookingComponent } from './ride-booking/ride-booking.component';
 import { FlightBookingComponent } from './flight-booking/flight-booking.component';
-
+import { bootstrapApplication } from '@angular/platform-browser';
 @NgModule({
   declarations: [
    // AppComponent,
@@ -27,7 +27,7 @@ import { FlightBookingComponent } from './flight-booking/flight-booking.componen
     RouterModule
 
   ],
-  providers: [],
-  //bootstrap: [AppComponent]
 })
+  // providers: [],
+  // bootstrap: [AppComponent]
 export class AppModule { }
