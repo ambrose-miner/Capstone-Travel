@@ -27,5 +27,5 @@ import { SignuppageComponent } from './app/signuppage/signuppage.component';
 //})
 
 
- platformBrowserDynamic().bootstrapModule(AppComponent)
+ platformBrowserDynamic().bootstrapModule(AppModule)
   .catch(err => console.error(err));

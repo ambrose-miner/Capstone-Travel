@@ -23,6 +23,11 @@ public class Login {
 		this.password = password;
 		this.email = email;
 	}
+	public Login() {
+		this.loginid = loginid;
+		this.password = password;
+		this.email = email;
+	}
 	public String getLoginid() {
 		return loginid;
 	}

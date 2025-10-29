@@ -32,10 +32,10 @@ import { AppComponent } from './app.component';
 
 export class AppModule { 
   constructor(private router: Router){}
-  navigateToLogin(){
-    this.router.navigate(['/app.component.ts']);
+  // navigateToLogin(){
+  //   this.router.navigate(['/app.component.ts']);
   }
-  provideRouter(){
-    return Router;
-  }
-}
+  // provideRouter(){
+  //   return Router;
+  // }
+//}
