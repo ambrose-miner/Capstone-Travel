@@ -1,15 +1,16 @@
 import { Component } from '@angular/core';
-import { provideRouter, RouterOutlet, RouterLink, withHashLocation } from '@angular/router';
+import { RouterOutlet, RouterLink, withHashLocation, RouterModule } from '@angular/router';
 import { bootstrapApplication } from '@angular/platform-browser';
+import { AppModule } from './app.module';
 @Component({
   selector: 'app-root',
-  standalone: true,
+  standalone: false,
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  imports: [RouterOutlet, RouterLink],
+ // imports: [RouterOutlet,RouterLink,RouterModule,AppModule],
   
 })
-export class AppComponent {
+export class AppComponent {}
   //******************************************
   // //This is the error seen from inspect ellement on browser
 
@@ -21,13 +22,13 @@ export class AppComponent {
 //   AppComponent.bootstrapApplication(AppComponent: any, { providers: [provideRouter] }: {
 //     providers: [any];
 // }): any
-}
+
   //  bootstrapApplication(AppComponent:any, {
   //   providers:[
-  //     provideRouter(routes),
+  //     provideRouter(any),
   //   ],
-   
-  
+  //  }
+  //}
   // logout():string{//logout function
   // sessionStorage.clear();
   // return this.routerLink.navigate(["/login"]);
