@@ -3,10 +3,13 @@ package com.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletResponse;
 
 import com.bean.Login;
 import com.service.LoginService;
@@ -18,7 +21,22 @@ public class LoginController {
 	
 	@Autowired
 	LoginService loginService;
-
+	
+//	Parameter 0 of constructor in com.bean.Login required a bean of type 'java.lang.String' that could not be found.
+//	Action:
+//	Consider defining a bean of type 'java.lang.String' in your configuration.
+//  Error trying to start the application.
+	
+//	@GetMapping("/set-cookie")
+//    public String setCookie(HttpServletResponse response) {
+//        Cookie cookie = new Cookie("sessionId", "uniqueSessionIdValue");
+//        cookie.setMaxAge(3600); // Cookie expires in 1 hour
+//        cookie.setPath("/"); // Available for all paths
+//        cookie.setHttpOnly(true); // Prevents client-side script access
+//        cookie.setSecure(true); // Only sent over HTTPS
+//        response.addCookie(cookie);
+//        return "Cookie 'sessionId' set!";
+//    }
 	
 	// http://localhost:8181/Capstone-login/login/signIn  //This should be the correct path and port number.
 	@PostMapping(value = "/signIn",consumes = MediaType.APPLICATION_JSON_VALUE)

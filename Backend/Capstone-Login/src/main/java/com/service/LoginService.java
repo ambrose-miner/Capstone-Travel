@@ -13,9 +13,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.client.RestTemplate;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletResponse;
 
 import com.bean.Login;
 import com.repository.LoginRepository;
+
 
 @Service
 public class LoginService {
@@ -107,6 +110,21 @@ public class LoginService {
 	
 	public String signIn(Login login){
 		String url = "http://localhost:8282/user/userVerification";
+				String verifyingUser = restTemplate.postForObject(url, login, String.class);
+		return verifyingUser; 
+	}
+	
+	
+//***************************************** Fourth Attempt *********************************************
+//	public String verifyUser() {
+//		String url = "http://localhost:8282/verifyUserLogin";
+//		String response = restTemplate.postForObject(url, null, String.class);
+//		return "Login " + response;
+//	}
+//****************************************** Fifth Attempt ********************************************
+//	public String signIn(Login login){
+//		 
+//		String url = "http://localhost:8282/user/userVerification";
 //		HttpHeaders headers = new HttpHeaders();
 //		headers.setContentType(MediaType.APPLICATION_JSON);
 //		headers.setAccept(List.of(MediaType.APPLICATION_JSON));
@@ -118,22 +136,12 @@ public class LoginService {
 //			
 ////				HttpEntity<String> entity = new HttpEntity<>(headers);
 ////				ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
-				String verifyingUser = restTemplate.postForObject(url, login, String.class);
+//				String verifyingUser = restTemplate.postForObject(url, login, String.class);
 //				return response.getBody();
 		
 		//need to add headers to return "name tag"
-		return verifyingUser; 
-		}
-	
-//***************************************** Fourth Attempt *********************************************
-//	public String verifyUser() {
-//		String url = "http://localhost:8282/verifyUserLogin";
-//		String response = restTemplate.postForObject(url, null, String.class);
-//		return "Login " + response;
-//	}
-		
 	public String signUp(Login login) { 
-		Optional<Login> result = loginRepository.findById(login.getPassword());//Id should be userid not password.
+		Optional<Login> result = loginRepository.findById(login.getLoginid());//Id should be userid not loginid?.
 		if(result.isPresent()) {
 				return "That account already exists";
 		}else {

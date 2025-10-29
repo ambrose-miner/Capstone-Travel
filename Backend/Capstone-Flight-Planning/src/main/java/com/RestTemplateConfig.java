@@ -16,12 +16,13 @@ import org.springframework.web.client.RestTemplate;
 public class RestTemplateConfig {
 	@Bean
 	public RestTemplate restTemplate() {
-		SimpleClientHttpRequestFactory factory = new SimpleClientHttpRequestFactory();
-		Proxy proxy = new Proxy(Proxy.Type.HTTP, new
-				InetSocketAddress("proxy.Capstone-Server.local",8761));
-				factory.setProxy(proxy);
+		//SimpleClientHttpRequestFactory factory = new SimpleClientHttpRequestFactory();
+		//Proxy proxy = new Proxy(Proxy.Type.HTTP, new
+				//InetSocketAddress("proxy.Capstone-Server.local",8761));
+				//factory.setProxy(proxy);
 		System.out.println("************Made Rest Template");
-		return new RestTemplate(factory);
+		//return new RestTemplate(factory);
+		return new RestTemplate();
 		// Trying to have the a user's requests 
 		//have the same headers created by global headers this header would Identify them...global would be to their run time environment correct?
 //		//if that is not the case than I don't want to make these headers global.

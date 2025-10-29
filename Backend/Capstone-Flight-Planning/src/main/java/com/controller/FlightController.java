@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.CookieValue;
 
 import com.bean.Flight;
 import com.bean.FlightBooking;
@@ -31,11 +32,12 @@ public class FlightController {
 	
 	@Autowired FlightService flightService;
 	
+	
 	@PostMapping(value = "/createFlight",consumes = MediaType.APPLICATION_JSON_VALUE)
-	public String createFlight(@RequestBody Flight newFlight) {
-		 System.out.println("Call book flight method");
-		String Message = flightService.createFlight(newFlight);
-		 return Message;//Day values are not being saved as the correct input!?
+		public String createFlight(@RequestBody Flight newFlight) {
+		 	System.out.println("Call book flight method");
+		 	String Message = flightService.createFlight(newFlight);
+		 		return Message;//Day values are not being saved as the correct input!?
 		 				//Postman requests save but as wrong value?
 		 				//No code changes since previous tests how is this possible?
 		 				//Day value of created flight is always one less than the entered day.

@@ -23,6 +23,11 @@ public interface UserRepository extends JpaRepository<User, Long>{
 						@Param("password") String password,
 						@Param("email")String email);
 	
+	@Query(value = "SELECT UserId FROM User WHERE password = :password AND email = :email", nativeQuery = true)
+	Optional<Long> getUserId(
+			@Param("password") String password,
+			@Param("email")String email);
+			
 	@Query(value = "SELECT * FROM User", nativeQuery = true)
 	List<User> findUsersOnFlight(@Param("flight") int flightid);
 

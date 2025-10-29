@@ -14,6 +14,8 @@ import com.bean.Login;
 import com.bean.User;
 import com.repository.UserRepository;
 
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 @Service
 public class UserService {
@@ -62,6 +64,10 @@ private HttpSession session;
 			if (userLogin.isPresent()){
 				System.out.println("************* sessionidfrom Service =" +session.getId());
 				User userCurrent = userLogin.get();
+		        Optional<Long> userCurrentId = userRepository.getUserId(password, email);
+		        String sessionId = session.getId();
+		        //setCookie(sessionId, userCurrentId);
+		        setCookie(null);//null??? I thought I would have to pass the above.
 				session.setAttribute("Test Atribute", "Test Atribute Value");
 				session.setAttribute("userCurrent", userCurrent);//userCurrent = (User) session.getAttribute("userCurrent");
 				loginResult = "Successfully logged in!!";			//for getting back out of the session
@@ -70,6 +76,13 @@ private HttpSession session;
 			}
 			return ""+ loginResult;
 		}
+	public String setCookie(HttpServletResponse response) {
+		Cookie userLoginCookie = new Cookie("sessionId", "userid");
+		userLoginCookie.setMaxAge(3600); // Cookie expires in 1 hour
+		 userLoginCookie.setPath("/");// just the slash should make it available to all end points.
+        response.addCookie(userLoginCookie);
+      return "Cookie 'sessionId' set!";
+	}
 	//********************************** Fourth Attempt ****************************************
 //	@PostMapping("/verifyUserLogin")
 //	public String verifyUserLogin() {
