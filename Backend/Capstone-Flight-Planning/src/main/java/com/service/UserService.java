@@ -66,18 +66,21 @@ private HttpSession session;
 				User userCurrent = userLogin.get();
 		        Optional<Long> userCurrentId = userRepository.getUserId(password, email);
 		        String sessionId = session.getId();
+		       // Cookie userLoginCookie = new Cookie("Long", "userCurrentId");
 		        //setCookie(sessionId, userCurrentId);
-		        setCookie(null);//null??? I thought I would have to pass the above.
-				session.setAttribute("Test Atribute", "Test Atribute Value");
-				session.setAttribute("userCurrent", userCurrent);//userCurrent = (User) session.getAttribute("userCurrent");
-				loginResult = "Successfully logged in!!";			//for getting back out of the session
+		       // setCookie(null);//null??? I thought I would have to pass the above.
+				//session.setAttribute("Test Atribute", "Test Atribute Value");
+				session.setAttribute("userCurrentId", userCurrentId);
+				//userCurrent = (User) session.getAttribute("userCurrent");//for getting back out of the session
+				//response.addCookie(userLoginCookie);//response can not be resolved???
+				loginResult = "Successfully logged in!!" +sessionId;			
 			}else {
 				loginResult = "Login Failed";
 			}
 			return ""+ loginResult;
 		}
 	public String setCookie(HttpServletResponse response) {
-		Cookie userLoginCookie = new Cookie("sessionId", "userid");
+		Cookie userLoginCookie = new Cookie("Long", "userid");
 		userLoginCookie.setMaxAge(3600); // Cookie expires in 1 hour
 		 userLoginCookie.setPath("/");// just the slash should make it available to all end points.
         response.addCookie(userLoginCookie);

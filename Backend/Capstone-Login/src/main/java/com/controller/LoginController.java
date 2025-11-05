@@ -22,12 +22,9 @@ public class LoginController {
 	@Autowired
 	LoginService loginService;
 	
-//	Parameter 0 of constructor in com.bean.Login required a bean of type 'java.lang.String' that could not be found.
-//	Action:
-//	Consider defining a bean of type 'java.lang.String' in your configuration.
-//  Error trying to start the application.
 	
 //	@GetMapping("/set-cookie")
+	
 //    public String setCookie(HttpServletResponse response) {
 //        Cookie cookie = new Cookie("sessionId", "uniqueSessionIdValue");
 //        cookie.setMaxAge(3600); // Cookie expires in 1 hour
