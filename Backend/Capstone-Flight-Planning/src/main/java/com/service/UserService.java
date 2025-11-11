@@ -58,34 +58,34 @@ private HttpSession session;
 //	}public User retrieveDataFromSession() {return (User) session.getAttribute("user");
 //	}
 	//****************************** Current Attempt********************************************
-	public String verifyUser(String password, String email) { 
+	public User verifyUser(String password, String email) { 
 		Optional<User> userLogin = userRepository.verifyUser(password, email);
-		String loginResult;
+		User loginResult;
 			if (userLogin.isPresent()){
 				System.out.println("************* sessionidfrom Service =" +session.getId());
 				User userCurrent = userLogin.get();
-		        Optional<Long> userCurrentId = userRepository.getUserId(password, email);
-		        String sessionId = session.getId();
+		        //Optional<Long> userCurrentId = userRepository.getUserId(password, email);
+		        //String sessionId = session.getId();
 		       // Cookie userLoginCookie = new Cookie("Long", "userCurrentId");
 		        //setCookie(sessionId, userCurrentId);
 		       // setCookie(null);//null??? I thought I would have to pass the above.
 				//session.setAttribute("Test Atribute", "Test Atribute Value");
-				session.setAttribute("userCurrentId", userCurrentId);
+				//session.setAttribute("userCurrentId", userCurrentId);
 				//userCurrent = (User) session.getAttribute("userCurrent");//for getting back out of the session
 				//response.addCookie(userLoginCookie);//response can not be resolved???
-				loginResult = "Successfully logged in!!" +sessionId;			
+				loginResult = userCurrent;			
 			}else {
-				loginResult = "Login Failed";
+				loginResult = null;
 			}
-			return ""+ loginResult;
+			return loginResult;
 		}
-	public String setCookie(HttpServletResponse response) {
-		Cookie userLoginCookie = new Cookie("Long", "userid");
-		userLoginCookie.setMaxAge(3600); // Cookie expires in 1 hour
-		 userLoginCookie.setPath("/");// just the slash should make it available to all end points.
-        response.addCookie(userLoginCookie);
-      return "Cookie 'sessionId' set!";
-	}
+//	public String setCookie(HttpServletResponse response) {
+//		Cookie userLoginCookie = new Cookie("Long", "userid");
+//		userLoginCookie.setMaxAge(3600); // Cookie expires in 1 hour
+//		 userLoginCookie.setPath("/");// just the slash should make it available to all end points.
+//        response.addCookie(userLoginCookie);
+//      return "Cookie 'sessionId' set!";
+//	}
 	//********************************** Fourth Attempt ****************************************
 //	@PostMapping("/verifyUserLogin")
 //	public String verifyUserLogin() {

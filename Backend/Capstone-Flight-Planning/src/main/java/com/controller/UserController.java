@@ -24,6 +24,8 @@ import com.bean.Login;
 import com.bean.User;
 import com.service.UserService;
 
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 @CrossOrigin
 @RestController
@@ -50,11 +52,25 @@ UserService userService;
 	}
 	//http://localhost:8282/user/{password}/{email}
 	@PostMapping(value = "/userVerification",consumes = MediaType.APPLICATION_JSON_VALUE)
-	public String getUserVerification
-				(@RequestBody Login login){
+	public int getUserVerification
+				(@RequestBody Login login,HttpServletResponse response){
 				String password = login.getPassword();
-				String email = login.getEmail();	
-			return userService.verifyUser(password, email);
+				String email = login.getEmail();
+				User userCurrent = userService.verifyUser(password, email);
+				if (userCurrent == null) {
+					return -1;
+				}else {
+					setCookie(response, userCurrent.getUserid());
+					return 1;
+				} 
+	}
+	public void setCookie(HttpServletResponse response, Long userid) {
+		Cookie userLoginCookie = new Cookie("userid", ""+userid);
+		userLoginCookie.setMaxAge(3600); // Cookie expires in 1 hour
+		 userLoginCookie.setPath("/");// just the slash should make it available to all end points.
+        response.addCookie(userLoginCookie);
+        System.out.println("**********Cookie set*********");
+      return;
 	}
 	//Test get session value code hmmm... returns
 	//Cannot invoke \"com.bean.User.getUserid()\" because \"userCurrent\" is null",
@@ -76,14 +92,14 @@ UserService userService;
 	
 	@GetMapping(value = "/findUserDepartureDates", produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<Date> findUserDepartureDates(@RequestParam Long userid){
-		User userCurrent = (User) session.getAttribute("userCurrent");
+		User userCurrent = (User) session.getAttribute("userCurrent");//remove method?
 		userid = userCurrent.getUserid();
 			return userService.findUserDepartureDates(userid);
 	}
 	
 	@GetMapping(value = "/findUserArrivalDates", produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<Date> findUserArrivalDates(@RequestParam Long userid){
-		User userCurrent = (User) session.getAttribute("userCurrent");
+		User userCurrent = (User) session.getAttribute("userCurrent");//remove method?
 		userid = userCurrent.getUserid();
 			return userService.findUserArrivalDates(userid);
 	}
